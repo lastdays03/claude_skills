@@ -43,6 +43,16 @@
 
 ---
 
+## 🛡️ Exception Handling Strategy
+
+| Scenario | Unexpected Behavior | Handling Strategy | User Feedback |
+|----------|---------------------|-------------------|---------------|
+| [Scenario 1] | [What happens] | [Retry/Fail/Fallback] | [Message to user] |
+| [Scenario 2] | [What happens] | [Retry/Fail/Fallback] | [Message to user] |
+| **Global** | Unhandled Exceptions | Log stack trace & Alert | Generic error page |
+
+---
+
 ## 📦 Dependencies
 
 ### Required Before Starting
@@ -94,6 +104,12 @@ describe/group: Feature or component name
     // Arrange → Act → Assert pattern
 ```
 
+### Exception Test Scenarios
+- [ ] **Network Failures**: Simulate timeouts/unreachable services
+- [ ] **Invalid Data**: Input validation errors
+- [ ] **Resource Exhaustion**: Rate limits, disk space, etc.
+- [ ] **Concurrent Access**: Race conditions (if applicable)
+
 ---
 
 ## 🚀 Implementation Phases
@@ -112,7 +128,7 @@ describe/group: Feature or component name
   - Details: Test cases covering:
     - Happy path scenarios
     - Edge cases
-    - Error conditions
+    - Error conditions (Must test explicitly!)
 
 - [ ] **Test 1.2**: Write integration tests for [component interaction]
   - File(s): `test/integration/[feature]_test.*`
@@ -140,6 +156,7 @@ describe/group: Feature or component name
     - [ ] Extract reusable components
     - [ ] Add inline documentation
     - [ ] Optimize performance if needed
+    - [ ] **Review Exception Handling**: Are exceptions caught? Are messages clear?
 
 #### Quality Gate ✋
 
@@ -177,6 +194,7 @@ describe/group: Feature or component name
 - [ ] **Performance**: No performance regressions
 - [ ] **Memory**: No memory leaks or resource issues
 - [ ] **Error Handling**: Proper error handling implemented
+- [ ] **Exception Check**: All custom exceptions defined and used correctly
 
 **Documentation**:
 - [ ] **Code Comments**: Complex logic documented
@@ -238,7 +256,7 @@ describe/group: Feature or component name
   - Details: Test cases covering:
     - Happy path scenarios
     - Edge cases
-    - Error conditions
+    - Error conditions (Must test explicitly!)
 
 - [ ] **Test 2.2**: Write integration tests for [component interaction]
   - File(s): `test/integration/[feature]_test.*`
@@ -266,6 +284,7 @@ describe/group: Feature or component name
     - [ ] Extract reusable components
     - [ ] Add inline documentation
     - [ ] Optimize performance if needed
+    - [ ] **Review Exception Handling**: Are exceptions caught? Are messages clear?
 
 #### Quality Gate ✋
 
@@ -294,6 +313,7 @@ describe/group: Feature or component name
 - [ ] **Performance**: No performance regressions
 - [ ] **Memory**: No memory leaks or resource issues
 - [ ] **Error Handling**: Proper error handling implemented
+- [ ] **Exception Check**: All custom exceptions defined and used correctly
 
 **Documentation**:
 - [ ] **Code Comments**: Complex logic documented
@@ -331,7 +351,7 @@ describe/group: Feature or component name
   - Details: Test cases covering:
     - Happy path scenarios
     - Edge cases
-    - Error conditions
+    - Error conditions (Must test explicitly!)
 
 - [ ] **Test 3.2**: Write integration tests for [component interaction]
   - File(s): `test/integration/[feature]_test.*`
@@ -359,6 +379,7 @@ describe/group: Feature or component name
     - [ ] Extract reusable components
     - [ ] Add inline documentation
     - [ ] Optimize performance if needed
+    - [ ] **Review Exception Handling**: Are exceptions caught? Are messages clear?
 
 #### Quality Gate ✋
 
@@ -387,6 +408,7 @@ describe/group: Feature or component name
 - [ ] **Performance**: No performance regressions
 - [ ] **Memory**: No memory leaks or resource issues
 - [ ] **Error Handling**: Proper error handling implemented
+- [ ] **Exception Check**: All custom exceptions defined and used correctly
 
 **Documentation**:
 - [ ] **Code Comments**: Complex logic documented

@@ -29,7 +29,10 @@ Break feature into 3-7 phases where each phase:
 - Follows Red-Green-Refactor cycle
 - Has measurable test coverage requirements
 - Can be rolled back independently
+- Has measurable test coverage requirements
+- Can be rolled back independently
 - Has clear success criteria
+- **Exception Scenarios Explained**: Error cases explicitly defined and handled
 
 **Phase Structure**:
 - Phase Name: Clear deliverable
@@ -44,6 +47,10 @@ Break feature into 3-7 phases where each phase:
      - [ ] Extract reusable components
      - [ ] Add inline documentation
      - [ ] Optimize performance if needed
+- **Exception Tasks**:
+  - [ ] Define custom exceptions
+  - [ ] Implement error logging
+  - [ ] Verify error messages are user-friendly
 - Quality Gate: TDD compliance + validation criteria
 - Dependencies: What must exist before starting
 - **Coverage Target**: Specific percentage or checklist for this phase
@@ -164,6 +171,23 @@ For each risk, specify:
 - Probability: Low/Medium/High
 - Impact: Low/Medium/High
 - Mitigation Strategy: Specific action steps
+
+## Exception Handling Strategy
+
+### 1. Custom Exceptions
+Define domain-specific exceptions to handle expected error cases gracefully.
+- Use `CoreException` as a base class if available.
+- Include error codes and helpful messages.
+
+### 2. Logging Standards
+- **Error Level**: Unexpected system failures (stack trace required).
+- **Warning Level**: Expected business logic failures (no stack trace).
+- **Info Level**: High-level flow checkpoints.
+
+### 3. User Feedback
+- Errors exposed to users must be sanitized (no internal paths or raw SQL).
+- Provide actionable next steps for the user.
+
 
 ## Rollback Strategy
 
@@ -314,7 +338,8 @@ test 'component should call dependency':
 1. **Test File Location**: Exact path where tests will be written
 2. **Test Scenarios**: List of specific test cases
 3. **Expected Failures**: What error should tests show initially?
-4. **Coverage Target**: Percentage for this phase
+4. **Exception Scenarios**: Specific error conditions to test (e.g., NetworkError, ValidationError)
+5. **Coverage Target**: Percentage for this phase
 5. **Dependencies to Mock**: What needs mocking/stubbing?
 6. **Test Data**: What fixtures/factories are needed?
 
