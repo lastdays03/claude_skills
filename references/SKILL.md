@@ -39,6 +39,11 @@ Break feature into 3-7 phases where each phase:
   1. **RED Tasks**: Write failing tests first
   2. **GREEN Tasks**: Implement minimal code to make tests pass
   3. **REFACTOR Tasks**: Improve code quality while tests stay green
+     - [ ] Remove duplication (DRY principle)
+     - [ ] Improve naming clarity
+     - [ ] Extract reusable components
+     - [ ] Add inline documentation
+     - [ ] Optimize performance if needed
 - Quality Gate: TDD compliance + validation criteria
 - Dependencies: What must exist before starting
 - **Coverage Target**: Specific percentage or checklist for this phase
