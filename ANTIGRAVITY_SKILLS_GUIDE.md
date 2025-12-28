@@ -33,6 +33,18 @@
 ### 3. Skill 사용
 파일이 생성되면 다음과 같이 요청하여 Skill을 실행할 수 있습니다: *"기능 A에 대해 feature planner 워크플로우를 실행해 줘"*
 
+## 가용한 워크플로우 (Available Workflows)
+
+현재 이 프로젝트에서 사용 가능한 워크플로우 목록입니다. `.agent/workflows/` 디렉토리에서 전체 정의를 확인할 수 있습니다.
+
+*   **/archive_project**: 완료된 프로젝트를 검증(Dependency Check) 및 정리(Cleanup) 후 연도별 아카이브로 이동
+*   **/concept_distiller**: AI를 활용해 핵심 개념 추출 및 지식 베이스(20_Learning)와 연결
+*   **/feature_planner**: 고급 기능 구현을 위한 계획 수립 (TDD, 리스크 평가, 롤백 전략 포함)
+*   **/knowledge_harvester**: 프로젝트/인박스의 실전 노트(Topic Note)를 지식 베이스로 이관
+*   **/moc_builder**: 노트들을 분석하여 구조화된 MOC(Map of Content) 자동 생성
+*   **/project_kickoff**: 표준 구조를 갖춘 새 프로젝트 생성 및 템플릿 적용
+*   **/weekly_review**: 주간 회고, 인박스 제로, 액션 아이템 추출 자동화
+
 ## 예시: "Feature Planner" 워크플로우
 
 `.agent/workflows/feature_planner.md` 파일을 참조하세요.
