@@ -6,13 +6,13 @@
 
 사용자가 제공한 문서에 정의된 "Skill"(복잡한 코딩 작업을 완료하기 위한 구조화된 프로세스)은 **Antigravity Workflows** 및 **Agentic Mode Artifacts 시스템**과 직접적으로 매핑됩니다.
 
-| Claude Code 개념 | Antigravity 대응 기능 | 설명 |
-|------------------|------------------------|------|
-| **Skill 정의** | **Workflow** (`.agent/workflows/*.md`) | 에이전트가 따라야 할 단계별 절차를 정의합니다. |
-| **Plan 템플릿** | **Artifacts** (`implementation_plan.md`) | Antigravity는 계획 수립을 위한 전용 아티팩트를 이미 내장하고 있습니다. |
-| **단계(Phases) & 체크리스트** | **Task Boundaries** (`task.md`) | `task.md` 아티팩트는 세부 진행 상황을 추적하는 살아있는 문서 역할을 합니다. |
-| **사용자 승인** | **`notify_user` 도구** | `BlockedOnUser: true`를 사용하여 사용자 검토를 위해 작업을 일시 중지합니다. |
-| **품질 게이트 (Quality Gates)** | **Verification 모드** | `implementation_plan.md`와 `walkthrough.md`에 명시적인 검증 단계를 문서화합니다. |
+| Claude Code 개념                | Antigravity 대응 기능                    | 설명                                                                             |
+| ------------------------------- | ---------------------------------------- | -------------------------------------------------------------------------------- |
+| **Skill 정의**                  | **Workflow** (`.agent/workflows/*.md`)   | 에이전트가 따라야 할 단계별 절차를 정의합니다.                                   |
+| **Plan 템플릿**                 | **Artifacts** (`implementation_plan.md`) | Antigravity는 계획 수립을 위한 전용 아티팩트를 이미 내장하고 있습니다.           |
+| **단계(Phases) & 체크리스트**   | **Task Boundaries** (`task.md`)          | `task.md` 아티팩트는 세부 진행 상황을 추적하는 살아있는 문서 역할을 합니다.      |
+| **사용자 승인**                 | **`notify_user` 도구**                   | `BlockedOnUser: true`를 사용하여 사용자 검토를 위해 작업을 일시 중지합니다.      |
+| **품질 게이트 (Quality Gates)** | **Verification 모드**                    | `implementation_plan.md`와 `walkthrough.md`에 명시적인 검증 단계를 문서화합니다. |
 
 ## Antigravity에 Skill 이식하는 방법
 
@@ -33,17 +33,50 @@
 ### 3. Skill 사용
 파일이 생성되면 다음과 같이 요청하여 Skill을 실행할 수 있습니다: *"기능 A에 대해 feature planner 워크플로우를 실행해 줘"*
 
-## 가용한 워크플로우 (Available Workflows)
+## 워크플로우 효율적 활용 가이드 (Workbook Efficiency Guide)
 
-현재 이 프로젝트에서 사용 가능한 워크플로우 목록입니다. `.agent/workflows/` 디렉토리에서 전체 정의를 확인할 수 있습니다.
+현재 구축된 워크플로우들을 목적에 맞게 선택하여 사용하는 것이 생산성의 핵심입니다. 다음 분류를 참고하여 상황에 맞는 도구를 선택하세요.
 
-*   **/archive_project**: 완료된 프로젝트를 검증(Dependency Check) 및 정리(Cleanup) 후 연도별 아카이브로 이동
-*   **/concept_distiller**: AI를 활용해 핵심 개념 추출 및 지식 베이스(20_Learning)와 연결
-*   **/feature_planner**: 고급 기능 구현을 위한 계획 수립 (TDD, 리스크 평가, 롤백 전략 포함)
-*   **/knowledge_harvester**: 프로젝트/인박스의 실전 노트(Topic Note)를 지식 베이스로 이관
-*   **/moc_builder**: 노트들을 분석하여 구조화된 MOC(Map of Content) 자동 생성
-*   **/project_kickoff**: 표준 구조를 갖춘 새 프로젝트 생성 및 템플릿 적용
-*   **/weekly_review**: 주간 회고, 인박스 제로, 액션 아이템 추출 자동화
+### 1. 전략 및 시작 (Strategy & Start)
+프로젝트나 아이디어를 처음 구체화할 때 사용합니다.
+
+*   **/project_kickoff**
+    *   **When**: 새로운 프로젝트 폴더를 생성할 때.
+    *   **Why**: 폴더 구조, `Overview.md`, 기본 `task.md`를 표준에 맞춰 자동 생성하여 세팅 시간을 단축합니다.
+    *   **Effect**: "어디서부터 시작하지?"라는 고민 제거.
+
+### 2. 개발 및 구현 (Development & Engineering)
+실제 코드를 작성하고 프로덕트를 만들 때 사용합니다.
+
+*   **/feature_planner**
+    *   **When**: 사용자에게 배포할 **기능(Feature)**을 개발할 때.
+    *   **Why**: TDD, 리스크 평가, 롤백 전략 등 '엔지니어링 표준'을 준수해야 할 때 필수적입니다.
+    *   **Effect**: 버그 감소, 코드 품질 향상, 명확한 진척도 관리.
+    *   **Vs Study Planner**: 코드를 고장내보며 실험하는 것이 아니라, **안전하고 견고하게** 만드는 것이 목표입니다.
+
+*   **/archive_project**
+    *   **When**: 프로젝트가 완전히 종료되었을 때.
+    *   **Why**: 의존성 검사 후 안전하게 아카이빙하여 작업 공간을 정리합니다.
+
+### 3. 학습 및 연구 (Learning & Research)
+새로운 기술을 익히거나 개념을 정립할 때 사용합니다.
+
+*   **/study_planner**
+    *   **When**: 새로운 언어, 프레임워크, 라이브러리를 **공부**할 때.
+    *   **Why**: 기능 구현과 달리, **"코드를 고장내보고(Break & Fix)"**, "이론을 요약"하는 학습 특화 단계가 포함되어 있습니다.
+    *   **Effect**: 단순 복사/붙여넣기가 아닌 깊이 있는 원리 이해.
+
+### 4. 지식 관리 (Knowledge Management)
+흩어진 정보를 자산화할 때 사용합니다.
+
+*   **/concept_distiller**
+    *   **When**: 복잡한 텍스트나 대화 내용에서 **핵심 개념**만 뽑아내어 저장하고 싶을 때.
+*   **/knowledge_harvester**
+    *   **When**: 프로젝트 진행 중 작성한 메모를 영구적인 **지식 베이스(20_Learning)**로 옮길 때.
+*   **/moc_builder**
+    *   **When**: 노트가 너무 많아져서 **목차(Map of Content)**가 필요할 때.
+*   **/weekly_review**
+    *   **When**: 한 주를 마무리하며 할 일과 메모를 정리할 때 (GTD).
 
 ## 예시: "Feature Planner" 워크플로우
 
@@ -63,3 +96,24 @@ description: TDD 단계와 품질 게이트를 사용하여 기능을 계획하�
 ## 요약
 
 매번 `plan-template.md`를 수동으로 파싱할 필요가 없습니다. 해당 템플릿을 사용하는 *프로세스*를 **Antigravity Workflow**로 인코딩하면 "Skill"을 자동화할 수 있습니다.
+
+## 유틸리티 및 도구 (Utilities & Tools)
+
+프로젝트 간에 **일관된 에이전트 설정**을 유지하기 위해 제공되는 도구입니다.
+
+### 동기화 스크립트 (`scripts/init_agent.sh`)
+
+새로운 프로젝트나 기존 프로젝트에서 `claude_skills`의 공통 설정(`.agent` 폴더)을 사용하고 싶을 때 실행합니다.
+
+**기능:**
+*   현재 프로젝트에 `.agent` 심볼릭 링크 생성 (소스: `claude_skills/.agent`)
+*   `.gitignore`에 `.agent` 자동 추가 (로컬 설정 보호)
+
+**사용법:**
+터미널에서 설정하려는 프로젝트의 루트 디렉토리로 이동한 후, 상대 경로로 스크립트를 실행합니다.
+
+```bash
+# 예시: 새로운 프로젝트 'my_new_project'에서 실행 시
+cd ~/dev/workspace/my_new_project
+../claude_skills/scripts/init_agent.sh
+```
