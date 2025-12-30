@@ -25,35 +25,34 @@ echo "=========================================="
 echo "Source: $AGENT_SOURCE"
 echo "Target: $TARGET_DIR/$LINK_NAME"
 
-# 1. 심볼릭 링크 생성
-if [ -L "$LINK_NAME" ]; then
-    echo "[Skip] Symbolic link '$LINK_NAME' already exists."
-    # 링크가 가리키는 곳이 맞는지 확인하려면 readlink 사용 가능하나, 일단 스킵 처리
-elif [ -e "$LINK_NAME" ]; then
-    echo "[Error] '$LINK_NAME' exists but is not a symbolic link. Please remove it manually."
-    exit 1
-else
-    echo "[Action] Creating symbolic link..."
-    ln -s "$AGENT_SOURCE" "$LINK_NAME"
-    echo "Done."
+# 1. 기존 .agent 제거 (초기화)
+if [ -e "$LINK_NAME" ] || [ -L "$LINK_NAME" ]; then
+    echo "[Action] Removing existing '$LINK_NAME'..."
+    rm -rf "$LINK_NAME"
 fi
 
-# 2. .gitignore 업데이트
-GITIGNORE=".gitignore"
-if [ -f "$GITIGNORE" ]; then
-    if ! grep -q "^$LINK_NAME$" "$GITIGNORE"; then
-        echo "[Action] Adding '$LINK_NAME' to $GITIGNORE..."
-        echo "" >> "$GITIGNORE"
-        echo "# Local Workspace Settings" >> "$GITIGNORE"
-        echo "$LINK_NAME" >> "$GITIGNORE"
-    else
-        echo "[Skip] '$LINK_NAME' is already in $GITIGNORE."
-    fi
-else
-    echo "[Warning] .gitignore not found. Creating one..."
-    echo "# Local Workspace Settings" > "$GITIGNORE"
-    echo "$LINK_NAME" >> "$GITIGNORE"
-fi
+# 2. .agent 디렉토리 생성
+echo "[Action] Creating directory '$LINK_NAME'..."
+mkdir -p "$LINK_NAME"
+
+# 3. 리소스 복사
+echo "[Action] Copying configuration..."
+
+# rules.md 복사
+cp "$AGENT_SOURCE/rules.md" "$LINK_NAME/"
+
+# workflows 디렉토리 복사
+cp -R "$AGENT_SOURCE/workflows" "$LINK_NAME/"
+
+# references 디렉토리 복사
+cp -R "$AGENT_SOURCE/references" "$LINK_NAME/"
+
+echo "Done."
+
+# Gitignore 로직 제거됨 (Git에 포함하기 위해)
+# 사용자에게 알림
+echo "Note: .agent directory is now copied and should be committed to Git."
+echo "If '.agent' was previously in .gitignore, you may want to remove it manually."
 
 echo "=========================================="
 echo "Agent settings setup complete!"

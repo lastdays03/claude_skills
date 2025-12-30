@@ -25,7 +25,7 @@ description: 완료된 프로젝트를 검증(Dependency Check), 정리(Cleanup)
     *   프로젝트 내에 `notes/` 폴더가 있는지 확인합니다.
     *   *Prompt*: "이 프로젝트의 `notes`를 지식 베이스(`20_Learning`)로 이동하시겠습니까?"
 2.  **Migration**:
-    *   `/knowledge_harvester` 워크플로우를 호출하거나, 이에 준하는 이동 로직(Move & Link Update)을 수행합니다.
+    *   `obsi_knowledge_harvester` 워크플로우를 호출하여 가치 있는 문서를 지식 베이스로 보냅니다.
 
 ### 4단계: 이관 및 기록 (Move & Log)
 1.  **Archive Destination**:

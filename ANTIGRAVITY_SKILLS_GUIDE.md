@@ -19,7 +19,7 @@
 **Feature Planner**와 같은 Skill을 Antigravity에 "설치"하려면 **Workflow**를 생성해야 합니다.
 
 ### 1. Workflow 파일 생성
-작업 공간의 `.agent/workflows/feature_planner.md` 경로에 마크다운 파일을 생성합니다. (이미 생성됨)
+작업 공간의 `.agent/workflows/dev_feature_planner.md` 경로에 마크다운 파일을 생성합니다. (이미 생성됨)
 
 ### 2. 단계 정의 (Define the Steps)
 `SKILL.md`의 단계를 에이전트를 위한 자연어 지침으로 변환합니다. 구체적인 도구(Tool) 사용법을 명시하세요.
@@ -40,28 +40,36 @@
 ### 1. 전략 및 시작 (Strategy & Start)
 프로젝트나 아이디어를 처음 구체화할 때 사용합니다.
 
-*   **/project_kickoff**
+*   **/obsi_project_kickoff**
     *   **When**: 새로운 프로젝트 폴더를 생성할 때.
     *   **Why**: 폴더 구조, `Overview.md`, 기본 `task.md`를 표준에 맞춰 자동 생성하여 세팅 시간을 단축합니다.
     *   **Effect**: "어디서부터 시작하지?"라는 고민 제거.
 
+*   **/dev_init**
+    *   **When**: 옵시디언이 아닌 **개발 전용(VSCode)** 환경에서 프로젝트를 초기화할 때.
+    *   **Why**: 표준 디렉토리 구조(`src`, `docs`)와 `README.md` 메타데이터를 빠르게 생성합니다.
+
 ### 2. 개발 및 구현 (Development & Engineering)
 실제 코드를 작성하고 프로덕트를 만들 때 사용합니다.
 
-*   **/feature_planner**
+*   **/dev_feature_planner**
     *   **When**: 사용자에게 배포할 **기능(Feature)**을 개발할 때.
     *   **Why**: TDD, 리스크 평가, 롤백 전략 등 '엔지니어링 표준'을 준수해야 할 때 필수적입니다.
     *   **Effect**: 버그 감소, 코드 품질 향상, 명확한 진척도 관리.
     *   **Vs Study Planner**: 코드를 고장내보며 실험하는 것이 아니라, **안전하고 견고하게** 만드는 것이 목표입니다.
 
-*   **/archive_project**
+*   **/obsi_archive_project**
     *   **When**: 프로젝트가 완전히 종료되었을 때.
     *   **Why**: 의존성 검사 후 안전하게 아카이빙하여 작업 공간을 정리합니다.
+
+*   **/dev_export**
+    *   **When**: 개발/학습 중 작성한 문서를 Obsidian 지식 베이스로 **단순 백업**하고 싶을 때.
+    *   **Why**: 복잡한 연동 없이 결과물을 안전하게 `00_Inbox`로 보냅니다.
 
 ### 3. 학습 및 연구 (Learning & Research)
 새로운 기술을 익히거나 개념을 정립할 때 사용합니다.
 
-*   **/study_planner**
+*   **/dev_study_planner**
     *   **When**: 새로운 언어, 프레임워크, 라이브러리를 **공부**할 때.
     *   **Why**: 기능 구현과 달리, **"코드를 고장내보고(Break & Fix)"**, "이론을 요약"하는 학습 특화 단계가 포함되어 있습니다.
     *   **Effect**: 단순 복사/붙여넣기가 아닌 깊이 있는 원리 이해.
@@ -69,7 +77,7 @@
 ### 4. 데이터 분석 (Data Analysis)
 데이터에서 가치를 추출할 때 사용합니다.
 
-*   **/data_analyst**
+*   **/dev_data_analyst**
     *   **When**: 확보된 데이터셋에 대해 EDA(탐색적 분석) 및 리포팅이 필요할 때.
     *   **Why**: **Python/Jupyter** 환경에 최적화된 "분석-시각화-리포팅" 사이클을 따릅니다.
     *   **Effect**: 코드 생산이 목적이 아닌, **"인사이트 발견"**에 집중할 수 있습니다.
@@ -77,18 +85,18 @@
 ### 5. 지식 관리 (Knowledge Management)
 흩어진 정보를 자산화할 때 사용합니다.
 
-*   **/concept_distiller**
+*   **/obsi_concept_distiller**
     *   **When**: 복잡한 텍스트나 대화 내용에서 **핵심 개념**만 뽑아내어 저장하고 싶을 때.
-*   **/knowledge_harvester**
+*   **/obsi_knowledge_harvester**
     *   **When**: 프로젝트 진행 중 작성한 메모를 영구적인 **지식 베이스(20_Learning)**로 옮길 때.
-*   **/moc_builder**
+*   **/obsi_moc_builder**
     *   **When**: 노트가 너무 많아져서 **목차(Map of Content)**가 필요할 때.
-*   **/weekly_review**
+*   **/obsi_weekly_review**
     *   **When**: 한 주를 마무리하며 할 일과 메모를 정리할 때 (GTD).
 
 ## 예시: "Feature Planner" 워크플로우
 
-`.agent/workflows/feature_planner.md` 파일을 참조하세요.
+`.agent/workflows/dev_feature_planner.md` 파일을 참조하세요.
 
 ```markdown
 ---
@@ -114,8 +122,10 @@ description: TDD 단계와 품질 게이트를 사용하여 기능을 계획하�
 새로운 프로젝트나 기존 프로젝트에서 `claude_skills`의 공통 설정(`.agent` 폴더)을 사용하고 싶을 때 실행합니다.
 
 **기능:**
-*   현재 프로젝트에 `.agent` 심볼릭 링크 생성 (소스: `claude_skills/.agent`)
-*   `.gitignore`에 `.agent` 자동 추가 (로컬 설정 보호)
+
+*   공통 설정(`.agent` 내 `rules.md`, `workflows/`, `references/`)을 현재 프로젝트로 **복사(Copy)**합니다.
+*   기존에는 심볼릭 링크 방식이었으나, VSCode/Git 호환성을 위해 **물리적 복사** 방식으로 변경되었습니다.
+*   `.agent` 폴더는 Git 저장소에 **포함(Commit)**하여 프로젝트별로 설정을 독립적으로 관리합니다.
 
 **사용법:**
 터미널에서 설정하려는 프로젝트의 루트 디렉토리로 이동한 후, 상대 경로로 스크립트를 실행합니다.

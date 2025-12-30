@@ -4,7 +4,7 @@ description: 프로젝트나 인박스에 있는 실전 노트(Topic Note)를 �
 
 # Expert Knowledge Harvester Workflow
 
-`/concept_distiller`가 **"원자적 개념(Atomic Concept)"**을 추출한다면, 이 워크플로우는 **"실전 지식(Topic Note)"** 덩어리를 수확합니다.
+`/obsi_concept_distiller`가 **"원자적 개념(Atomic Concept)"**을 추출한다면, 이 워크플로우는 **"실전 지식(Topic Note)"** 덩어리를 수확합니다.
 
 ### 1단계: 수확 대상 선정 (Selection)
 1.  **Source Identification**:
