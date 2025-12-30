@@ -14,12 +14,16 @@ description: 개발 환경(폴더 구조, README)을 신속하게 초기화하�
     *   프로젝트 이름(Name)과 유형(Type: Study/Dev)을 입력받습니다.
 
 ### 2단계: 스캐폴딩 (Scaffolding)
-1.  **Directory Structure**:
-    *   표준 개발 폴더 구조를 생성합니다.
-    *   `mkdir -p src docs tests scripts`
-    *   *Study Type*: `mkdir -p notebooks data references` 추가 제안.
+1.  **Tech Stack & Structure**:
+    *   "어떤 언어나 프레임워크를 사용하시나요?"라고 묻습니다. (예: Python, Node.js, React, Simple Study 등)
+    *   선택된 스택에 맞춰 적절한 폴더 구조를 제안하고 생성합니다.
+        *   *Python*: `src/`, `tests/`, `docs/`, `scripts/`
+        *   *Web/Frontend*: `public/`, `src/components`, `src/pages` (혹은 프레임워크 CLI 사용 제안)
+        *   *Study*: `notebooks/`, `data/`, `references/`
+    *   **User Confirmation**: 생성 전에 구조가 괜찮은지 사용자에게 확인합니다.
 2.  **Git Setup** (Optional):
     *   `.gitignore` 파일이 없다면 생성을 제안합니다. (Python/Node 등 언어에 맞춰 내용 추천).
+    *   **Crucial**: `.agent/` 디렉토리는 Git에 포함되어야 하므로, **`.gitignore`에 추가하지 않도록 주의**합니다.
 
 ### 3단계: 문서 생성 (Documentation)
 1.  **README Generation**:
@@ -37,9 +41,10 @@ description: 개발 환경(폴더 구조, README)을 신속하게 초기화하�
     [프로젝트의 목표와 주요 내용을 간단히 작성하세요.]
 
     ## 🏗️ Structure
-    - `src/`: 소스 코드
-    - `docs/`: 문서 및 기획
-    - `tests/`: 테스트 코드
+    [위 스캐폴딩 단계에서 생성된 폴더 구조를 자동으로 반영하여 작성합니다.]
+    - `src/`: ...
+    - `docs/`: ...
+    (생성된 실제 폴더에 맞춰 설명을 추가)
     ```
 
 ### 4단계: 마무리 (Finalize)
