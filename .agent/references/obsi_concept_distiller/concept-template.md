@@ -1,23 +1,21 @@
-# {Concept_Name}
+# 개념 (Concept): [Concept Name]
 
-**Tags**: #knowledge/concept #{Category}
-**Source**: [[{Source_File}]]
+**태그**: #knowledge/concept #topic/{Category}
+**출처**: [[Original_File]]
 
-## 📖 Definition
-*한 줄 요약 + 5살 어린이도 이해할 수 있는 쉬운 설명 (ELI5)*
+---
 
-## 🛠️ Usage & Syntax
+## 📖 정의 (Definition)
+*[개념 이름]은 [무엇]이다.* (쉬운 언어로 한 문장 정의)
+
+---
+
+## 💡 예시 (Example)
+*(코드나 실생활 비유)*
 ```python
-# Code Snippet demonstrating how to use this concept
+# Code example
 ```
 
-## 🧩 Example (Scenario)
-*실제 프로젝트에서 언제/어떻게 쓰이는가?*
-
-## ⚖️ Comparison
-| Feature  | {Concept_Name} | {Competitor} |
-| :------- | :------------- | :----------- |
-| **Pros** | ...            | ...          |
 | **Cons** | ...            | ...          |
 
 ## 💡 Key Insights

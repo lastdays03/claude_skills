@@ -1,4 +1,4 @@
-# Study Plan (Deep Mastery): [Topic Name]
+# 학습 계획서 (Study Plan): [Topic Name] (Deep Mastery)
 
 **Status**: 🔄 In Progress
 **Started**: YYYY-MM-DD
@@ -6,7 +6,7 @@
 
 ---
 
-## 🎯 Deep Objective
+## 🎯 핵심 목표 (Deep Objective)
 **"Detail & Mastery"**
 - [ ] What: 무엇을 배우는가?
 - [ ] Why: 왜 배우는가? (근본 원리 이해, 밑바닥 구현 등)
@@ -14,12 +14,12 @@
 
 ---
 
-## 📅 Curriculum (Sessions)
+## 📅 커리큘럼 (Curriculum)
 
 ### Session 1: [Sub-topic Name]
 **Focus**: [Concept / Practice]
 
-#### ✅ Deep Mastery Checklist
+#### ✅ 심층 마스터 체크리스트 (Deep Mastery Checklist)
 *이 체크리스트는 모든 항목이 필수입니다. 대충 넘어가지 마세요.*
 
 1.  **Theory (Feynman Test)**
@@ -42,7 +42,7 @@
 
 ---
 
-## 📝 Learning Log / Notes
+## 📝 학습 로그 (Learning Log / Notes)
 *Feynman 요약과 아하 모먼트(Aha moment)를 기록하세요.*
 
 ### Session 1 Notes
@@ -50,7 +50,7 @@
     - (여기에 아주 쉬운 말로 요약 작성)
 - ...
 
-### 🔨 Break Log (Troubleshooting)
+### 🔨 트러블슈팅 로그 (Break Log)
 *의도적으로 발생시킨 에러와 해결 과정을 기록합니다.*
 - **Action**: (예: Learning Rate를 100으로 설정)
 - **Result**: (예: Loss가 발산함 within 3 epochs)
@@ -58,9 +58,10 @@
 
 ---
 
-## ✅ Retrospective (회고)
+## ✅ 회고 (Retrospective)
 *모든 세션 완료 후 작성*
 
 - **Keep**: 효과적이었던 심층 탐구 방법
 - **Problem**: 이해가 막혔던 구간 (추가 학습 필요)
 - **Try**: 다음 학습에 적용할 개선점
+

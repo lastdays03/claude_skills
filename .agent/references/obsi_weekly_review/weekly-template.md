@@ -1,20 +1,21 @@
-# Weekly Review: {YYYY-Www}
+# 주간 회고 (Weekly Review): {YYYY-Www}
 
-**Date**: {Date}
-**Status**: #status/active
+**날짜**: {Date}
+**상태**: #status/active
 
-## 📉 Last Week (Review)
-### Major Activities
+## 📉 지난 주 회고 (Last Week Review)
+### 주요 활동 로그 (Major Activities)
 - [Log from agents...]
 
-### Completed Tasks
+### 완료된 태스크 (Completed Tasks)
 - [x] Task 1
 - [x] Task 2
 
-## 🎯 Next Week (Plan)
-### The One Thing
-> **[Next Week's Main Goal]**
+## 🎯 이번 주 계획 (Next Week Plan)
+### 원 씽 (The One Thing)
+> **[이번 주의 핵심 목표]**
 
-### Action Items
-- [ ] [Rolled over task 1]
-- [ ] [Rolled over task 2]
+### 액션 아이템 (Action Items)
+- [ ] [이월된 태스크 1]
+- [ ] [이월된 태스크 2]
+

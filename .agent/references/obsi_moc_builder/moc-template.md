@@ -1,20 +1,30 @@
-# {Topic} MOC
+# MOC: [Topic Name]
 
-**Last Updated**: {Date}
-**Tags**: #moc
+**상태**: #learning/map
+**연결된 노트 수**: {Count}
 
-## 🔑 Key Concepts
-*가장 핵심적인 노트들*
-- [[Note A]]
-- [[Note B]]
+---
 
-## 📂 Clusters
-### {Sub_Topic 1}
-- [[Note C]]
-- [[Note D]]
+## 🔑 핵심 개념 (Key Concepts)
+*이 주제를 관통하는 가장 중요한 상위 개념들*
 
-### {Sub_Topic 2}
-- ...
+- [[Concept 1]]
+- [[Concept 2]]
 
-## 🧩 Uncategorized
-- ...
+---
+
+## 🗂️ 클러스터 (Clusters / Sub-topics)
+*하위 주제별로 그룹화된 노트 목록*
+
+### [Group A]
+- [[Note A1]]
+- [[Note A2]]
+
+### [Group B]
+- [[Note B1]]
+
+---
+
+## 🧠 연결 그래프 (Graph View)
+*이 문서를 중심으로 '로컬 그래프'를 확인하세요.*
+..

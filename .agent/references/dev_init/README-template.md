@@ -1,18 +1,25 @@
 # {Project_Name}
 
-> **Status**: Active
-> **Type**: {Type}
-> **Created**: {Date}
+> **Status**:# 개요 (Project Overview)
 
-## 📖 Overview
-[프로젝트의 목표와 주요 내용을 간단히 작성하세요.]
+**유형**: {Type} (Study/Dev)
+**생성일**: {Date}
 
-## 🏗️ Structure
-- `src/`: 메인 소스 코드
-- `docs/`: 문서 및 기획
+## 🎯 목표 (Goal)
+이 프로젝트의 목적을 기술하세요.
+
+## 🏗️ 구조 (Structure)
+- `src/`: 소스 코드
 - `tests/`: 테스트 코드
-- `scripts/`: 유틸리티 스크립트
+- `docs/`: 문서
+- `.agent/`: Antigravity 설정
 
-## 🚀 Getting Started
-1. `pip install -r requirements.txt`
+## 🚀 시작하기 (Getting Started)
+```bash
+# 의존성 설치
+npm install
+# or
+pip install -r requirements.txt
+```
+
 2. `python src/main.py`
