@@ -1,144 +1,175 @@
-# Antigravity Security Profiles & Settings
+# Antigravity Security Guide
 
-이 문서는 Antigravity 에이전트의 보안 및 권한 설정에 대한 권장 프로필을 정의합니다. 프로젝트의 성격과 민감도에 따라 적절한 프로필을 선택하여 적용하세요.
-
----
-
-## 🛡️ 프로필 요약 (Profile Summary)
-
-| 프로필                  | 특징                                 | 권장 대상                                 |
-| :---------------------- | :----------------------------------- | :---------------------------------------- |
-| **Level 1: Strict**     | **최고 보안**. 자율성 최소화.        | 핀테크, 개인정보 취급, 외주 프로젝트      |
-| **Level 2: Balanced**   | **권장 설정**. 보안과 생산성의 균형. | 사내 프로젝트, 일반적인 팀 협업           |
-| **Level 3: Efficiency** | **최대 효율**. 높은 자율성.          | 개인 학습, 토이 프로젝트, 격리된 샌드박스 |
+이 문서는 Antigravity Agent의 보안 설정(Settings > Agent)을 관리하기 위한 가이드입니다.
+사용 목적과 보안 민감도에 따라 **3가지 프로필(Balanced, Strict, Efficiency)** 중 하나를 선택하여 설정을 적용하세요.
 
 ---
 
-## 1. Level 1: Strict Security (보안 최우선)
+## 1. 설정 항목 설명 (Settings Reference)
 
-**"AI의 자율성을 통제하고 데이터 유출 가능성을 원천 차단합니다."**
+설정 화면에 있는 각 항목의 의미입니다.
 
-### ✅ Key Settings
-| 설정 항목 (Settings)                | 값 (Value)       |
-| :---------------------------------- | :--------------- |
-| **Agent Gitignore Access**          | `OFF`            |
-| **Agent Non-Workspace File Access** | `OFF`            |
-| **Browser / Web Tools**             | `OFF`            |
-| **Terminal Command Auto Execution** | `Request Review` |
+### **SECURITY**
+- **Secure Mode**: 에이전트의 자율성을 제한하고 사람의 검토를 강제하는 가장 강력한 보안 스위치입니다. 켜져 있으면 많은 자동화 기능이 제한됩니다.
 
-### 🚫 Terminal Deny List (접근 차단 명령어)
-*모든 위험 명령어를 사전에 차단 등록합니다.*
-```bash
+### **ARTIFACT**
+- **Review Policy**: 에이전트가 생성한 문서(Artifact)를 편집할 때 사용자의 승인을 받을지 결정합니다.
+    - *Always Proceed*: 묻지 않고 진행 (위험 높음)
+    - *Agent Decides*: 에이전트가 판단 (권장)
+    - *Request Review*: 항상 승인 필요
+
+### **TERMINAL**
+- **Command Auto Execution**: 터미널 명령어를 자동으로 실행할지 묻습니다.
+    - *Always Proceed*: Allow List에 없어도 자동 실행 (속도 빠름, 위험)
+    - *Request Review*: Allow List에 없는 경우 승인 요청 (안전)
+- **Allow/Deny List**: 자동 실행을 허용하거나(Allow) 절대 실행하지 않을(Deny) 명령어를 정의합니다.
+
+### **FILE ACCESS**
+- **Gitignore Access**: `.gitignore`에 등록된 파일(비밀번호, 키 등)을 에이전트가 볼 수 있게 허용합니다.
+- **Non-Workspace Access**: 현재 열려있는 워크스페이스 외부의 파일에 접근을 허용합니다.
+
+### **AUTOMATION & GENERAL**
+- **Auto-Fix Lints**: 에이전트가 코드 수정 후 린트 에러를 발견하면 자동으로 수정합니다.
+- **Auto-Continue**: 답변이 길어질 경우 끊기지 않고 계속 이어서 작성합니다.
+- **Web/Browser Tools**: 웹 검색 및 브라우저 제어(JS 실행 포함) 권한입니다.
+
+---
+
+## 2. 보안 프로필 (Security Profiles)
+
+### 🛡️ Profile 1: Strict (철통 보안)
+**추천 대상**: 금융 데이터, 개인정보, 프로덕션 DB 접근이 가능한 환경. **안전이 최우선**입니다.
+
+| Category        | Setting                | Value                              |
+| :-------------- | :--------------------- | :--------------------------------- |
+| **Security**    | Secure Mode            | **ON**                             |
+| **Artifact**    | Review Policy          | **Request Review**                 |
+| **Terminal**    | Command Auto Execution | **Request Review**                 |
+| **File Access** | Gitignore Access       | **OFF**                            |
+|                 | Non-Workspace Access   | **OFF**                            |
+| **Browser**     | Javascript Execution   | **Disabled** or **Request Review** |
+
+### ⚖️ Profile 2: Balanced (표준 권장)
+**추천 대상**: 일반적인 개발/학습 환경. 생산성과 안전의 균형을 맞춥니다.
+
+| Category        | Setting                | Value                                      |
+| :-------------- | :--------------------- | :----------------------------------------- |
+| **Security**    | Secure Mode            | **OFF**                                    |
+| **Artifact**    | Review Policy          | **Agent Decides**                          |
+| **Terminal**    | Command Auto Execution | **Request Review** (단, Allow List는 자동) |
+| **File Access** | Gitignore Access       | **OFF** (필요시 일시적 ON)                 |
+| **Browser**     | Javascript Execution   | **Request Review**                         |
+
+### ⚡ Profile 3: Efficiency (속도 중심)
+**추천 대상**: 샌드박스 환경, 토이 프로젝트, 빠른 프로토타이핑. **위험을 감수하고 속도**를 높입니다.
+
+| Category        | Setting                | Value                                 |
+| :-------------- | :--------------------- | :------------------------------------ |
+| **Security**    | Secure Mode            | **OFF**                               |
+| **Artifact**    | Review Policy          | **Always Proceed** (or Agent Decides) |
+| **Terminal**    | Command Auto Execution | **Always Proceed**                    |
+| **File Access** | Gitignore Access       | **ON** (편의성)                       |
+| **Browser**     | Javascript Execution   | **Always Proceed**                    |
+
+---
+
+## 3. 권장 터미널 목록 (Allow/Deny List)
+
+`dev_feature_planner`를 Flask 프로젝트와 함께 사용할 때, TDD 사이클(Red-Green-Refactor) 자동화를 위해 아래 목록을 적용하세요.
+
+### ✅ Flask Project Optimized Allow List
+**목표**: `make` 명령어를 통해 테스트, 린트, 포맷팅을 에이전트가 스스로 수행하여 TDD 속도를 극대화합니다.
+
+```text
+# 1. 파일 시스템 기본 탐색 (거의 100% 자동 실행 OK)
+ls
+pwd
+find
+du
+tree
+
+# 2. Git 읽기 전용 상태 확인 (변경 없음 → 매우 안전)
+git status
+git log
+git diff
+git branch
+git show
+
+# 3. 텍스트 검색 & 읽기 (필수 + 안전)
+cat
+head
+tail
+grep
+rg
+sort
+uniq
+wc
+
+# 4. Python 기본 + 확인 명령어
+python
+python3
+pip list
+pip freeze
+pip show
+
+# 5. 테스트 & 린트 & 포맷 (TDD 핵심, 가장 많이 쓰임)
+pytest
+make test
+make lint
+make format
+make coverage
+black
+isort
+flake8
+ruff
+
+# 6. Flask 기본 확인용 (run/migrate는 옵션 붙으면 거의 물어봄)
+flask routes
+```
+
+### 🚫 Deny List (위험한 파괴/변경 명령어)
+복사하여 `Settings > Deny List > Add`에 붙여넣으세요. 실수로라도 실행되지 않도록 막습니다.
+
+```text
 # 삭제 및 초기화 (매우 위험)
-rm -rf, git clean -fd, docker-compose down -v, docker system prune
-# 시스템 권한 및 소유권
-sudo, chmod, chown, visudo
-# 원격 저장소 강제 조작
-git push -f, git push --force, git reset --hard
-# 인프라 변경 및 삭제
-terraform destroy, aws s3 rm --recursive
-# 프로세스 종료 및 시스템 제어
-kill -9, shutdown, reboot
-# 인터넷 스크립트 즉시 실행
-curl * | bash, wget * -O- | sh
+rm
+rm -r
+rm -rf
+git clean
+git clean -fd
+docker system prune
+docker-compose down
+docker compose down
+
+# 시스템 권한 & 소유권
+sudo
+chmod
+chown
+visudo
+
+# 원격 저장소 강제 조작 (실수 1위)
+git push -f
+git push --force
+git reset --hard
+git commit -a -m     # ← 자동 add+commit 실수 방지
+
+# 인프라/클라우드 파괴
+terraform destroy
+aws s3 rm
+
+# 프로세스/시스템 강제 종료
+kill -9
+shutdown
+reboot
+
+# 인터넷 즉시 실행 (최악의 보안 구멍)
+curl | bash
+wget | bash
+curl * | bash
+wget * -O- | sh
+
+# 추가 고위험 패턴 (실제 사용자들이 자주 후회)
+find -delete
+mv * ~               # 홈으로 대량 이동 실수
+pip install --upgrade pip   # pip 자체 깨짐
 ```
-
-### ⭕ Terminal Allow List (자동 승인 명령어)
-*Strict 모드에서는 자동 승인을 허용하지 않으므로 비워둡니다.*
-```bash
-# (Empty)
-```
-
-### 📂 File Access Control
-- **Deny**: `.env`, `*.pem`, `secrets/`, `.git/`, `.obsidian/`
-- **Allow**: `.agent/workflows/`, `src/`, `docs/`
-
----
-
-## 2. Level 2: Balanced (권장 설정)
-
-**"위험한 행동은 막되, 안전한 조회 및 테스트 명령어는 자동화하여 생산성을 높입니다."**
-
-### ✅ Key Settings
-| 설정 항목 (Settings)                | 값 (Value)                                    |
-| :---------------------------------- | :-------------------------------------------- |
-| **Agent Gitignore Access**          | `OFF`                                         |
-| **Enable Agent Web Tools**          | `ON`                                          |
-| **Browser JS Execution Policy**     | `Request Review`                              |
-| **Terminal Command Auto Execution** | `Request Review` (단, Allow List는 허용 고려) |
-
-### 🚫 Terminal Deny List (접근 차단 명령어)
-```bash
-# 삭제 및 초기화 (매우 위험)
-rm -rf, git clean -fd, docker-compose down -v, docker system prune
-# 시스템 권한 및 소유권
-sudo, chmod, chown, visudo
-# 원격 저장소 강제 조작
-git push -f, git push --force, git reset --hard
-# 인프라 변경 및 삭제
-terraform destroy, aws s3 rm --recursive
-# 프로세스 종료 및 시스템 제어
-kill -9, shutdown, reboot
-# 인터넷 스크립트 즉시 실행
-curl * | bash, wget * -O- | sh
-```
-
-### ⭕ Terminal Allow List (자동 승인 명령어)
-*안전한 조회, 상태 확인, 테스트 명령어는 리스트에 등록하여 생산성을 높입니다.*
-```bash
-# 파일 및 정보 조회
-ls, pwd, find, du -sh, git status, git log, git diff
-# 텍스트 검색 및 출력
-grep, rg, cat, head, tail
-# 테스트 및 자동화 (안전 확인됨)
-make all, make test, make lint, make format, make coverage, python -m pytest, pytest, flake8, black .
-# 환경 조회
-pip list, npm list, docker ps
-```
-
-### � File Access Control
-- **Deny**: `.env`, `.git/`, `node_modules/`, `.venv/`
-- **Allow**: `${workspaceFolder}` (전체 허용), `.agent/workflows/`
-
----
-
-## 3. Level 3: Efficiency (편의성 중심)
-
-**"AI가 모든 문맥을 파악하고 자율적으로 해결합니다. 단, 파괴적인 명령어는 최소한으로 방어합니다."**
-
-### ✅ Key Settings
-| 설정 항목 (Settings)                | 값 (Value)       |
-| :---------------------------------- | :--------------- |
-| **Agent Gitignore Access**          | `ON`             |
-| **Agent Auto-Fix Lints**            | `ON`             |
-| **Auto-Continue**                   | `ON`             |
-| **Terminal Command Auto Execution** | `Always Proceed` |
-
-### 🚫 Terminal Deny List (필수 차단)
-*Always Proceed 상태에서도 이 명령어들은 반드시 물어보거나 차단하도록 설정합니다.*
-```bash
-# 핵심 위험 명령어 최소화
-rm -rf, git clean -fd, git push -f, git reset --hard, terraform destroy, shutdown, reboot
-```
-
-### ⭕ Terminal Allow List
-*모든 명령어가 기본적으로 허용되므로 별도 Allow List가 필요 없으나, 명시적 승인을 위해 Balanced의 리스트를 유지해도 무방합니다.*
-```bash
-# (Optional - Balanced Allow List 참고)
-```
-
-### 📂 File Access Control
-- **Deny**: `.git/` (최소한의 보호)
-- **Allow**: `./` (모든 경로)
-
----
-
-## ⚙️ 적용 팁 (Tips)
-
-### 1. 복사-붙여넣기 활용
-위의 `bash` 코드 블록에 있는 명령어 목록을 복사하여 Antigravity 설정 화면의 **"Add Item"** 버튼을 누르고 붙여넣으세요. 쉼표(`,`)로 구분된 명령어들을 한 번에 인식할 수도 있고, 하나씩 추가해야 할 수도 있습니다.
-
-### 2. Allow List 동작 원리
-Allow List는 명령어가 해당 토큰으로 **시작(Prefix)**할 때 매칭됩니다.
-- 예: `git status`를 등록하면 `git status --short`도 자동으로 허용됩니다.
-- 주의: 단순히 `git`만 등록하면 `git push -f` 같은 위험한 명령어도 허용될 수 있으므로, `git status`, `git log`처럼 구체적으로 등록하는 것이 안전합니다.
