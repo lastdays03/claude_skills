@@ -98,6 +98,16 @@ cd ~/dev/workspace/my_new_project
 
 ---
 
+## 🔐 보안 가이드 (Security Guide)
+
+Antigravity 에이전트의 권한을 관리하기 위한 보안 설정은 `.agent/SECURITY.md`에 정의되어 있습니다.
+
+*   **위치**: [SECURITY.md](file:///Users/bagjongman/dev/workspace/study/claude_skills/.agent/SECURITY.md)
+*   **내용**: 3단계 보안 프로필(Strict, Balanced, Efficiency) 및 터미널 명령어 Allow/Deny List.
+*   **사용법**: 해당 문서를 참고하여 Antigravity 설정 화면(Settings > File Access / Terminal)에 값을 적용하세요.
+
+---
+
 ## 📂 프로젝트 구조
 
 ```
@@ -107,7 +117,9 @@ claude_skills/
     ├── scripts/
     │   └── init_agent.sh   # 설정 동기화 스크립트
     ├── rules.md            # 기본 규칙
-    ├── references/         # 참조 문서
+    ├── SECURITY.md         # 보안 설정 가이드
+    ├── references/         # 워크플로우별 리소스 폴더
+    │   └── dev_feature_planner/
     └── workflows/          # 워크플로우 정의 파일들 (*.md)
 
 ### 글로벌 동기화 (`scripts/sync_to_global.sh`)

@@ -1,13 +1,13 @@
 ---
-description: .agent/references/SKILL.md의 모든 표준(문서화, 리스크 평가, 롤백 전략, 엄격한 TDD)을 준수하는 고급 기능 구현 워크플로우입니다.
+description: .agent/references/dev_feature_planner/SKILL.md의 모든 표준(문서화, 리스크 평가, 롤백 전략, 엄격한 TDD)을 준수하는 고급 기능 구현 워크플로우입니다.
 ---
 
 # Expert Feature Planner Workflow
 
-이 워크플로우는 `.agent/references/SKILL.md`의 "Feature Planner" 표준을 완벽하게 구현하도록 설계되었습니다. 단순한 구현이 아닌, 엔터프라이즈급 안정성과 문서화를 지향합니다.
+이 워크플로우는 `.agent/references/dev_feature_planner/SKILL.md`의 "Feature Planner" 표준을 완벽하게 구현하도록 설계되었습니다. 단순한 구현이 아닌, 엔터프라이즈급 안정성과 문서화를 지향합니다.
 
 ### 1단계: 심층 분석 및 문맥 파악 (Deep Assessment)
-1.  **Context Loading**: `.agent/references/SKILL.md`와 `.agent/references/plan-template.md`를 읽어 '품질 기준'을 재확인합니다.
+1.  **Context Loading**: `.agent/references/dev_feature_planner/SKILL.md`와 `.agent/references/dev_feature_planner/plan-template.md`를 읽어 '품질 기준'을 재확인합니다.
 2.  **Codebase Analysis**:
     *   구현할 기능과 관련된 기존 코드, 의존성, 아키텍처를 분석합니다.
     *   `list_dir`와 `view_file_outline`을 사용하여 영향 범위를 파악합니다.
@@ -16,7 +16,7 @@ description: .agent/references/SKILL.md의 모든 표준(문서화, 리스크 �
 *단순한 `implementation_plan.md`가 아닌, 영구 보존 가능한 상세 기획 문서를 작성합니다.*
 
 1.  **Setup**: `docs/plans/` 디렉토리가 없다면 생성합니다.
-2.  **Drafting**: `.agent/references/plan-template.md`의 **모든 섹션**을 활용하여 `docs/plans/PLAN_[기능명].md` 파일을 작성합니다.
+2.  **Drafting**: `.agent/references/dev_feature_planner/plan-template.md`의 **모든 섹션**을 활용하여 `docs/plans/PLAN_[기능명].md` 파일을 작성합니다.
     *   **Architecture Decisions**: 트레이드오프 분석을 반드시 포함합니다.
     *   **Test Strategy**: 유닛/통합/E2E 테스트 범위를 `Pyramid` 구조로 정의합니다.
     *   **Phase Breakdown**: 3~7개의 단계로 나누되, 각 단계는 `Red -> Green -> Refactor` 사이클을 명시해야 합니다.
@@ -32,6 +32,10 @@ description: .agent/references/SKILL.md의 모든 표준(문서화, 리스크 �
 
 ### 4단계: 엄격한 TDD 실행 루프 (Rigorous TDD Execution)
 계획의 각 Phase에 대해 다음 순서를 **절대적으로** 준수합니다:
+
+0.  **🧹 Pre-flight Cleanup**
+    *   새로운 작업을 시작하기 전, 이전 프로세스의 잔재(포트 점유 등)가 없는지 확인하고 정리합니다.
+    *   `lsof -i :<port>` 등을 활용합니다.
 
 1.  **🔴 RED (Test First)**
     *   `implementation_plan.md`나 별도 문서가 아닌, **실제 테스트 코드**를 먼저 작성합니다.
@@ -65,4 +69,5 @@ description: .agent/references/SKILL.md의 모든 표준(문서화, 리스크 �
 3.  **Walkthrough Artifact**:
     *   `walkthrough.md`에 최종 결과물, 테스트 결과 요약(커버리지 리포트 등), **브라우저 스크린샷 및 녹화**를 포함합니다.
 3.  **Plan Completion**: `docs/plans/PLAN_[기능명].md`의 상태를 'Complete'로 업데이트하고 'Lessons Learned' 섹션을 채웁니다.
-4.  사용자에게 완료를 알립니다.
+4.  **Cleanup**: 브라우저 탭/창을 닫고, 테스트를 위해 실행한 백그라운드 서버 프로세스를 종료합니다.
+5.  사용자에게 완료를 알립니다.

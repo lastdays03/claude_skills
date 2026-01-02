@@ -123,6 +123,12 @@ Each phase MUST validate these items before proceeding to next phase:
 - [ ] Code comments updated
 - [ ] Documentation reflects changes
 
+**Cleanup Standards**:
+- [ ] **Pre-flight Cleanup**: Check for and terminate specific ports/processes (e.g., `lsof -i :5000`) BEFORE starting new servers.
+- [ ] **Process Cleanup**: Terminate all background processes (servers, db tunnels) upon task completion.
+- [ ] **Browser Cleanup**: Close all test browser tabs/windows after verification.
+- [ ] **Resource Release**: Close file handlers and db connections.
+
 ## Progress Tracking Protocol
 
 Add this to plan document header:

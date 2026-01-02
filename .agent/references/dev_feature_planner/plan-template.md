@@ -121,6 +121,9 @@ describe/group: Feature or component name
 
 #### Tasks
 
+**Task Setup**
+- [ ] **Pre-flight Cleanup**: Check for and kill any conflicting processes (e.g., existing servers).
+
 **🔴 RED: Write Failing Tests First**
 - [ ] **Test 1.1**: Write unit tests for [specific functionality]
   - File(s): `test/unit/[feature]/[component]_test.*`
@@ -528,6 +531,7 @@ describe/group: Feature or component name
 - [ ] Accessibility requirements met (if UI feature)
 - [ ] All stakeholders notified
 - [ ] Plan document archived for future reference
+- [ ] **Cleanup Performed**: Browsers closed, servers terminated, resources released
 
 ---
 
