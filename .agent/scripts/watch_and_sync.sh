@@ -38,6 +38,10 @@ get_checksum() {
     ) | awk '{print $5,$6,$7,$8,$9}' | shasum
 }
 
+# 초기 동기화 (Initial Sync)
+echo "[Action] User requested initial sync..."
+"$SYNC_SCRIPT"
+
 LAST_CHECKSUM=$(get_checksum)
 
 while true; do
