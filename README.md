@@ -129,6 +129,7 @@ Antigravity 에이전트의 권한을 관리하기 위한 보안 설정은 `.age
 *   **위치**: [SECURITY.md](file:///Users/bagjongman/dev/workspace/study/claude_skills/.agent/SECURITY.md)
 *   **내용**: 3단계 보안 프로필(Strict, Balanced, Efficiency) 및 터미널 명령어 Allow/Deny List.
 *   **사용법**: 해당 문서를 참고하여 Antigravity 설정 화면(Settings > File Access / Terminal)에 값을 적용하세요.
+*   **팁**: 설정 입력이 번거로운 경우, **Prefix 매칭**을 활용한 간편 설정 가이드도 포함되어 있습니다.
 
 ---
 
@@ -161,7 +162,8 @@ claude_skills/
 
 ### 자동 동기화 (`scripts/watch_and_sync.sh`)
 
-워크플로우 파일 변경 시 자동으로 `sync_to_global.sh`를 실행합니다. 터미널 창 하나에 띄워두고 작업하면 편리합니다.
+워크플로우 파일 변경 시 자동으로 `sync_to_global.sh`를 실행합니다.
+**실행 즉시 동기화(Initial Sync)**를 수행하므로, 켜두기만 하면 항상 최신 상태가 보장됩니다.
 
 ```bash
 # 실행
