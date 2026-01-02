@@ -251,6 +251,12 @@ Consider:
 - **Isolation**: Full system integration
 - **Coverage**: Critical user journeys
 
+**Agent Browser Testing**:
+- **Tool**: `browser_subagent`
+- **Purpose**: Verify UI rendering, layout, and basic interactivity
+- **Requirement**: Mandatory for all UI-facing features
+- **Artifact**: Must produce screenshots for `walkthrough.md`
+
 ### Test Coverage Calculation
 
 **Coverage Thresholds** (adjust for your project):

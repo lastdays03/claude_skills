@@ -36,8 +36,8 @@
 
 ## 🏗️ Architecture Decisions
 
-| Decision | Rationale | Trade-offs |
-|----------|-----------|------------|
+| Decision     | Rationale           | Trade-offs             |
+| ------------ | ------------------- | ---------------------- |
 | [Decision 1] | [Why this approach] | [What we're giving up] |
 | [Decision 2] | [Why this approach] | [What we're giving up] |
 
@@ -45,11 +45,11 @@
 
 ## 🛡️ Exception Handling Strategy
 
-| Scenario | Unexpected Behavior | Handling Strategy | User Feedback |
-|----------|---------------------|-------------------|---------------|
-| [Scenario 1] | [What happens] | [Retry/Fail/Fallback] | [Message to user] |
-| [Scenario 2] | [What happens] | [Retry/Fail/Fallback] | [Message to user] |
-| **Global** | Unhandled Exceptions | Log stack trace & Alert | Generic error page |
+| Scenario     | Unexpected Behavior  | Handling Strategy       | User Feedback      |
+| ------------ | -------------------- | ----------------------- | ------------------ |
+| [Scenario 1] | [What happens]       | [Retry/Fail/Fallback]   | [Message to user]  |
+| [Scenario 2] | [What happens]       | [Retry/Fail/Fallback]   | [Message to user]  |
+| **Global**   | Unhandled Exceptions | Log stack trace & Alert | Generic error page |
 
 ---
 
@@ -71,11 +71,11 @@
 **TDD Principle**: Write tests FIRST, then implement to make them pass
 
 ### Test Pyramid for This Feature
-| Test Type | Coverage Target | Purpose |
-|-----------|-----------------|---------|
-| **Unit Tests** | ≥80% | Business logic, models, core algorithms |
-| **Integration Tests** | Critical paths | Component interactions, data flow |
-| **E2E Tests** | Key user flows | Full system behavior validation |
+| Test Type             | Coverage Target | Purpose                                 |
+| --------------------- | --------------- | --------------------------------------- |
+| **Unit Tests**        | ≥80%            | Business logic, models, core algorithms |
+| **Integration Tests** | Critical paths  | Component interactions, data flow       |
+| **E2E Tests**         | Key user flows  | Full system behavior validation         |
 
 ### Test File Organization
 ```
@@ -201,10 +201,15 @@ describe/group: Feature or component name
 - [ ] **API Docs**: Public interfaces documented
 - [ ] **README**: Usage instructions updated if needed
 
-**Manual Testing**:
+**Manual & Browser Testing**:
 - [ ] **Functionality**: Feature works as expected
 - [ ] **Edge Cases**: Boundary conditions tested
 - [ ] **Error States**: Error handling verified
+- [ ] **Agent Browser Verification**:
+    - [ ] `browser_subagent` used to visit page(s)
+    - [ ] Visual rendering confirmed (layout, styles)
+    - [ ] Interactive elements (buttons, forms) tested via browser tool
+    - [ ] Screenshot captured for walkthrough
 
 **Validation Commands** (customize for your project):
 ```bash
@@ -434,11 +439,11 @@ describe/group: Feature or component name
 
 ## ⚠️ Risk Assessment
 
-| Risk | Probability | Impact | Mitigation Strategy |
-|------|-------------|--------|---------------------|
+| Risk                                          | Probability  | Impact       | Mitigation Strategy         |
+| --------------------------------------------- | ------------ | ------------ | --------------------------- |
 | [Risk 1: e.g., API changes break integration] | Low/Med/High | Low/Med/High | [Specific mitigation steps] |
-| [Risk 2: e.g., Performance degradation] | Low/Med/High | Low/Med/High | [Specific mitigation steps] |
-| [Risk 3: e.g., Database migration issues] | Low/Med/High | Low/Med/High | [Specific mitigation steps] |
+| [Risk 2: e.g., Performance degradation]       | Low/Med/High | Low/Med/High | [Specific mitigation steps] |
+| [Risk 3: e.g., Database migration issues]     | Low/Med/High | Low/Med/High | [Specific mitigation steps] |
 
 ---
 
@@ -473,12 +478,12 @@ describe/group: Feature or component name
 **Overall Progress**: X% complete
 
 ### Time Tracking
-| Phase | Estimated | Actual | Variance |
-|-------|-----------|--------|----------|
-| Phase 1 | X hours | Y hours | +/- Z hours |
-| Phase 2 | X hours | - | - |
-| Phase 3 | X hours | - | - |
-| **Total** | X hours | Y hours | +/- Z hours |
+| Phase     | Estimated | Actual  | Variance    |
+| --------- | --------- | ------- | ----------- |
+| Phase 1   | X hours   | Y hours | +/- Z hours |
+| Phase 2   | X hours   | -       | -           |
+| Phase 3   | X hours   | -       | -           |
+| **Total** | X hours   | Y hours | +/- Z hours |
 
 ---
 
