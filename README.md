@@ -10,17 +10,17 @@ Claude Code의 'Skills' 개념을 Antigravity의 'Workflow' 및 'Artifacts' 시�
 
 ### 설치 및 동기화
 
-`scripts/init_agent.sh` 스크립트는 공통 설정(`.agent/`)을 타겟 프로젝트로 **복사(Copy)**합니다.
+`.agent/scripts/init_agent.sh` 스크립트는 공통 설정(`.agent/`)을 타겟 프로젝트 root에 **심볼릭 링크**로 연결하고, `.gitignore`에 자동으로 추가합니다.
 
 ```bash
 # 타겟 프로젝트 루트에서 실행 (예시)
 cd ~/dev/workspace/my_new_project
 
 # 스크립트 실행 (상대 경로 예시)
-../claude_skills/scripts/init_agent.sh
+../claude_skills/.agent/scripts/init_agent.sh
 ```
 
-> **참고**: 설정은 심볼릭 링크가 아닌 **물리적 파일**로 복사되므로, 각 프로젝트의 Git 저장소에 `.agent` 폴더를 커밋하여 독립적으로 관리할 수 있습니다.
+> **참고**: 설정이 심볼릭 링크로 연결되므로 `claude_skills`에서 내용을 수정하면 모든 프로젝트에 즉시 반영됩니다. 연결된 `.agent` 폴더는 Git 저장소에 포함되지 않습니다.
 
 ---
 
@@ -103,10 +103,23 @@ cd ~/dev/workspace/my_new_project
 ```
 claude_skills/
 ├── README.md               # 프로젝트 가이드 (본 문서)
-├── scripts/
-│   └── init_agent.sh       # 설정 동기화 스크립트
 └── .agent/                 # 에이전트 설정 원본
+    ├── scripts/
+    │   └── init_agent.sh   # 설정 동기화 스크립트
     ├── rules.md            # 기본 규칙
     ├── references/         # 참조 문서
     └── workflows/          # 워크플로우 정의 파일들 (*.md)
+
+### 글로벌 동기화 (`scripts/sync_to_global.sh`)
+
+현재 프로젝트의 워크플로우와 규칙을 **글로벌 환경**(`~/.gemini/...`)으로 내보냅니다.
+
+```bash
+# 실행
+.agent/scripts/sync_to_global.sh
+```
+
+**동기화 경로:**
+*   워크플로우: `~/.gemini/antigravity/global_workflows`
+*   규칙: `~/.gemini/GEMINI.md`
 ```

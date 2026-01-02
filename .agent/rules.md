@@ -1,5 +1,8 @@
 # User Preferences
 
-## Language
-- **Always respond in Korean (한글)** for all conversations, explanations, and descriptions.
-- You should still use English for code, variable names, and standard technical terms where appropriate, but the surrounding text must be Korean.
+## Language Rules
+- **Primary Language**: Korean (한글)
+  - All conversational text, explanations, and descriptions MUST be in Korean.
+  - Do not use English for general sentences.
+- **Technical Terms**: English (allowed)
+  - Code snippets, variable names, file paths, and standard technical terminology (e.g., "Dependency Injection", "Framework") can remain in English where appropriate for clarity.
