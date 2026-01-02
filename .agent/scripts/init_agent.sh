@@ -47,6 +47,8 @@ fi
 
 if ! grep -q "^$LINK_NAME$" "$GITIGNORE"; then
     echo "[Action] Adding '$LINK_NAME' to $GITIGNORE..."
+    echo "" >> "$GITIGNORE"
+    echo "# Antigravity Agent Settings (Symlink)" >> "$GITIGNORE"
     echo "$LINK_NAME" >> "$GITIGNORE"
 else
     echo "[Info] '$LINK_NAME' already exists in $GITIGNORE."

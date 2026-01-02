@@ -1,0 +1,24 @@
+# System
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Python (Generic)
+__pycache__/
+*.pyc
+*.pyo
+venv/
+env/
+.env
+
+# Testing & Temp
+temp_test_project/
+tmp/
+*.log
+
+# Note: .agent directory IS part of this repo, so we do NOT ignore it.
