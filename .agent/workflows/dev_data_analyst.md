@@ -29,7 +29,9 @@ Garbage In, Garbage Out을 방지하기 위한 **데이터 신뢰성 확보** �
 
 1.  **Ask & Visualize**: 막연한 `pairplot` 대신, **구체적인 질문을 던지고 이를 시각화**합니다. (예: "성별에 따라 생존율에 유의미한 차이가 있는가?")
 2.  **Statistical Validation**: 그래프로 본 직관을 **통계적 검정(T-test, Chi-square 등)**으로 뒷받침합니다. "눈대중"으로 결론 내리지 않습니다.
-3.  **Insight Logging**: 발견된 사실이 **목표(Goal)에 미치는 영향**을 마크다운으로 즉시 기록합니다.
+3.  **Insight Logging & AI Readability**:
+    *   발견된 사실이 **목표(Goal)에 미치는 영향**을 마크다운으로 즉시 기록합니다.
+    *   **Pro-Tip (for AI Analysis)**: 모든 통계 수치(`describe`, `corr`, `p-value`)와 그래프는 **실행 결과(Output Cell)**에 그대로 남겨두어야 합니다. 숨기지 마십시오. NotebookLM과 같은 AI 도구는 이 텍스트 출력을 읽습니다.
 
 ### 4단계: 머신러닝/딥러닝 모델링 (Model & Optimize)
 단순 예측을 넘어 **신뢰할 수 있는 모델**을 구축하는 단계입니다. **철저한 검증(Rigorous Validation)**이 핵심입니다.
@@ -50,3 +52,14 @@ Garbage In, Garbage Out을 방지하기 위한 **데이터 신뢰성 확보** �
     *   **Error Analysis**: 모델이 **틀린 케이스**를 분석하여 개선 포인트를 찾습니다.
 3.  **Caveats & Limitations (한계점)**: 데이터의 한계나 모델의 약점을 솔직하게 명시하여 신뢰도를 높입니다.
 4.  **Action Item**: 분석 결과를 바탕으로 **구체적인 비즈니스 실행 안**을 제안합니다.
+5.  **Intermediate Conclusion**: 각 분석 섹션의 끝에는 반드시 **'중간 결론'**을 1~2줄 요약하여 마크다운으로 적습니다. 이는 긴 노트북을 AI가 요약할 때 핵심 anchor 역할을 합니다.
+
+### 6단계: AI 기반 통합 분석 (Macro-Analysis) [사용자 수행 단계]
+개별 노트북 분석이 끝난 후, **NotebookLM**을 활용하여 전체 맥락을 통합하는 단계입니다. (Agent 수행 불가, 사용자 직접 수행)
+
+1.  **Preparation**: 분석이 완료된 모든 `.ipynb` 파일들의 Output이 잘 남아있는지 확인합니다.
+2.  **Upload to NotebookLM**: 구글 NotebookLM에 관련 노트북 파일들을 모두 업로드합니다.
+3.  **Macro Questions**: 다음과 같은 거시적 질문을 던집니다.
+    *   "업로드된 모든 파일의 분석 결과를 요약하고, 공통적으로 발견되는 데이터의 패턴이 있는지 알려줘."
+    *   "A 파일(EDA)의 변수 분포가, B 파일(모델 성능)에 어떤 영향을 미쳤는지 논리적으로 추론해줘."
+4.  **Verify Insights**: AI가 제시한 가설이나 상관관계를 다시 Python 코드로 검증(`corr` 재확인 등)하여 확정합니다.
