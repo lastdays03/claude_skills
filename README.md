@@ -122,4 +122,13 @@ claude_skills/
 **동기화 경로:**
 *   워크플로우: `~/.gemini/antigravity/global_workflows`
 *   규칙: `~/.gemini/GEMINI.md`
+
+### 자동 동기화 (`scripts/watch_and_sync.sh`)
+
+워크플로우 파일 변경 시 자동으로 `sync_to_global.sh`를 실행합니다. 터미널 창 하나에 띄워두고 작업하면 편리합니다.
+
+```bash
+# 실행
+.agent/scripts/watch_and_sync.sh
+```
 ```
