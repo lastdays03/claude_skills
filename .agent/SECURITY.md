@@ -173,3 +173,61 @@ find -delete
 mv * ~               # 홈으로 대량 이동 실수
 pip install --upgrade pip   # pip 자체 깨짐
 ```
+
+---
+
+## 4. 참고: 실용적 등록 팁 (Usability Tip)
+
+Antigravity 설정 UI에 많은 명령어를 일일이 등록하기 번거로운 경우, **Prefix(접두어) 매칭**을 활용할 수 있습니다.
+
+> **💡 Community Consensus (Practical Approach)**
+> *   Allow List는 **핵심 접두어(Prefix)** 위주로 10~15개만 등록합니다.
+> *   대신 **Deny List**를 꼼꼼하게 설정하여 안전망을 확보합니다.
+> *   `Terminal Command Auto Execution`은 가능한 `Request Review`를 유지하여 모르는 명령어는 확인받도록 합니다.
+
+### ✅ Essential Allow List (Prefix 기반 추천)
+다음 15개 항목만 등록하면 대부분의 Python/Flask 개발 명령어가 커버됩니다.
+
+```text
+ls
+pwd
+find
+du
+tree
+cat
+grep
+git
+python
+python3
+pip
+pytest
+make
+flask
+black
+isort
+ruff
+```
+
+### 🚫 Core Deny List (필수 차단)
+Prefix 방식을 쓸 때는 "의도치 않은 위험 명령어"도 허용될 수 있으므로(예: `git clean`), 아래 Deny List를 반드시 함께 등록해야 합니다.
+
+```text
+rm
+git clean
+git push -f
+git push --force
+git reset --hard
+docker system prune
+docker-compose down
+docker compose down
+sudo
+chmod
+chown
+kill -9
+shutdown
+reboot
+terraform destroy
+aws s3 rm
+curl | bash
+wget | bash
+```
