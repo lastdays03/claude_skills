@@ -42,6 +42,7 @@ description: .agent/references/dev-feature-planner/SKILL.md의 모든 표준(문
     *   테스트를 실행하여 **실패(Fail)**함을 확인하고, 그 결과를 캡처합니다 (터미널 출력 확인).
     *   *Quality check*: 테스트가 비즈니스 로직을 정확히 검증하고 있습니까?
     *   **Exception Check**: 예외 발생 시나리오(Edge Case)에 대한 테스트가 포함되어 있습니까?
+    *   **Rescue Path**: 테스트 실패 원인을 모르겠거나 구현이 막히면, `/dev-coding-debug`를 호출하여 원인을 분석합니다.
 
 2.  **🟢 GREEN (Implementation)**
     *   테스트를 통과시키기 위한 **최소한의 코드**만 작성합니다.
@@ -69,5 +70,7 @@ description: .agent/references/dev-feature-planner/SKILL.md의 모든 표준(문
 3.  **Walkthrough Artifact**:
     *   `walkthrough.md`에 최종 결과물, 테스트 결과 요약(커버리지 리포트 등), **브라우저 스크린샷 및 녹화**를 포함합니다.
 3.  **Plan Completion**: `docs/plans/PLAN_[기능명].md`의 상태를 'Complete'로 업데이트하고 'Lessons Learned' 섹션을 채웁니다.
-4.  **Cleanup**: 브라우저 탭/창을 닫고, 테스트를 위해 실행한 백그라운드 서버 프로세스를 종료합니다.
-5.  사용자에게 완료를 알립니다.
+4.  **Documentation Update**: 작업 내용을 반영하여 문서를 최신화합니다.
+    *   `/dev-doc-suite`를 호출하여 README.md 및 관련 API 문서를 업데이트합니다.
+5.  **Cleanup**: 브라우저 탭/창을 닫고, 테스트를 위해 실행한 백그라운드 서버 프로세스를 종료합니다.
+6.  **사용자 알림**: 사용자에게 완료를 알립니다.
