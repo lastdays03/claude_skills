@@ -1,45 +1,76 @@
-# Skill: Systematic Debugging
-
-This document defines the core principles and quality standards for the **"Dev Coding Debug"** workflow, adopted from `obra/superpowers` "systematic-debugging" skill.
-(Agent Instruction: Keep this file in English for better instruction following performance.)
-
+---
+name: dev-coding-debug
+description: "Systematic debugging workflow enforcing 'The Iron Law': No fixes without root cause investigation first."
 ---
 
-## 💎 1. Core Principles (Systematic Debugging)
+# Systematic Debugging (Dev Coding Debug)
 
-1.  **Reproduce First**:
-    - Never attempt to fix a bug without first creating a reproduction script or test case.
-    - If you cannot reproduce it, you cannot verify the fix.
-2.  **Root Cause Analysis**:
-    - Do not apply "band-aid" fixes to symptoms.
-    - Trace the error back to its origin (Root Cause Tracing).
-3.  **Atomic Verification**:
-    - Verify the fix in isolation before integrating it back into the main codebase.
+## Core Principles (The Iron Law)
 
----
+> **NO FIXES WITHOUT ROOT CAUSE INVESTIGATION FIRST.**
 
-## 🏗️ 2. Workflow Logic (The 4-Phase Process)
+If you haven't completed Phase 1 (Root Cause) and Phase 2 (Pattern Analysis), you cannot propose fixes. Symptom fixes are failure.
 
-The agent must follow this strict loop when debugging:
+## 🏗️ The Four Phases
 
-1.  **reproduction**: Create a minimal reproduction case.
-2.  **diagnosis**: Use logs/tracing to find *why* it fails.
-3.  **fix**: Apply the correction (TDD: Red -> Green).
-4.  **verification**: Run the reproduction script again to confirm the fix.
+### Phase 1: Root Cause Investigation
+**Goal: Understand WHAT and WHY.**
+1.  **Read Errors**: sticky to the error message. Don't skip stack traces.
+2.  **Reproduce**: Can you trigger it reliably? If not, gather more data.
+3.  **Instrumentation**: For multi-component systems, log data flow at boundaries.
+4.  **Trace**: Follow the bad value backwards to its source (`root-cause-tracing`).
 
----
+### Phase 2: Pattern Analysis
+**Goal: Find the standard before fixing.**
+1.  **Find Working Examples**: Locate similar code that works.
+2.  **Compare**: Read reference implementations completely.
+3.  **Identify Differences**: List every difference, however small.
 
-## 🏆 3. Quality Standards
+### Phase 3: Hypothesis and Testing
+**Goal: Scientific Method.**
+1.  **Single Hypothesis**: "I think X is the root cause because Y".
+2.  **Test Minimally**: Change ONE variable at a time to test the hypothesis.
+3.  **Verify**: If it didn't work, revert and form a NEW hypothesis. NO layering fixes.
 
-1.  **Test Coverage**: The fix must be covered by a new or updated test.
-2.  **No Regression**: Existing tests must still pass.
-3.  **Cleanup**: Remove any temporary logging or debug prints added during diagnosis.
+### Phase 4: Implementation
+**Goal: Fix the root cause, not the symptom.**
+1.  **Failing Test**: Create a minimal reproduction test case (Red).
+2.  **Single Fix**: Address the identified root cause (Green).
+3.  **Verify**: Ensure no regressions.
 
----
+## �️ Supporting Techniques
 
-## ✅ 4. Checklist
+### 1. Root Cause Tracing ("Why did this happen?")
+**Don't just fix the bad value. Find where it came from.**
+- **Technique**: Ask "What called this with a bad value?" repeatedly until you find the source.
+- **Rule**: Fix at the source, not at the symptom.
 
-- [ ] **Reproduction**: Is there a script that demonstrates the bug?
-- [ ] **Root Cause**: Is the underlying reason identified (not just a patch)?
-- [ ] **Test Pass**: Does the test pass now?
-- [ ] **Linting**: Did you run the linter?
+### 2. Defense-in-Depth ("Make it impossible")
+**Don't just validate at one place.**
+- **Layer 1 (Entry)**: Reject invalid input at IDL/API boundary.
+- **Layer 2 (Logic)**: Ensure data makes sense for the operation.
+- **Layer 3 (Guard)**: Environment checks (e.g., test vs prod).
+- **Layer 4 (Debug)**: Logging for forensics.
+
+### 3. Condition-Based Waiting (No `sleep`)
+**Never guess how long something takes.**
+- **Bad**: `sleep(50)`
+- **Good**: `waitFor(() => condition)`
+- **Why**: Flaky tests often come from arbitrary timeouts.
+
+## �🚩 Red Flags (STOP immediately)
+- "Quick fix for now"
+- "Just try changing X"
+- "One more fix attempt" (Limit: 3 attempts. Then question Architecture.)
+- Proposing solutions before tracing.
+
+## ✅ Quality Standards
+- **Reproduction Script**: Must exist before fixing.
+- **Log Cleanup**: All temporary instrumentation removed.
+- **Safe YAML**: Frontmatter descriptions quoted.
+
+## Checklist
+- [ ] **Phase 1**: Did you identify the *exact* line/reason for failure?
+- [ ] **Phase 2**: Did you compare with a working example?
+- [ ] **Phase 4**: Is there a test case that failed before and passes now?
+- [ ] **Cleanup**: Are all `print`/`console.log` removed?
