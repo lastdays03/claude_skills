@@ -8,39 +8,48 @@ description: Standards for rigorous data analysis using OSEMN methodology. Focus
 ## Purpose
 To transform raw data into actionable business insights using a rigorous, hypothesis-driven approach.
 
-## Core Philosophy: "No Hiding"
+## Core Principles (Core Philosophy)
+**"No Hiding"**
 **AI Readability**: All statistical outputs (`describe`, `corr`, `p-value`) and graphs must remain in the notebook output. This ensures tools like NotebookLM can contextually understand the analysis.
 
-## Analysis Workflow Standards
+## Quality Standards (Tier 1 Best Practices)
 
 ### 1. Data Integrity (Obtain & Scrub)
 **"Garbage In, Garbage Out"**
-- **Deep Sanity Check**: Beyond missing values, check for **Logical Failures** (e.g., negative duration, future dates).
-- **Distribution Check**: Identify Skewness and Class Imbalance early.
-- **Documentation**: Record *why* data was cleaned or dropped.
+- [ ] **Data Source Verification**: Check file extension, size, and metadata.
+- [ ] **Data Quality Check**:
+    - **Missing Values**: Identify mechanism (MCAR, MAR, MNAR) before imputing.
+    - **Logical Failures**: Check for impossible values (e.g., age < 0, future dates).
+    - **Data Types**: Ensure numeric cols are not strings, etc.
+- [ ] **File Handling Standards (New)**:
+    - **Excel (.xlsx)**: Preserve existing formatting/formulas. Use `openpyxl` for editing, `pandas` for reading. **Zero Hardcoding** of calculated values.
+    - **CSV (.csv)**: Detect delimiter automatically (`csv.Sniffer`). Handle encoding errors (utf-8 vs cp949) explicitly.
 
 ### 2. Hypothesis Driven EDA (Explore)
 **"Ask, Don't just Plot"**
-- **Action**: Every graph must answer a specific business question.
-- **Validation**: Visual intuition must be backed by **Statistical Tests** (T-test, Chi-square).
-- **Insight Logging**: Record the implication of findings immediately in Markdown.
+- [ ] **Univariate Analysis**: Distribution of *each* key variable (Histogram/Boxplot). Check for Skewness/Kurtosis.
+- [ ] **Bivariate Analysis**: Correlation matrix, Scatter plots for relationships.
+- [ ] **Statistical Validation**:
+    - **Normality Test**: Shapiro-Wilk or K-S test.
+    - **Significance**: T-test/ANOVA for group differences.
+- [ ] **Insight Logging**: Record the implication of every finding immediately.
 
 ### 3. Rigorous Modeling (Model)
 **"Trust but Verify"**
-- **Baseline First**: Always compare complex models against a simple Baseline (e.g., Logistic Regression).
-- **Cross-Validation**: Rely on `cross_val_score` (Average CV), not just `train_test_split` (Single Split).
-- **Metric Selection**: Optimize for the *Business Metric* (e.g., Recall for fraud), not just Accuracy.
+- [ ] **Baseline First**: Compare complex models against a Dummy/Logistic Baseline.
+- [ ] **Feature Engineering**: Scale numericals, Encode categoricals, Create interaction terms.
+- [ ] **Cross-Validation**: Use Stratified K-Fold to prevent overfitting.
+- [ ] **Metric Selection**: Optimize for business KPI (not just Accuracy).
 
 ### 4. Interpretation (Interpret)
 **"Why did it predict that?"**
-- **Stability**: Prove model stability via CV standard deviation.
-- **Explainability**: Use SHAP or Feature Importance.
-- **Error Analysis**: Analyze *where* and *why* the model fails.
+- [ ] **Feature Importance**: SHAP values or Permutation Importance.
+- [ ] **Error Analysis**: Manually inspect the "Top 10 Worst Errors".
+- [ ] **Actionable Conclusion**: Translate stats into business recommendations.
 
-## Quality Gate
+## Checklist (Quality Gate)
+Before finalizing:
+- [ ] **Reproducibility**: Can the notebook run from top to bottom without error?
+- [ ] **Storytelling**: Does the notebook flow like a narrative?
+- [ ] **Visuals**: Are all graphs labeled (Title, Axis, Legend)?
 
-Before finalizing an analysis:
-- [ ] **Outputs Visible**: Are all cell outputs saved and visible?
-- [ ] **Stats Backed**: Are major claims supported by p-values or stats?
-- [ ] **Baseline Comparison**: Is there a benchmark model?
-- [ ] **Actionable**: Does the conclusion suggest a concrete next step?
