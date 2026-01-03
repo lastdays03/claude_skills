@@ -17,7 +17,7 @@
 ---
 
 ## 🌾 수확 (Harvest)
-*이 프로젝트에서 건진 지식들 (`obsi_knowledge_harvester` 사용)*
+*이 프로젝트에서 건진 지식들 (`obsi-knowledge-harvester` 사용)*
 
 - [[Harvested Concept 1]]
 - [[Harvested Concept 2]]

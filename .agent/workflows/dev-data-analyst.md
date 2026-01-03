@@ -7,8 +7,8 @@ description: 데이터 분석의 전 과정(질의 정의 -> EDA -> 심층 분�
 Python 생태계(Jupyter, Pandas, Seaborn)를 활용하여 데이터에서 인사이트를 도출하는 전문 분석 워크플로우입니다. OSEMN 방법론을 따릅니다.
 
 ### 1단계: 분석 환경 및 목표 정의 (Environment & Goal)
-1.  **Context Loading**: `.agent/references/dev_data_analyst/SKILL.md`를 읽어 데이터 품질 기준과 분석 철학을 로드합니다.
-2.  **Define Objective**: `.agent/references/dev_data_analyst/plan-template.md`를 사용하여 `docs/plans/ANALYSIS_[주제].md`를 작성합니다.
+1.  **Context Loading**: `.agent/references/dev-data-analyst/SKILL.md`를 읽어 데이터 품질 기준과 분석 철학을 로드합니다.
+2.  **Define Objective**: `.agent/references/dev-data-analyst/plan-template.md`를 사용하여 `docs/plans/ANALYSIS_[주제].md`를 작성합니다.
     *   단순 정확도(Accuracy) 외에 **실질적 성공 지표(KPI)**를 정의합니다.
 3.  **Notebook Setup**: `docs/analysis/` 또는 `notebooks/` 경로에 `EDA_01_[주제].ipynb` 형식으로 생성합니다.
 

@@ -14,7 +14,7 @@ description: 최신 기술 트렌드나 도구를 빠르게 파악하고 요약�
 ### 2단계: 핵심 요약 (Summarize)
 `docs/trends/` 또는 임시 경로에 요약 문서를 작성합니다.
 
-1.  **Drafting**: `.agent/references/dev_trend_tracker/plan-template.md`를 사용하여 리포트를 작성합니다.
+1.  **Drafting**: `.agent/references/dev-trend-tracker/plan-template.md`를 사용하여 리포트를 작성합니다.
 2.  **3-Line Summary**: 다음 3가지 질문에 대한 답을 **한 줄씩** 명확히 적습니다.
     *   **What**: 이것은 무엇인가?
     *   **Why**: 왜 중요한가? (기존 대비 장점)
@@ -23,5 +23,5 @@ description: 최신 기술 트렌드나 도구를 빠르게 파악하고 요약�
 ### 3단계: 아카이빙 (Archive)
 작성된 리포트는 일회성으로 소비되지 않고, 반드시 지식 자산으로 저장되어야 합니다.
 
-1.  **Export**: 작성된 내용을 Obsidian의 `Inbox` 또는 `20_Learning/Trends/` 폴더로 복사합니다. (`/dev_export` 활용 가능)
+1.  **Export**: 작성된 내용을 Obsidian의 `Inbox` 또는 `20_Learning/Trends/` 폴더로 복사합니다. (`/dev-export` 활용 가능)
 2.  **Tagging**: 검색을 위한 태그(예: `#tool`, `#ai`, `#rust`)를 추가했는지 확인합니다.

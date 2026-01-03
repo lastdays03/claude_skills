@@ -14,7 +14,7 @@ To transform random folders into **Managed Projects** with clear goals, status, 
 
 ## Project Types & Structure
 1.  **Study/Learning**:
-    - `docs/plans/`: For `dev_study_planner`
+    - `docs/plans/`: For `dev-study_planner`
     - `notes/`: Raw learning notes
 2.  **Development**:
     - `src/`, `docs/`: Standard coding structure

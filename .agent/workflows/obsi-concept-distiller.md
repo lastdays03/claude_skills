@@ -11,9 +11,9 @@ description: AI를 활용해 핵심 개념을 추출하고, 문맥을 분석하�
 2.  **De-duplication**: `SKILL.md` 규칙에 따라 `find_by_name`으로 중복을 확인합니다. 이미 존재하면 '추가(Append)'를 제안합니다.
 
 ### 2단계: 생성 (Creation)
-1.  **Context Loading**: `.agent/references/obsi_concept_distiller/SKILL.md`를 로드합니다.
+1.  **Context Loading**: `.agent/references/obsi-concept-distiller/SKILL.md`를 로드합니다.
 2.  **Drafting**:
-    *   `.agent/references/obsi_concept_distiller/concept-template.md`를 사용하여 초안을 작성합니다.
+    *   `.agent/references/obsi-concept-distiller/concept-template.md`를 사용하여 초안을 작성합니다.
     *   **Source**: `Source: [[Original_File]]`을 자동으로 기입합니다.
 3.  **Category**: `20_Learning/00_Concepts/{Category}` 경로에 저장합니다.
 

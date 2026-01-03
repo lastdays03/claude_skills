@@ -75,7 +75,7 @@
 
 ## 3. 권장 터미널 목록 (Allow/Deny List)
 
-`dev_feature_planner`를 Flask 프로젝트와 함께 사용할 때, TDD 사이클(Red-Green-Refactor) 자동화를 위해 아래 목록을 적용하세요.
+`dev-feature-planner`를 Flask 프로젝트와 함께 사용할 때, TDD 사이클(Red-Green-Refactor) 자동화를 위해 아래 목록을 적용하세요.
 
 ### ✅ Flask Project Optimized Allow List
 **목표**: `make` 명령어를 통해 테스트, 린트, 포맷팅을 에이전트가 스스로 수행하여 TDD 속도를 극대화합니다.

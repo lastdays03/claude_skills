@@ -11,7 +11,7 @@ To move completed work out of sight but keep it accessible (`90_Archives`), ensu
 ## Closing Rituals (The Checklist)
 1.  **Dependency Scan**: Ensure no external files link *into* this project.
 2.  **Status Update**: Change `#status/active` to `#status/done`.
-3.  **Knowledge Harvest**: Before archiving, extract valuable assets to `20_Learning` using `obsi_knowledge_harvester`.
+3.  **Knowledge Harvest**: Before archiving, extract valuable assets to `20_Learning` using `obsi-knowledge-harvester`.
 4.  **Cleanup**: Delete `.DS_Store`, empty folders, and temp files.
 
 ## Archival Rules

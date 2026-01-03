@@ -4,7 +4,7 @@ description: 체계적인 학습 계획 수립, 실행, 검증을 위한 학습 
 
 # Study Planner Workflow
 
-이 워크플로우는 `dev_feature_planner`의 엄격한 프로세스를 **학습(Study)**에 맞게 최적화했습니다. 단순히 눈으로 보는 공부가 아니라, **"계획 -> 이론 -> 실습 -> 검증"**의 사이클을 통해 확실한 지식 체득을 목표로 합니다.
+이 워크플로우는 `dev-feature-planner`의 엄격한 프로세스를 **학습(Study)**에 맞게 최적화했습니다. 단순히 눈으로 보는 공부가 아니라, **"계획 -> 이론 -> 실습 -> 검증"**의 사이클을 통해 확실한 지식 체득을 목표로 합니다.
 
 ### 1단계: 학습 목표 및 범위 설정 (Goal Setting)
 무엇을 공부할지 명확히 정의하고, **학습 모드(Mode)**를 결정합니다.
@@ -22,8 +22,8 @@ description: 체계적인 학습 계획 수립, 실행, 검증을 위한 학습 
 ### 2단계: 학습 계획 문서 생성 (Study Plan Creation)
 `docs/plans/` 디렉토리에 학습 계획 문서를 작성합니다.
 
-1.  **Context Loading**: `.agent/references/dev_study_planner/SKILL.md`를 읽어 'Deep Mastery' 기준을 확인합니다.
-2.  **Drafting**: `.agent/references/dev_study_planner/plan-template.md`를 사용하여 `docs/plans/STUDY_[주제].md`를 작성합니다.
+1.  **Context Loading**: `.agent/references/dev-study-planner/SKILL.md`를 읽어 'Deep Mastery' 기준을 확인합니다.
+2.  **Drafting**: `.agent/references/dev-study-planner/plan-template.md`를 사용하여 `docs/plans/STUDY_[주제].md`를 작성합니다.
 3.  **Approval**: 사용자에게 계획을 검토받습니다.
 
 ### 3단계: 심층 학습 실행 루프 (Deep Learning Loop)

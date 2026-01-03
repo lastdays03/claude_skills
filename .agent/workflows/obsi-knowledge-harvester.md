@@ -8,7 +8,7 @@ description: 프로젝트나 인박스에 있는 실전 노트(Topic Note)를 �
 
 ### 1단계: 대상 선정 (Selection)
 1.  **Filter**: 가치 있는 노트(`High Value`)를 선별합니다.
-2.  **Context Loading**: `.agent/references/obsi_knowledge_harvester/SKILL.md`를 읽어 이관 규칙을 로드합니다.
+2.  **Context Loading**: `.agent/references/obsi-knowledge-harvester/SKILL.md`를 읽어 이관 규칙을 로드합니다.
 
 ### 2단계: 최적 위치 선정 (Mapping)
 1.  **Category Scan**: `20_Learning/10_Topics/` 하위를 스캔하여 가장 적합한 카테고리(`Tech_Stack`, `Domain` 등)를 찾습니다.

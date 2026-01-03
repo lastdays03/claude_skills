@@ -31,53 +31,54 @@ cd ~/dev/workspace/my_new_project
 ### 1. 전략 및 시작 (Strategy & Start)
 프로젝트 초기 설정 및 방향성 수립 단계입니다.
 
+
 | 커맨드                    | 설명                                                                                  |
 | :------------------------ | :------------------------------------------------------------------------------------ |
-| **/obsi_project_kickoff** | **[Obsidian]** 표준 폴더 구조, Overview, Task 생성으로 프로젝트를 빠르게 시작합니다.  |
-| **/dev_init**             | **[Dev]** 개발 전용 환경(VSCode)에서 `src`, `docs` 구조와 `README.md`를 초기화합니다. |
+| **/obsi-project-kickoff** | **[Obsidian]** 표준 폴더 구조, Overview, Task 생성으로 프로젝트를 빠르게 시작합니다.  |
+| **/dev-init**             | **[Dev]** 개발 전용 환경(VSCode)에서 `src`, `docs` 구조와 `README.md`를 초기화합니다. |
 
 ### 2. 개발 및 구현 (Development & Engineering)
 견고한 코드 작성과 제품 구현을 위한 워크플로우입니다.
 
 | 커맨드                    | 설명                                                                              |
 | :------------------------ | :-------------------------------------------------------------------------------- |
-| **/dev_feature_planner**  | **[Dev]** TDD, 리스크 평가, 롤백 전략을 포함한 엔지니어링 표준 기능을 구현합니다. |
-| **/dev_notebook_refiner** | **[Dev]** Jupyter Notebook의 코드 품질, 문서화, 실행 안정성을 개선합니다.         |
-| **/dev_export**           | **[Dev]** 개발 문서를 Obsidian Inbox로 단순 백업(Export)합니다.                   |
-| **/obsi_archive_project** | **[Obsidian]** 완료된 프로젝트를 정리하고 검증하여 연도별 아카이브로 이동합니다.  |
+| **/dev-feature-planner**  | **[Dev]** TDD, 리스크 평가, 롤백 전략을 포함한 엔지니어링 표준 기능을 구현합니다. |
+| **/dev-notebook-refiner** | **[Dev]** Jupyter Notebook의 코드 품질, 문서화, 실행 안정성을 개선합니다.         |
+| **/dev-export**           | **[Dev]** 개발 문서를 Obsidian Inbox로 단순 백업(Export)합니다.                   |
+| **/obsi-archive-project** | **[Obsidian]** 완료된 프로젝트를 정리하고 검증하여 연도별 아카이브로 이동합니다.  |
 
 ### 3. 학습 및 연구 (Learning & Research)
 새로운 기술 습득과 심층 이해를 돕습니다.
 
 | 커맨드                 | 설명                                                                                 |
 | :--------------------- | :----------------------------------------------------------------------------------- |
-| **/dev_study_planner** | **[Deep]** 파인만 기법과 Break & Fix를 활용하여 개념을 완벽하게 체득(Mastery)합니다. |
-| **/dev_trend_tracker** | **[Quick]** 최신 기술 트렌드나 도구를 빠르게 파악하고 3줄로 요약하여 아카이빙합니다. |
+| **/dev-study-planner** | **[Deep]** 파인만 기법과 Break & Fix를 활용하여 개념을 완벽하게 체득(Mastery)합니다. |
+| **/dev-trend-tracker** | **[Quick]** 최신 기술 트렌드나 도구를 빠르게 파악하고 3줄로 요약하여 아카이빙합니다. |
 
 ### 4. 데이터 분석 (Data Analysis)
 데이터로부터 인사이트를 도출합니다.
 
 | 커맨드                | 설명                                                                           |
 | :-------------------- | :----------------------------------------------------------------------------- |
-| **/dev_data_analyst** | **[Data]** 질의 정의 → EDA → 심층 분석 → 리포팅의 전체 분석 과정을 수행합니다. |
+| **/dev-data-analyst** | **[Data]** 질의 정의 → EDA → 심층 분석 → 리포팅의 전체 분석 과정을 수행합니다. |
 
 ### 5. 지식 관리 (Knowledge Management)
 파편화된 정보를 체계적인 지식 자산으로 변환합니다.
 
 | 커맨드                        | 설명                                                                         |
 | :---------------------------- | :--------------------------------------------------------------------------- |
-| **/obsi_concept_distiller**   | 텍스트에서 핵심 개념을 추출하여 지식 베이스와 연결합니다.                    |
-| **/obsi_knowledge_harvester** | 프로젝트의 실전 노트(Topic Note)를 영구 지식 노트(20_Learning)로 이관합니다. |
-| **/obsi_knowledge_refiner**   | 기존 노트의 내용을 심화하고 시각화하여 "골드 스탠다드" 지식으로 만듭니다.    |
-| **/obsi_moc_builder**         | 노트들의 연관 관계를 분석하여 구조화된 목차(MOC)를 생성합니다.               |
-| **/obsi_weekly_review**       | 주간 회고를 수행하고 액션 아이템을 도출하여 GTD 시스템을 유지합니다.         |
+| **/obsi-concept-distiller**   | 텍스트에서 핵심 개념을 추출하여 지식 베이스와 연결합니다.                    |
+| **/obsi-knowledge-harvester** | 프로젝트의 실전 노트(Topic Note)를 영구 지식 노트(20_Learning)로 이관합니다. |
+| **/obsi-knowledge-refiner**   | 기존 노트의 내용을 심화하고 시각화하여 "골드 스탠다드" 지식으로 만듭니다.    |
+| **/obsi-moc-builder**         | 노트들의 연관 관계를 분석하여 구조화된 목차(MOC)를 생성합니다.               |
+| **/obsi-weekly-review**       | 주간 회고를 수행하고 액션 아이템을 도출하여 GTD 시스템을 유지합니다.         |
 
 ### 6. 메타 관리 (Meta Engineering)
 워크플로우 자체를 생성하거나 개선합니다.
 
 | 커맨드                  | 설명                                                                             |
 | :---------------------- | :------------------------------------------------------------------------------- |
-| **/meta_skill_builder** | **[Admin]** 새로운 워크플로우를 생성(✨)하거나 기존 워크플로우를 고도화(🔧)합니다. |
+| **/meta-skill-builder** | **[Admin]** 새로운 워크플로우를 생성(✨)하거나 기존 워크플로우를 고도화(🔧)합니다. |
 
 ---
 
@@ -95,7 +96,7 @@ cd ~/dev/workspace/my_new_project
 ### 커스텀 워크플로우 만들기
 나만의 스킬을 추가하려면 `.agent/workflows/` 경로에 마크다운 파일을 생성하세요.
 
-1. **파일 생성**: `my_custom_skill.md`
+1. **파일 생성**: `my-custom-skill.md`
 2. **헤더 작성**:
    ```markdown
    ---
@@ -113,9 +114,9 @@ cd ~/dev/workspace/my_new_project
 ```text
 .agent/
 ├── workflows/             # [How-to] 에이전트의 행동 순서 (Lightweight)
-│   └── dev_data_analyst.md
+│   └── dev-data-analyst.md
 └── references/            # [Standard] 품질 기준 및 템플릿 (Heavy)
-    └── dev_data_analyst/
+    └── dev-data-analyst/
         ├── SKILL.md       # (O) 품질 표준, 철학, 체크리스트
         └── template.md    # (O) 사용자가 편집하기 쉬운 마크다운 양식
 ```
@@ -128,8 +129,8 @@ cd ~/dev/workspace/my_new_project
 ### 커스텀 워크플로우 만들기
 나만의 스킬을 추가하려면 위 구조를 따르는 것을 권장합니다.
 
-1.  **Reference 생성**: `.agent/references/{skill_name}/SKILL.md`에 규칙 작성.
-2.  **Workflow 생성**: `.agent/workflows/{skill_name}.md`에서 `SKILL.md`를 로드하도록 지시.
+1.  **Reference 생성**: `.agent/references/{skill-name}/SKILL.md`에 규칙 작성.
+2.  **Workflow 생성**: `.agent/workflows/{skill-name}.md`에서 `SKILL.md`를 로드하도록 지시.
 
 ### 언어 및 템플릿 표준 (Language & Template Standards)
 
@@ -163,7 +164,7 @@ claude_skills/
     ├── rules.md            # 기본 규칙
     ├── SECURITY.md         # 보안 설정 가이드
     ├── references/         # 워크플로우별 리소스 폴더
-    │   └── dev_feature_planner/
+    │   └── dev-feature-planner/
     └── workflows/          # 워크플로우 정의 파일들 (*.md)
 
 ### 글로벌 동기화 (`scripts/sync_to_global.sh`)

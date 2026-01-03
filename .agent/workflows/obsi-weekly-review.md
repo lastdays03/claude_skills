@@ -8,7 +8,7 @@ description: 데이터 기반으로 한 주를 회고하고, 인박스 제로 �
 
 ### 1단계: 현황 파악 (Audit)
 1.  **Metric Check**: `00_Inbox`의 파일 개수와 지난 주 수정된 파일 로그를 확인합니다.
-2.  **Context Loading**: `.agent/references/obsi_weekly_review/SKILL.md`를 읽어 'GTD Style' 리뷰 프로세스를 로드합니다.
+2.  **Context Loading**: `.agent/references/obsi-weekly-review/SKILL.md`를 읽어 'GTD Style' 리뷰 프로세스를 로드합니다.
 
 ### 2단계: 시스템 정리 (Cleanup)
 1.  **Inbox Zero**: 인박스에 남은 파일을 하나씩 제시하며 처리(Archive/Project/Delete)를 돕습니다.
@@ -16,7 +16,7 @@ description: 데이터 기반으로 한 주를 회고하고, 인박스 제로 �
 
 ### 3단계: 회고 및 계획 (Review & Plan)
 1.  **Note Generation**:
-    *   `.agent/references/obsi_weekly_review/weekly-template.md`를 사용하여 주간 회고 노트(`30_Journal/Weekly/{YYYY-Www}.md`)를 생성합니다.
+    *   `.agent/references/obsi-weekly-review/weekly-template.md`를 사용하여 주간 회고 노트(`30_Journal/Weekly/{YYYY-Www}.md`)를 생성합니다.
     *   지난주 `Daily Note`에서 완료된 작업(`- [x]`)을 자동으로 채워 넣습니다.
 2.  **Rollover**:
     *   완료되지 않은 작업(`- [ ]`)을 찾아 "이번 주로 이관하시겠습니까?" 묻고 복사합니다.

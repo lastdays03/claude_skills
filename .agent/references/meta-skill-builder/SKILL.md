@@ -59,7 +59,7 @@ All workflows created or refined by this skill must meet the following criteria:
 Items the agent must self-check during execution:
 
 - [ ] **Mode Check**: Is the user intent Creation or Refinement? (Declare ✨/🔧)
-- [ ] **Naming Convention**: Are prefixes like `dev_`, `obsi_` correct? (lowercase, snake_case)
+- [ ] **Naming Convention**: Are prefixes like `dev-`, `obsi-` correct? (lowercase, snake_case)
 - [ ] **Path Validation**: Do paths follow the `.agent/` standard structure?
 - [ ] **Import Check**: Does the workflow file include a step to load `SKILL.md`?
 - [ ] **Template Check**: Are templates following the 3-Tier Language Strategy? (See above)

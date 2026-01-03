@@ -7,7 +7,7 @@ description: 개발/학습 산출물을 Obsidian Inbox로 단순 복사(Export)�
 개발 환경의 산출물(문서, 노트)을 Obsidian(00_Inbox)으로 빠르게 안전하게 내보냅니다.
 
 ### 1단계: 타겟 설정 (Target Configuration)
-1.  **Load Standards**: `.agent/references/dev_export/SKILL.md`를 읽어 'Target Location' 규칙을 확인합니다.
+1.  **Load Standards**: `.agent/references/dev-export/SKILL.md`를 읽어 'Target Location' 규칙을 확인합니다.
 2.  **Path Input**: Obsidian Vault Root 경로를 입력받습니다.
 3.  **Validation**: `00_Inbox`가 존재하는지 검증합니다.
 
@@ -24,4 +24,4 @@ description: 개발/학습 산출물을 Obsidian Inbox로 단순 복사(Export)�
 3.  **Log**: 복사된 파일 수를 출력합니다.
 
 ### 4단계: 안내 (Next Steps)
-1.  **Guide**: "Obsidian에서 `obsi_knowledge_harvester`를 사용하여 정리하세요"라고 안내합니다.
+1.  **Guide**: "Obsidian에서 `obsi-knowledge-harvester`를 사용하여 정리하세요"라고 안내합니다.

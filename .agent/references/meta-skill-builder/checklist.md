@@ -1,6 +1,6 @@
 # Meta-Skill Verification Checklist
 
-Checklist to verify if the workflow created or refined by `meta_skill_builder` complies with the standards.
+Checklist to verify if the workflow created or refined by `meta-skill-builder` complies with the standards.
 
 ## 1. Structure Verification
 - [ ] **Reference Separation**: Is workflow logic (`.agent/workflows/*.md`) separated from knowledge (`.agent/references/*`)?

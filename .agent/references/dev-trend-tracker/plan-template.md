@@ -44,5 +44,5 @@ def example():
 ---
 
 ## 5. 결론 및 보관 (Conclusion)
-- **보관 가치**: (높음/중간/낮음) -> *높다면 `obsi_knowledge_harvester`로 `20_Learning` 이관 고려*
+- **보관 가치**: (높음/중간/낮음) -> *높다면 `obsi-knowledge-harvester`로 `20_Learning` 이관 고려*
 - **한 줄 평**:
