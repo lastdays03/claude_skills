@@ -4,8 +4,9 @@ Checklist to verify if the workflow created or refined by `meta-skill-builder` c
 
 ## 1. Structure Verification
 - [ ] **Reference Separation**: Is workflow logic (`.agent/workflows/*.md`) separated from knowledge (`.agent/references/*`)?
-- [ ] **Directory Match**: Does a dedicated folder with the same name exist in `references`?
-- [ ] **Essential Files**: Does `SKILL.md` exist?
+- [ ] **Naming Convention**: Is the folder/file name in `kebab-case`?
+- [ ] **Frontmatter Check**: Is the `description` wrapped in `"double quotes"`? (Critical for Korean text)
+- [ ] **Structure Check**: Does it contain `SKILL.md` and `workflow.md`?
 
 ## 2. Content Verification
 - [ ] **Workflow File**:

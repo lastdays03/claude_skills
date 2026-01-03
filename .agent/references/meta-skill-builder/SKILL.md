@@ -57,7 +57,12 @@ All workflows must meet the following criteria:
 - **Logic vs Data**: Workflow logic (`workflows/*.md`) and Data/Templates (`references/*`) MUST be physically separated.
 - **Lazy Loading**: Workflow files should be lightweight and load heavy references via `read_file` only when needed.
 
-### 2) User-Centric Interaction
+### 2) Safe YAML Frontmatter 🛡️
+- **Quoting**: The `description` field MUST be wrapped in double quotes `""` if it contains Korean or special characters `(:)`.
+    - Bad: `description: 체계적인 디버깅(Systematic)`
+    - Good: `description: "체계적인 디버깅(Systematic)"`
+
+### 3) User-Centric Interaction
 - **Explicit Inputs**: Clearly request what input is needed from the user.
 - **Confirmation Gates**: Use `notify_user` to verify before creating or modifying critical files.
 

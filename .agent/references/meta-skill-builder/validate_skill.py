@@ -60,6 +60,16 @@ def validate_skill(skill_name):
             # Verify linkage
             if f"references/{skill_name}" not in content:
                  errors.append(f"[Linkage] Workflow file does not reference '.agent/references/{skill_name}'")
+            
+            # YAML Frontmatter Check
+            description_match = re.search(r'^description:\s*(.+)$', content, re.MULTILINE)
+            if description_match:
+                desc_value = description_match.group(1).strip()
+                # Check for non-ascii (Korean) characters
+                has_non_ascii = any(ord(c) > 127 for c in desc_value)
+                if has_non_ascii:
+                    if not (desc_value.startswith('"') and desc_value.endswith('"')):
+                         errors.append(f"[Frontmatter] Description containing Korean/Special characters must be wrapped in double quotes.\n    Found: {desc_value}")
 
     if errors:
         print("\n❌ Validation Failed with errors:")
