@@ -43,6 +43,9 @@ cd ~/dev/workspace/my_new_project
 | 커맨드                    | 설명                                                                              |
 | :------------------------ | :-------------------------------------------------------------------------------- |
 | **/dev-feature-planner**  | **[Dev]** TDD, 리스크 평가, 롤백 전략을 포함한 엔지니어링 표준 기능을 구현합니다. |
+| **/dev-coding-debug**     | **[Dev]** "The Iron Law"에 기반한 체계적 디버깅 (Root Cause -> Test -> Fix).      |
+| **/dev-doc-suite**        | **[Dev]** 코드 기반의 README, API 문서, 아키텍처 다이어그램 자동 생성.            |
+| **/dev-prompt-engineering** | **[Dev]** Anthropic Best Practice(CoT, Few-shot)를 적용한 최적 프롬프트 설계.   |
 | **/dev-notebook-refiner** | **[Dev]** Jupyter Notebook의 코드 품질, 문서화, 실행 안정성을 개선합니다.         |
 | **/dev-export**           | **[Dev]** 개발 문서를 Obsidian Inbox로 단순 백업(Export)합니다.                   |
 | **/obsi-archive-project** | **[Obsidian]** 완료된 프로젝트를 정리하고 검증하여 연도별 아카이브로 이동합니다.  |
@@ -60,7 +63,7 @@ cd ~/dev/workspace/my_new_project
 
 | 커맨드                | 설명                                                                           |
 | :-------------------- | :----------------------------------------------------------------------------- |
-| **/dev-data-analyst** | **[Data]** 질의 정의 → EDA → 심층 분석 → 리포팅의 전체 분석 과정을 수행합니다. |
+| **/dev-data-analyst** | **[Data]** 철저한 데이터 무결성 검증, 통계적 EDA, 심층 분석 리포팅을 수행합니다. |
 
 ### 5. 지식 관리 (Knowledge Management)
 파편화된 정보를 체계적인 지식 자산으로 변환합니다.
