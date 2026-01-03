@@ -26,7 +26,14 @@ echo "=========================================="
 # 1. 워크플로우 동기화
 if [ -d "$WORKFLOWS_SRC" ]; then
     echo "[Action] Syncing workflows to '$GLOBAL_WORKFLOWS_DIR'..."
+    
+    # 기존 워크플로우 삭제 (Clean Sync)
+    if [ -d "$GLOBAL_WORKFLOWS_DIR" ]; then
+        echo "[Action] Cleaning up existing workflows..."
+        rm -rf "$GLOBAL_WORKFLOWS_DIR"
+    fi
     mkdir -p "$GLOBAL_WORKFLOWS_DIR"
+
     cp -v "$WORKFLOWS_SRC"/*.md "$GLOBAL_WORKFLOWS_DIR/"
 else
     echo "[Warning] Workflows directory not found at $WORKFLOWS_SRC"
