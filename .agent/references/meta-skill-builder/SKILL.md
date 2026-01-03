@@ -4,21 +4,44 @@ This document defines the core principles and standards for the **"Skill Builder
 
 ---
 
-## 🏗️ 1. Two Modes of Operation
+## 💎 1. Core Principles
 
-This skill operates in two modes. You MUST identify and declare the mode at the start of the process.
+1.  **Reference Separation Pattern**:
+    - Logic (`workflows/*.md`) and Data (`references/*`) MUST be physically separated.
+    - Lazy load heavy references only when needed.
+2.  **User-Centric Interaction**:
+    - Explicitly request inputs and use confirmation gates (`notify_user`).
+3.  **Language Separation Strategy 🇰🇷/🇺🇸**:
+    - Workflow (`workflows/*.md`): **Korean** (User Readability)
+    - Reference (`references/*/SKILL.md`): **English** (Agent Efficiency)
+    - Templates (`references/*/*-template.md`): **3-Tier Strategy**
+        1.  **Agent-Facing** (e.g. `coding-template`, `doc-template`): **English 🇺🇸**
+        2.  **User-Heavy** (e.g. `plan-template`): **Hybrid (KR Headers + EN Logic) 🇰🇷/🇺🇸**
+        3.  **User-Light** (e.g. `overview-template`): **Korean 🇰🇷**
+
+---
+
+## 🏗️ 2. Operating Modes (Process)
+
+You MUST identify the mode and then decide the **Reference Source**.
 
 ### ✨ Creation Mode
-- **Trigger**: "Create a new workflow", "I need a skill to automate X"
-- **Goal**: Convert a user's vague idea into a concrete **"File Set"**.
+- **Trigger**: "Create a new workflow", "Import this GitHub skill", "I need a skill to automate X"
+- **Goal**: Convert an idea OR an external resource into a concrete **"File Set"**.
+- **Process**:
+    1.  **Search**: Always look for external references (GitHub/Web) first.
+    2.  **Adapt**: If found, use `snippet-extractor-guide.md`. If not, use local templates.
 - **Definition of Done (DoD)**:
-    1.  Create `.agent/workflows/{name}.md` (Orchestrator).
-    2.  Create `.agent/references/{name}/` directory.
-    3.  Create and link essential reference files like `SKILL.md` and `template.md`.
+    1.  Create `.agent/workflows/{name}.md` and `.agent/references/{name}/`.
+    2.  Create/Adapt `SKILL.md` and link it properly.
 
 ### 🔧 Refinement Mode
-- **Trigger**: "Refine this workflow", "Refactor this skill"
-- **Goal**: Resolve structural debt in an existing workflow and apply the **"Reference Separation Pattern"**.
+- **Trigger**: "Refine this workflow", "Update this skill with new standard"
+- **Goal**: Resolve structural debt OR upgrade using a better external reference.
+- **Process**:
+    1.  **Search**: Look for "better ways to do this" externally.
+    2.  **Compare**: Check gap between current file and external "Gold Standard".
+    3.  **Refactor**: Apply improvements (Reference Separation, etc.).
 - **Definition of Done (DoD)**:
     1.  Are inline prompts/templates separated into `references/`?
     2.  Does `SKILL.md` define the Gold Standard?
@@ -26,9 +49,9 @@ This skill operates in two modes. You MUST identify and declare the mode at the 
 
 ---
 
-## 💎 2. Core Quality Standards (The "Rule of Thumb")
+## 🏆 3. Quality Standards
 
-All workflows created or refined by this skill must meet the following criteria:
+All workflows must meet the following criteria:
 
 ### 1) Reference Separation Pattern
 - **Logic vs Data**: Workflow logic (`workflows/*.md`) and Data/Templates (`references/*`) MUST be physically separated.
@@ -42,24 +65,14 @@ All workflows created or refined by this skill must meet the following criteria:
 - The workflow file alone should explain "What this skill does" (Description Header).
 - However, knowledge of "How to do it well" is delegated to `SKILL.md`.
 
-### 4) Language Separation Strategy 🇰🇷/🇺🇸
-- **Workflow (`workflows/*.md`)**: **Korean**
-    - Purpose: User readability.
-- **Reference (`references/*/SKILL.md`)**: **English**
-    - Purpose: Agent efficiency.
-- **Templates (`references/*/*-template.md`)**: **3-Tier Strategy**
-    1.  **Agent-Facing** (e.g. `skill-template`): **English 🇺🇸**
-    2.  **User-Heavy** (e.g. `plan-template`): **Hybrid (KR Headers + EN Logic) 🇰🇷/🇺🇸**
-    3.  **User-Light** (e.g. `overview-template`): **Korean 🇰🇷**
-
 ---
 
-## 🛠️ 3. Execution Checklist
+## ✅ 4. Checklist
 
 Items the agent must self-check during execution:
 
-- [ ] **Mode Check**: Is the user intent Creation or Refinement? (Declare ✨/🔧)
-- [ ] **Naming Convention**: Are prefixes like `dev-`, `obsi-` correct? (lowercase, snake_case)
+- [ ] **Mode Check**: Is the user intent Creation or Refinement?
+- [ ] **Naming Convention**: Are prefixes like `dev-`, `obsi-` correct? (lowercase, kebab-case)
 - [ ] **Path Validation**: Do paths follow the `.agent/` standard structure?
-- [ ] **Import Check**: Does the workflow file include a step to load `SKILL.md`?
-- [ ] **Template Check**: Are templates following the 3-Tier Language Strategy? (See above)
+- [ ] **Template Check**: Did you use the Context-Aware Templates?
+- [ ] **Validation Pass**: Did `validate_skill.py` return success?
