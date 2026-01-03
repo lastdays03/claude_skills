@@ -18,7 +18,11 @@ Checklist to verify if the workflow created or refined by `meta-skill-builder` c
     - [ ] Are core principles and quality standards clearly defined?
     - [ ] Is a checklist included?
     - [ ] **Language**: Is it written in **English**?
+## 3. Discovery Verification (New Skill Only)
+- [ ] **Source Tier**: Did you check Tier 1 (Official) sources first?
+- [ ] **Quality Check**: Does the source logic include CoT or specific examples?
+- [ ] **Adaptation**: Did you split the Monolithic Prompt into `SKILL.md` (Rules) and `workflow.md` (Steps)?
 
-## 3. Integration Verification
+## 4. Integration Verification
 - [ ] **Path Correctness**: Do file paths accurately point to the Antigravity standard (`.agent/...`)?
 - [ ] **Self-Description**: Does the workflow description match the actual task performed?

@@ -66,7 +66,7 @@ All workflows must meet the following criteria:
 - **Explicit Inputs**: Clearly request what input is needed from the user.
 - **Confirmation Gates**: Use `notify_user` to verify before creating or modifying critical files.
 
-### 3) Self-Contained Context
+### 4) Self-Contained Context
 - The workflow file alone should explain "What this skill does" (Description Header).
 - However, knowledge of "How to do it well" is delegated to `SKILL.md`.
 
