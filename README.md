@@ -74,6 +74,7 @@ cd ~/dev/workspace/my_new_project
 | **/obsi-knowledge-harvester** | 프로젝트의 실전 노트(Topic Note)를 영구 지식 노트(20_Learning)로 이관합니다. |
 | **/obsi-knowledge-refiner**   | 기존 노트의 내용을 심화하고 시각화하여 "골드 스탠다드" 지식으로 만듭니다.    |
 | **/obsi-moc-builder**         | 노트들의 연관 관계를 분석하여 구조화된 목차(MOC)를 생성합니다.               |
+| **/obsi-moc-manager**         | **[New]** 하위 폴더를 스캔하여 MOC들을 재귀적으로 일괄 생성/갱신합니다.      |
 | **/obsi-weekly-review**       | 주간 회고를 수행하고 액션 아이템을 도출하여 GTD 시스템을 유지합니다.         |
 
 ### 6. 메타 관리 (Meta Engineering)
