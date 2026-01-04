@@ -6,6 +6,12 @@
   - Do not use English for general sentences.
 - **Technical Terms**: English (allowed)
   - Code snippets, variable names, file paths, and standard technical terminology (e.g., "Dependency Injection", "Framework") can remain in English where appropriate for clarity.
+- **Artifact Language**: Korean (한글)
+  - The following artifacts MUST be written in Korean to ensure clear communication with the user:
+    - `implementation_plan.md`
+    - `task.md` (TaskName, TaskStatus, TaskSummary)
+    - `walkthrough.md`
+  - Exceptions: Technical sections like 'Proposed Changes' or code blocks can use English if it's the standard convention.
 
 ## Workflow Execution Rules
 - **Reference Access Fallback**:
