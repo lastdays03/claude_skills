@@ -5,10 +5,11 @@ description: Standards for elevating raw notes to Gold Standard knowledge assets
 
 # Knowledge Refiner Standards
 
-## Purpose
-To move notes from "Transient" to "Permanent" status by adding structure, depth, and connectivity.
+## Core Principles
+**"Gold Standard or Nothing"**
+To move notes from "Transient" to "Permanent" status by adding structure, depth, connectivity, and hygiene.
 
-## The Gold Standard (Quality Gate)
+## Quality Standards (The Gold Standard)
 1.  **Definitions**: Must be clear and jargon-free (ELI5 if needed).
 2.  **Examples**: Concrete code snippets or real-world use cases are mandatory.
 3.  **Comparisons**: contrast with similar concepts (e.g., `Thread` vs `Process`).
@@ -17,12 +18,17 @@ To move notes from "Transient" to "Permanent" status by adding structure, depth,
 
 ## Refinement Modes
 - **Standardize**: Apply `concept-template.md`.
-- **Enrich (Search & Analyze)**: Proactively search the web for official docs, tutorials, and deep-dives to fill content gaps.
+- **Enrich (Search & Analyze)**: Proactively search the web to fill content gaps.
 - **Elaborate**: Add depth to weak sections.
-- **Link**: Auto-link to existing concepts in `20_Learning`.
-- **Multimodal**: Add Mermaid diagrams or Tables.
+- **Link**: Auto-link to existing concepts in `20_Learning` ONLY. **Do NOT link to `90_Archive` or `Projects`.**
+- **Prune (Cleanup)**: Detect and remove links to non-existent files (Dead Links).
 
-## Research Standards (New)
-- **Source Selection**: Prioritize Official Documentation > Engineering Blogs (Uber/Netflix) > StackOverflow.
-- **Citation**: Always add a `## References` section with Markdown links to sources.
-- **Synthesis**: Do not copy-paste. Read, digest, and summarize in your own words.
+## Research Standards
+- **Source Selection**: Official Docs > Engineering Blogs > StackOverflow.
+- **Citation**: Add `## References` with links.
+
+## Checklist
+- [ ] **Structure**: Does it follow the Concept Template?
+- [ ] **Hygiene**: Are there any dead links (`[[Red Link]]`)?
+- [ ] **Validation**: Are external claims cited?
+

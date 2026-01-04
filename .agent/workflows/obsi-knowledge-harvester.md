@@ -17,7 +17,7 @@ description: 프로젝트나 인박스에 있는 실전 노트(Topic Note)를 �
 1.  **Move**: 파일을 이동시킵니다.
 2.  **Refactor**:
     *   **Tag Swap**: `#project/note` -> `#knowledge/topic`.
-    *   **Source Link**: Frontmatter에 `Source: [[Project_Name]]`을 추가하여 출처를 남깁니다.
+    *   **Source Track**: Frontmatter에 `Source: Project Name`을 **일반 텍스트**로 기록합니다. (아카이브 백링크 방지)
 
 ### 4단계: 연결 유지 (Maintenance)
 1.  **Check Links**: 이동으로 인해 깨진 링크가 없는지 확인하고(Obsidian 자동 처리), 필요시 원본 위치에 Placeholder를 남길지 묻습니다.

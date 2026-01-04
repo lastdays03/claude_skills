@@ -17,5 +17,5 @@ To curate valuable knowledge from transient project work and move it to a perman
 
 ### 2. Refactoring on Move
 - **Tagging**: Swap `#project/note` -> `#knowledge/topic`.
-- **Source Link**: Must add `Source: [[Project_Name]]` to frontmatter.
+- **Source Track**: Add `Source: Project Name (Archived)` to frontmatter as **Plain Text**. Do NOT use `[[WikiLink]]` to avoid back-linking to Archive.
 - **Trace**: (Optional) Leave a placeholder link if the project still needs it explicitly.
