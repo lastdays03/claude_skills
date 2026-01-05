@@ -1,36 +1,77 @@
 ---
-description: "데이터 분석의 전 과정(질의 정의 -> EDA -> 심층 분석 -> 리포팅)을 체계적으로 가이드하는 워크플로우입니다."
+description: Python 생태계(Jupyter, Pandas, Scikit-learn)를 활용하여 데이터에서 심층적인 인사이트를 도출하는 전문 분석 워크플로우입니다.
 ---
 
 # Data Analyst Workflow
 
-Python 생태계(Jupyter, Pandas, Seaborn)를 활용하여 데이터에서 인사이트를 도출하는 전문 분석 워크플로우입니다. OSEMN 방법론을 따릅니다.
+Python 생태계(Jupyter, Pandas, Scikit-learn)를 활용하여 데이터에서 심층적인 인사이트를 도출하는 전문 분석 워크플로우입니다. OSEMN 방법론과 `SKILL.md`의 표준을 따릅니다.
 
-### 1단계: 분석 환경 및 목표 정의 (Environment & Goal)
-1.  **Context Loading**: `.agent/references/data-analyst/SKILL.md`를 읽어 데이터 품질 기준과 분석 철학을 로드합니다.
-2.  **Define Objective**: `.agent/references/data-analyst/plan-template.md`를 사용하여 `docs/plans/ANALYSIS_[주제].md`를 작성합니다.
-    *   단순 정확도(Accuracy) 외에 **실질적 성공 지표(KPI)**를 정의합니다.
-3.  **Create/Select Notebook**: `docs/notebooks/EDA_01_[주제].ipynb`를 생성하거나 엽니다. (템플릿: `.agent/references/data-analyst/notebook-template.ipynb`)
+## 0단계: 기본 원칙 (Core Principles)
 
-### 2단계: 데이터 적재 및 품질 검증 (Obtain & Scrub)
-Garbage In, Garbage Out을 방지하기 위한 **데이터 신뢰성 확보** 단계입니다.
+1.  **Explanation First (선 설명 후 코드)**: 코드를 작성하기 전에 무엇을, 왜 분석하는지 Markdown으로 서술합니다.
+2.  **Interpretation Mandatory (결과 해석 필수)**: 모든 코드 셀(Code Cell)의 출력 하단에는 반드시 **Markdown 셀**을 추가하여 통계적 수치나 그래프가 의미하는 바를 **한글로** 상세히 해석합니다.
+    - *Bad*: 그래프만 덩그러니 있음.
+    - *Good*: "히스토그램의 꼬리가 우측으로 긴 것으로 보아(Skewed > 1), 로그 변환이 필요함을 시사합니다."
 
-1.  **Smart Loading**: 파일 형식에 맞는 전략을 선택합니다.
-    *   **Excel**: `formula` 보존 필요 여부 확인 (openpyxl vs pandas).
-    *   **CSV**: Delimiter 및 Encoding 자동 감지.
-2.  **Data Loading & Profiling**: 데이터를 로드하고 기초 통계량 및 분포를 확인합니다.
-3.  **Deep Sanity Check**: `SKILL.md`에 정의된 'Logical Failures' 확인 절차를 수행합니다.
-4.  **Strategic Cleaning**: 데이터 삭제/대체의 기준을 명확히 기록합니다.
+## 1단계: 분석 환경 및 목표 정의 (Environment & Goal)
 
-### 3단계: 가설 주도적 탐색 (Hypothesis Driven EDA)
-1.  **Univariate Analysis**: 개별 변수의 분포(Skewness, Outlier)를 먼저 파악합니다.
-2.  **Bivariate Analysis**: 변수 간 관계(Correlation, Group Difference)를 시각화합니다.
-3.  **Statistical Validation**: 시각적 발견을 통계적 검정(T-test, Chi-Square, ANOVA)으로 검증합니다.
-4.  **Insight Logging**: 발견된 사실이 **KPI**에 미치는 영향을 즉시 기록합니다.
+1.  **Context Loading**:
+    - `.agent/references/data-analyst/SKILL.md`를 로드하여 **'Core Principles'**를 확인합니다.
+    - **Methodology Screening (방법론 스크리닝)**:
+        - `SKILL.md`의 **'Methodology Master List'**를 스캔합니다.
+        - 현재 데이터셋의 특성(Type, Shape, Quality)과 분석 목표(Goal)를 대조하여 후보군(Candidates)을 3개 이상 필터링합니다.
+        - **[Check]**: 각 후보군 선정 이유를 한 줄로 서술하였는가? (예: "결측치가 많으므로 Random Forest 채택")
+2.  **Define Objective**:
+    - `.agent/references/data-analyst/plan-template.md`를 사용하여 `docs/plans/ANALYSIS_[주제].md`를 작성합니다.
+    - 단순 통계/정확도 외에 **비즈니스 임팩트(KPI)**를 성공 지표로 정의합니다.
+3.  **Notebook Setup**:
+    - `docs/notebooks/EDA_01_[주제].ipynb`를 생성하거나 엽니다.
+    - **AI Readability**: 모든 통계량(`describe`, `p-value`)과 그래프는 노트북 출력 셀에 남겨두어야 합니다 (No Hiding).
 
-### 4단계: 모델링 및 해석 (Model & Interpret) [Optional]
-1.  **Baseline**: Dummy/Simple 모델로 성능 하한선을 설정합니다.
-2.  **Feature selection**: 무의미한 변수를 제거하고 핵심 변수만 남깁니다.
-3.  **Validation**: Stratified K-Fold CV로 일반화 성능을 검증합니다.
-4.  **Interpretation**: SHAP Value 등을 사용하여 모델의 판단 근거를 설명합니다.
-5.  **Reporting**: 기술적 수치를 비즈니스 언어로 번역하여 보고합니다.
+## 2단계: 데이터 적재 및 품질 검증 (Obtain & Scrub)
+
+Garbage In, Garbage Out을 방지하기 위한 데이터 신뢰성 확보 단계입니다.
+
+1.  **Smart Loading**:
+    - **Excel**: 수식(Formula) 보존이 필요하면 `openpyxl`을 사용하고, 계산된 값(Calculated Values)을 **하드코딩(Hardcoding)하지 않도록** 주의합니다.
+    - **CSV**: 인코딩(`utf-8`, `cp949`) 및 구분자(Delimiter) 자동 감지 기능을 활용합니다.
+2.  **Data Profiling**:
+    - 기초 통계량(`describe()`), 결측치(`isnull().sum()`), 데이터 타입(`dtypes`)을 확인합니다.
+    - **[Markdown]**: 확인된 결측치 현황과 데이터 타입을 텍스트로 요약합니다.
+3.  **Deep Sanity Check**:
+    - `SKILL.md`의 **'Logical Failures'** 항목을 참조하여 정밀 점검합니다.
+    - **불가능한 값 감지**: 음수 나이(Age < 0), 미래의 날짜(Future Dates) 등 상식 밖의 데이터를 식별합니다.
+4.  **Strategic Cleaning**:
+    - 결측치 및 이상치 처리 시, 앞서 스크리닝한 **'Imputation Methodology'** (Simple, KNN, Iterative)를 적용합니다.
+    - 처리 기준(삭제 vs 대치)과 근거를 명시합니다.
+
+## 3단계: 가설 주도적 탐색 (Hypothesis Driven EDA)
+
+단순한 그래프 나열을 지양하고, 질문(Question) -> 시각화(Viz) -> 발견(Finding)의 흐름을 유지합니다.
+
+1.  **Univariate Analysis**: 개별 변수의 분포, 왜도(Skewness), 첨도(Kurtosis)를 확인합니다.
+    - **[Markdown]**: 각 변수의 분포 특성과 이상치 유무를 서술합니다.
+2.  **Bivariate Analysis**: 상관관계 행렬(Correlation Matrix), 산점도(Scatter)를 통해 변수 간 관계를 시각화합니다.
+    - **[Markdown]**: 변수 간의 선형/비선형 관계를 해석합니다.
+3.  **Statistical Validation**:
+    - 시각적 발견을 통계적 검정(Normality Test, T-test, ANOVA)으로 검증하여 '우연'이 아님을 증명합니다.
+    - **[Markdown]**: p-value를 근거로 귀무가설 기각 여부를 명시합니다.
+4.  **Insight Logging**:
+    - 분석 중간에 발견된 중요한 사실이 비즈니스 KPI에 미칠 영향을 즉시 기록합니다.
+
+## 4단계: 모델링 및 해석 (Model & Interpret) [Optional]
+
+1.  **Baseline Model**:
+    - 가장 간단한 모델(Dummy, Linear)로 성능 하한선(Baseline)을 설정하고 이를 넘어서는지 확인합니다.
+2.  **Feature Engineering**:
+    - `SKILL.md` 리스트의 기법(Encoding, Scaling, PCA)을 적용합니다.
+3.  **Advanced Modeling**:
+    - 스크리닝 단계에서 선정한 **핵심 모델(Candidates)**을 학습시킵니다.
+    - **Hyperparameter Tuning**: 필요 시 Grid/Bayesian Search를 수행합니다.
+4.  **Rigorous Validation**:
+    - **Stratified K-Fold**를 사용하여 과적합을 방지하고 일반화 성능을 평가합니다.
+5.  **Interpretation & Error Analysis**:
+    - **Feature Importance**: `SHAP`, `Permutation Importance` 등을 활용해 모델의 판단 근거를 설명합니다.
+    - **Error Analysis**: **'Top 10 Worst Errors'** (모델이 가장 크게 틀린 샘플 10개)를 수동으로 검사하여 원인을 파악합니다.
+6.  **Reporting**:
+    - 기술적 수치(Accuracy, MSE)를 **비즈니스 언어**(예상 수익, 리스크 감소)로 번역하여 보고합니다.
