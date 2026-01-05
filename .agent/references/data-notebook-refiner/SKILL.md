@@ -1,5 +1,5 @@
 ---
-name: notebook-refiner
+name: data-notebook-refiner
 description: Standards for high-quality Jupyter Notebooks. Focuses on readability, reproducibility, and educational value.
 ---
 

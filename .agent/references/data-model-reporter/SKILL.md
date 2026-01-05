@@ -1,3 +1,8 @@
+---
+name: data-model-reporter
+description: Standards for generating Model Cards from data analysis notebooks. Aligned with Hugging Face and ISO transparency standards.
+---
+
 # Skill: Model Card Reporter
 
 This skill defines the standard for generating **Model Cards** from data analysis notebooks. It aligns with **Hugging Face** and **Google** standards to ensure transparency, reproducibility, and ethical reporting.
