@@ -22,6 +22,19 @@ To move notes from "Transient" to "Permanent" status by adding structure, depth,
 - **Elaborate**: Add depth to weak sections.
 - **Link**: Auto-link to existing concepts in `20_Learning` ONLY. **Do NOT link to `90_Archive` or `Projects`.**
 - **Prune (Cleanup)**: Detect and remove links to non-existent files (Dead Links).
+- **Convert (Notebooks)**: If target is `.ipynb`, perform **Deep Conversion**:
+  - **Structure**: Maintain original headers and markdown logic.
+  - **Code**: Include all executable Python code in code blocks.
+  - **Outputs**: Capture key text outputs (print, dataframes) in blocks.
+  - **Images**: Describe the content/trend of charts if extraction is not possible.
+  - **Synthesis**: Add analysis/explanation for "Why this result matters".
+- **Integration Protocol**:
+- **Integration Protocol**:
+  - **Merge**: If the notebook covers an existing concept, merge findings into the existing note's "Examples" section.
+  - **Auxiliary**: Otherwise, rename to `{Concept}_Lab.md` and link it as auxiliary material.
+  - **Plan Cleanup**: If `Plan_*.md` exists alongside the Content Note:
+    - **Absorb**: Move useful context (Objectives, TODOs) to the Content Note.
+    - **Delete**: Delete the Plan file (Maintain 1 Source of Truth).
 
 ## Research Standards
 - **Source Selection**: Official Docs > Engineering Blogs > StackOverflow.
