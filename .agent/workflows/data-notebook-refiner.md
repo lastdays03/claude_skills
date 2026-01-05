@@ -7,8 +7,8 @@ description: Jupyter Notebook의 코드 품질, 문서화 수준, 실행 안정�
 기존 Jupyter Notebook을 **학습 자료 수준(Study Material Quality)**으로 다듬기 위한 워크플로우입니다. 단순 코드 정리(Linting)를 넘어, **"왜(Why)"**에 대한 설명과 **재현 가능성(Reproducibility)** 확보에 집중합니다.
 
 ### 1단계: 분석 및 기준 확인 (Analyze & Context)
-1.  **Context Loading**: `.agent/references/dev-notebook-refiner/SKILL.md`를 읽어 'High Quality Notebook'의 기준을 로드합니다.
-2.  **Current State Check**: 리팩토링할 노트북을 열고 `.agent/references/dev-notebook-refiner/checklist.md`와 대조하여 부족한 점을 파악합니다.
+1.  **Context Loading**: `.agent/references/data-notebook-refiner/SKILL.md`를 읽어 'High Quality Notebook'의 기준을 로드합니다.
+2.  **Current State Check**: 리팩토링할 노트북을 열고 `.agent/references/data-notebook-refiner/checklist.md`와 대조하여 부족한 점을 파악합니다.
     *   **Structure**: 흐름이 논리적인가?
     *   **Dependency**: 환경 설정이 명시되었는가?
 
