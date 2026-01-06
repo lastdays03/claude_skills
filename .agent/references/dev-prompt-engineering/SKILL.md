@@ -21,6 +21,11 @@ description: "Expert guide for crafting high-performance Claude prompts, based o
 - **Let Claude Think**: For complex tasks, ask Claude to "Think step-by-step" before answering.
 - **Thinking Tags**: Use `<thinking>` blocks to verify logic before generating the final `<answer>`.
 
+### 4. Language Strategy (Performance vs Usability)
+- **Prompt Language**: **English**. (LLMs reason better in English). All instructions, constraints, and system prompts must be in English.
+- **Output Language**: **Korean**. The final response meant for the user must be in Korean.
+- **Rule**: "Think in English, Speak in Korean."
+
 ## 🏗️ Structure of a Great Prompt
 
 1.  **Role & Goal**: Who is Claude? What is the objective?

@@ -12,6 +12,9 @@ description: "Anthropic의 Best Practice를 기반으로 고성능 프롬프트�
     *   **Role**: 에이전트가 어떤 페르소나를 가져야 합니까?
     *   **Task**: 수행해야 할 핵심 작업은 무엇입니까?
     *   **Constraint**: 출력 형식(JSON, XML 등)이나 제약 사항은 무엇입니까?
+3.  **Language Check**: 다음 규칙을 사용자에게 인지시킵니다.
+    *   **프롬프트 본문**: 모델 성능 극대화를 위해 **영어**로 작성됩니다.
+    *   **최종 답변**: 사용자가 읽기 편하도록 **한국어**로 출력되도록 설정합니다.
 
 ## 2. 초안 작성 (Drafting - Context & Role)
 **"Context First, Instructions Later"**
