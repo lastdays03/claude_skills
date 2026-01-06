@@ -23,11 +23,27 @@ Python 생태계(Jupyter, Pandas, Scikit-learn)를 활용하여 데이터에서 
         - **[Check]**: 각 후보군 선정 이유를 한 줄로 서술하였는가? (예: "결측치가 많으므로 Random Forest 채택")
 2.  **Define Objective**:
     - `.agent/references/data-analyst/plan-template.md`를 사용하여 `docs/plans/ANALYSIS_[주제].md`를 작성합니다.
-    - **Metric Selection**: `SKILL.md`의 **'Evaluation Metrics Guide'**를 참조하여 비즈니스 목표에 부합하는 지표를 선정합니다.
     - 단순 통계/정확도 외에 **비즈니스 임팩트(KPI)**를 성공 지표로 정의합니다.
 3.  **Notebook Setup**:
     - `docs/notebooks/EDA_01_[주제].ipynb`를 생성하거나 엽니다.
     - **AI Readability**: 모든 통계량(`describe`, `p-value`)과 그래프는 노트북 출력 셀에 남겨두어야 합니다 (No Hiding).
+
+## 3단계: 방법론 스크리닝 (Methodology Screening)
+**"The Right Tool for the Job"**
+
+데이터 특성에 맞춰 `SKILL.md`의 **Methodology Master List**에서 최적의 기법을 선정하고 **Plan에 명시**합니다.
+
+*   **Metric Selection**: 비즈니스 목표와 데이터 불균형 여부에 따라 평가지표를 선택합니다. (예: Imbalanced → F1/Recall/PRCURSOR, Regression → MAPE/RMSE)
+*   **Preprocessing**: 
+    *   **Outliers**: 이상치가 많으면 `RobustScaler` 선택.
+    *   **High Cardinality**: 카테고리가 너무 많으면 `Target Encoding` 고려.
+    *   **Imbalance**: `SMOTE` 또는 `Class Weights` 적용 여부 결정.
+*   **Modeling**: 
+    *   **Baseline**: Logistic/Linear Regression, Decision Tree.
+    *   **Advanced**: `CatBoost`(Categorical), `XGBoost/LightGBM`(Large Data), `Isolation Forest`(Anomaly) 등 선택.
+*   **Validation стратегия**:
+    *   **Time Series**: 반드시 `Time Series Split` 사용.
+    *   **Imbalanced**: `Stratified K-Fold` 필수.
 
 ## 2단계: 데이터 적재 및 품질 검증 (Obtain & Scrub)
 
@@ -66,10 +82,11 @@ Garbage In, Garbage Out을 방지하기 위한 데이터 신뢰성 확보 단계
     - 가장 간단한 모델(Dummy, Linear)로 성능 하한선(Baseline)을 설정하고 이를 넘어서는지 확인합니다.
 2.  **Feature Engineering**:
     - `SKILL.md` 리스트의 기법(Encoding, Scaling, PCA)을 적용합니다.
-3.  **Advanced Modeling (Classification / Regression / Clustering)**:
-    - 스크리닝 단계에서 선정한 **핵심 모델(Candidates)**을 학습시킵니다.
+3. ### 4.3 Advanced Modeling & Tuning
+*   **Model Selection**: 선정된 고성능 모델(XGBoost, CatBoost, RF 등)을 학습합니다.
+*   **Hyperparameter Tuning**: 단순히 Grid Search를 넘어 `Optuna` 등을 활용해 효율적으로 최적화합니다.
+*   **Rigorous Validation**: `Cross Validation` 점수와 `Hold-out Test` 점수의 차이를 확인하여 오버피팅을 감지합니다. (Gap > 5% 시 경고)
     - **Clustering**: K-Means 등을 사용할 경우 `Elbow Method`나 `Silhouette Score`로 최적의 군집 수(K)를 결정합니다.
-    - **Hyperparameter Tuning**: 필요 시 Grid/Bayesian Search를 수행합니다.
 4.  **Rigorous Validation**:
     - **Stratified K-Fold**를 사용하여 과적합을 방지하고 일반화 성능을 평가합니다.
 5.  **Interpretation & Error Analysis**:

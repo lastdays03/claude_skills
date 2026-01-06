@@ -23,16 +23,22 @@
 
 ---
 
-## 2. 방법론 (Methodology)
+## 2. 방법론 스크리닝 (Methodology Screening)
+**"The Right Tool for the Job"** (Select from `SKILL.md`)
 
-- **Type**: [e.g. Predictive Modeling (Binary Classification)]
-- **Tools**:
-  - **Data Processing**: Pandas, NumPy
-  - **Visualization**: Matplotlib, Seaborn
-  - **Statistical Testing**: SciPy (t-test, chi-square)
-  - **Modeling**: Scikit-learn ([Models to use])
-  - **Interpretation**: SHAP, Feature Importance
-- **Target Variable**: `[Column Name]` ([0: Negative, 1: Positive])
+*   **Metric Selection**:
+    *   **Primary Metric**: `[e.g. F1-Score]` (Reason: [e.g. Imbalanced Data, FN is critical])
+    *   **Auxiliary Metric**: `[e.g. ROC-AUC]`
+*   **Preprocessing Strategy**:
+    *   **Scaling**: `[e.g. RobustScaler]` (Reason: [e.g. Many Outliers])
+    *   **Encoding**: `[e.g. Target Encoding]` (Reason: [e.g. High Cardinality in ZipCode])
+    *   **Imbalance Handling**: `[e.g. SMOTE]` (Reason: [e.g. Fraud Case 0.1%])
+*   **Modeling Strategy**:
+    *   **Baseline**: `[e.g. Logistic Regression]` (Interpretability First)
+    *   **Advanced Candidates**: `[e.g. CatBoost, XGBoost]` (Handling Categorical Data)
+*   **Validation Strategy**:
+    *   **CV Type**: `[e.g. Stratified K-Fold]` (Reason: [e.g. Preserving Class Ratio])
+    *   **Hyperparameter Tuning**: `[e.g. Optuna]` (Efficiency)
 
 ---
 
