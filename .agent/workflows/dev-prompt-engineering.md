@@ -24,7 +24,10 @@ description: "Anthropic의 Best Practice를 기반으로 고성능 프롬프트�
     *   `{{DOMAIN}}`: Role 정보
     *   `{{GOAL}}`: Task 정보
     *   `{{YEARS}}`: (Optional) 경력 연차 (기본값: Senior/10+)
-3.  **Draft V1**: 작성된 1차 프롬프트를 사용자에게 제시합니다.
+3.  **Draft V1 (Strict Adherence)**:
+    - **구조 유지**: `prompt-template.md`의 모든 XML 태그(`<system_role>`, `<context_and_data>` 등)와 내용을 **그대로 유지**해야 합니다.
+    - **작업 내용**: 오직 `{{ }}`로 감싸진 플레이스홀더만 사용자의 입력으로 교체합니다. 임의로 섹션을 생략하거나 요약하지 마십시오.
+    - 작성된 전체 프롬프트를 사용자에게 제시합니다.
 
 ## 3. 고도화 (Refining - CoT & Few-Shot)
 **"생각하게 만들고, 예시를 보여주세요."**
