@@ -56,34 +56,54 @@ Before finalizing:
 
 ## Appendix: Methodology Master List (Reference)
 
-Scan this table to select the most appropriate methodology for your data and goal.
+Scan these tables to select the most appropriate methodology for your data and goal.
 
-| Methodology               | Category               | Usage / Purpose                                     | Data Constraints                                       |
-| :------------------------ | :--------------------- | :-------------------------------------------------- | :----------------------------------------------------- |
-| **Simple Imputation**     | Preprocessing          | Missing Value Imputation (Simple Replacement)       | Mean/Median (Numeric), Mode (Categorical)              |
-| **KNN Imputation**        | Preprocessing          | Missing Value Imputation (Similarity-based)         | Mainly Numeric, useful when correlations exist         |
-| **Iterative Imputation**  | Preprocessing          | Missing Value Imputation (Model-based)              | High variable correlation, assumes MAR                 |
-| **One-Hot Encoding**      | Preprocessing          | Categorical to Numeric                              | Nominal data, Low Cardinality                          |
-| **Label Encoding**        | Preprocessing          | Categorical to Numeric                              | Ordinal data                                           |
-| **Standard Scaler**       | Preprocessing          | Scaling (Standardization)                           | Sensitive to outliers, assumes Gaussian distribution   |
-| **MinMax Scaler**         | Preprocessing          | Scaling (Normalization)                             | Bounded data, distribution agnostic                    |
-| **PCA**                   | Preprocessing          | Dimensionality Reduction, Multicollinearity Removal | Continuous variables, assumes linear relationships     |
-| **Linear Regression**     | Model (Regression)     | Baseline for regression tasks                       | Linear relationship assumption                         |
-| **Logistic Regression**   | Model (Classification) | Baseline for classification (Binary/Multi-class)    | Linear separation assumption, large sparse data OK     |
-| **K-Nearest Neighbors**   | Model (Class/Reg)      | Instance-based learning, Simple & Intuitive         | Scale-sensitive (Standardization required), Small data |
-| **Random Forest**         | Model (Ensemble)       | Classification/Regression, Feature Importance       | Handles Mixed types, Robust to outliers/missing values |
-| **XGBoost / LightGBM**    | Model (Ensemble)       | High Performance Classification/Regression          | Large datasets, handles missing values internally      |
-| **Stratified K-Fold**     | Validation             | Cross Validation (Generalization)                   | Essential for Imbalanced Class distribution            |
-| **K-Fold CV**             | Validation             | Cross Validation                                    | Sufficient data, Balanced classes                      |
-| **Grid Search**           | Tuning                 | Hyperparameter Optimization                         | Small search space (Exhaustive)                        |
-| **Bayesian Optimization** | Tuning                 | Hyperparameter Optimization                         | Large search space, High evaluation cost               |
-| **L1 (Lasso)**            | Regularization         | Sparse Model, Feature Selection                     | When sparse solution (feature selection) is needed     |
-| **L2 (Ridge)**            | Regularization         | Prevent Overfitting, Weight Decay                   | When high multicollinearity exists                     |
-| **ElasticNet**            | Regularization         | Combination of L1 and L2                            | When both feature selection and regularization needed  |
-| **CNN**                   | Deep Learning          | Image/Pattern Recognition                           | Grid-like data (Images, etc.)                          |
-| **RNN / LSTM**            | Deep Learning          | Sequence/Time-Series Prediction                     | Sequential data                                        |
-| **Transformer**           | Deep Learning          | NLP, Complex Pattern Matching                       | Long sequences, Large-scale data                       |
-| **SHAP**                  | Interpretation         | Explain Model Predictions                           | Specialized for Tree-based models                      |
+### 1. Preprocessing & Data Cleaning
+| Methodology              | Usage / Purpose                                     | Data Constraints                                     |
+| :----------------------- | :-------------------------------------------------- | :--------------------------------------------------- |
+| **Simple Imputation**    | Missing Value Imputation (Simple Replacement)       | Mean/Median (Numeric), Mode (Categorical)            |
+| **KNN Imputation**       | Missing Value Imputation (Similarity-based)         | Mainly Numeric, useful when correlations exist       |
+| **Iterative Imputation** | Missing Value Imputation (Model-based)              | High variable correlation, assumes MAR               |
+| **One-Hot Encoding**     | Categorical to Numeric                              | Nominal data, Low Cardinality                        |
+| **Label Encoding**       | Categorical to Numeric                              | Ordinal data                                         |
+| **Standard Scaler**      | Scaling (Standardization)                           | Sensitive to outliers, assumes Gaussian distribution |
+| **MinMax Scaler**        | Scaling (Normalization)                             | Bounded data, distribution agnostic                  |
+| **PCA**                  | Dimensionality Reduction, Multicollinearity Removal | Continuous variables, assumes linear relationships   |
+
+### 2. Machine Learning Models
+| Methodology             | Type           | Usage / Purpose                            | Constraints / Notes                                        |
+| :---------------------- | :------------- | :----------------------------------------- | :--------------------------------------------------------- |
+| **Linear Regression**   | Regression     | Baseline for regression                    | Linear relationship assumption                             |
+| **Logistic Regression** | Classification | Baseline for classification                | Linear separation assumption, large sparse data OK         |
+| **K-Nearest Neighbors** | Class/Reg      | Instance-based learning, Simple            | Scale-sensitive, Small data                                |
+| **Random Forest**       | Ensemble       | Robust Classification/Regression           | Handles Mixed types, Robust to outliers/missing values     |
+| **XGBoost / LightGBM**  | Ensemble       | High Performance                           | Large datasets, handles missing values internally          |
+| **K-Means**             | Clustering     | Partitioning into K clusters               | Spherical Clusters, Sensitive to outliers, Scale-sensitive |
+| **DBSCAN**              | Clustering     | Density-based clustering, Detects Outliers | Arbitrary shapes, Scale-sensitive, finding epsilon is hard |
+| **Hierarchical**        | Clustering     | Dendrogram visualization                   | Computationally expensive for large data                   |
+
+### 3. Deep Learning Models
+| Methodology     | Usage / Purpose                 | Data Constraints                 |
+| :-------------- | :------------------------------ | :------------------------------- |
+| **CNN**         | Image/Pattern Recognition       | Grid-like data (Images, etc.)    |
+| **RNN / LSTM**  | Sequence/Time-Series Prediction | Sequential data                  |
+| **Transformer** | NLP, Complex Pattern Matching   | Long sequences, Large-scale data |
+
+### 4. Validation & Optimization
+| Methodology               | Type           | Usage / Purpose                   | Notes                                                 |
+| :------------------------ | :------------- | :-------------------------------- | :---------------------------------------------------- |
+| **Stratified K-Fold**     | Validation     | Cross Validation (Generalization) | Essential for Imbalanced Class distribution           |
+| **K-Fold CV**             | Validation     | Cross Validation                  | Sufficient data, Balanced classes                     |
+| **Grid Search**           | Tuning         | Hyperparameter Optimization       | Small search space (Exhaustive)                       |
+| **Bayesian Optimization** | Tuning         | Hyperparameter Optimization       | Large search space, High evaluation cost              |
+| **L1 (Lasso)**            | Regularization | Sparse Model, Feature Selection   | When sparse solution is needed                        |
+| **L2 (Ridge)**            | Regularization | Prevent Overfitting, Weight Decay | When high multicollinearity exists                    |
+| **ElasticNet**            | Regularization | Combination of L1 and L2          | When both feature selection and regularization needed |
+
+### 5. Interpretation
+| Methodology | Usage / Purpose           | Notes                             |
+| :---------- | :------------------------ | :-------------------------------- |
+| **SHAP**    | Explain Model Predictions | Specialized for Tree-based models |
 
 ## Appendix: Evaluation Metrics Guide
 
@@ -105,3 +125,10 @@ Select metrics based on your problem type and business goal.
 | **RMSE**     | Interpretability    | When you need error in the same unit as the target.     |
 | **MAE**      | Robustness          | When you want to be robust against outliers.            |
 | **R2 Score** | Explainability      | To see how much variance is explained by the model.     |
+
+### Clustering Metrics (Unsupervised)
+| Metric               | Focus               | When to use                                                                        |
+| :------------------- | :------------------ | :--------------------------------------------------------------------------------- |
+| **Silhouette Score** | Cluster Separation  | To measure how similar an object is to its own cluster compared to other clusters. |
+| **Davies-Bouldin**   | Cluster Compactness | Lower is better. Good for comparing clustering algorithms.                         |
+| **Elbow Method**     | Optimal K           | To find the inflection point (optimal K) in K-Means.                               |

@@ -66,8 +66,9 @@ Garbage In, Garbage Out을 방지하기 위한 데이터 신뢰성 확보 단계
     - 가장 간단한 모델(Dummy, Linear)로 성능 하한선(Baseline)을 설정하고 이를 넘어서는지 확인합니다.
 2.  **Feature Engineering**:
     - `SKILL.md` 리스트의 기법(Encoding, Scaling, PCA)을 적용합니다.
-3.  **Advanced Modeling**:
+3.  **Advanced Modeling (Classification / Regression / Clustering)**:
     - 스크리닝 단계에서 선정한 **핵심 모델(Candidates)**을 학습시킵니다.
+    - **Clustering**: K-Means 등을 사용할 경우 `Elbow Method`나 `Silhouette Score`로 최적의 군집 수(K)를 결정합니다.
     - **Hyperparameter Tuning**: 필요 시 Grid/Bayesian Search를 수행합니다.
 4.  **Rigorous Validation**:
     - **Stratified K-Fold**를 사용하여 과적합을 방지하고 일반화 성능을 평가합니다.
