@@ -59,28 +59,34 @@ Before finalizing:
 Scan these tables to select the most appropriate methodology for your data and goal.
 
 ### 1. Preprocessing & Data Cleaning
-| Methodology              | Usage / Purpose                                     | Data Constraints                                     |
-| :----------------------- | :-------------------------------------------------- | :--------------------------------------------------- |
-| **Simple Imputation**    | Missing Value Imputation (Simple Replacement)       | Mean/Median (Numeric), Mode (Categorical)            |
-| **KNN Imputation**       | Missing Value Imputation (Similarity-based)         | Mainly Numeric, useful when correlations exist       |
-| **Iterative Imputation** | Missing Value Imputation (Model-based)              | High variable correlation, assumes MAR               |
-| **One-Hot Encoding**     | Categorical to Numeric                              | Nominal data, Low Cardinality                        |
-| **Label Encoding**       | Categorical to Numeric                              | Ordinal data                                         |
-| **Standard Scaler**      | Scaling (Standardization)                           | Sensitive to outliers, assumes Gaussian distribution |
-| **MinMax Scaler**        | Scaling (Normalization)                             | Bounded data, distribution agnostic                  |
-| **PCA**                  | Dimensionality Reduction, Multicollinearity Removal | Continuous variables, assumes linear relationships   |
+| Methodology              | Usage / Purpose                                     | Data Constraints                                      |
+| :----------------------- | :-------------------------------------------------- | :---------------------------------------------------- |
+| **Simple Imputation**    | Missing Value Imputation (Simple Replacement)       | Mean/Median (Numeric), Mode (Categorical)             |
+| **KNN Imputation**       | Missing Value Imputation (Similarity-based)         | Mainly Numeric, useful when correlations exist        |
+| **Iterative Imputation** | Missing Value Imputation (Model-based)              | High variable correlation, assumes MAR                |
+| **One-Hot Encoding**     | Categorical to Numeric                              | Nominal data, Low Cardinality                         |
+| **Label Encoding**       | Categorical to Numeric                              | Ordinal data                                          |
+| **Target Encoding**      | Categorical to Numeric                              | High Cardinality features, Risk of Overfitting        |
+| **Standard Scaler**      | Scaling (Standardization)                           | Sensitive to outliers, assumes Gaussian distribution  |
+| **MinMax Scaler**        | Scaling (Normalization)                             | Bounded data, distribution agnostic                   |
+| **Robust Scaler**        | Scaling (Robust to Outliers)                        | Data with many outliers (Uses Median/IQR)             |
+| **SMOTE**                | Oversampling (Imbalanced Data)                      | Synthesize minority class samples (Training set ONLY) |
+| **PCA**                  | Dimensionality Reduction, Multicollinearity Removal | Continuous variables, assumes linear relationships    |
 
 ### 2. Machine Learning Models
-| Methodology             | Type           | Usage / Purpose                            | Constraints / Notes                                        |
-| :---------------------- | :------------- | :----------------------------------------- | :--------------------------------------------------------- |
-| **Linear Regression**   | Regression     | Baseline for regression                    | Linear relationship assumption                             |
-| **Logistic Regression** | Classification | Baseline for classification                | Linear separation assumption, large sparse data OK         |
-| **K-Nearest Neighbors** | Class/Reg      | Instance-based learning, Simple            | Scale-sensitive, Small data                                |
-| **Random Forest**       | Ensemble       | Robust Classification/Regression           | Handles Mixed types, Robust to outliers/missing values     |
-| **XGBoost / LightGBM**  | Ensemble       | High Performance                           | Large datasets, handles missing values internally          |
-| **K-Means**             | Clustering     | Partitioning into K clusters               | Spherical Clusters, Sensitive to outliers, Scale-sensitive |
-| **DBSCAN**              | Clustering     | Density-based clustering, Detects Outliers | Arbitrary shapes, Scale-sensitive, finding epsilon is hard |
-| **Hierarchical**        | Clustering     | Dendrogram visualization                   | Computationally expensive for large data                   |
+| Methodology             | Type              | Usage / Purpose                            | Constraints / Notes                                        |
+| :---------------------- | :---------------- | :----------------------------------------- | :--------------------------------------------------------- |
+| **Linear Regression**   | Regression        | Baseline for regression                    | Linear relationship assumption                             |
+| **Logistic Regression** | Classification    | Baseline for classification                | Linear separation assumption, large sparse data OK         |
+| **SVM / SVR**           | Class/Reg         | High accuracy in high dimensional spaces   | Computationally expensive (O(n^3)), Scale-sensitive        |
+| **K-Nearest Neighbors** | Class/Reg         | Instance-based learning, Simple            | Scale-sensitive, Small data                                |
+| **Random Forest**       | Ensemble          | Robust Classification/Regression           | Handles Mixed types, Robust to outliers/missing values     |
+| **XGBoost / LightGBM**  | Ensemble          | High Performance                           | Large datasets, handles missing values internally          |
+| **CatBoost**            | Ensemble          | Best for Categorical Features              | Handles categories automatically, Slower training          |
+| **Isolation Forest**    | Anomaly Detection | Outlier/Anomaly Detection                  | High dimensional data, efficiency                          |
+| **K-Means**             | Clustering        | Partitioning into K clusters               | Spherical Clusters, Sensitive to outliers, Scale-sensitive |
+| **DBSCAN**              | Clustering        | Density-based clustering, Detects Outliers | Arbitrary shapes, Scale-sensitive, finding epsilon is hard |
+| **Hierarchical**        | Clustering        | Dendrogram visualization                   | Computationally expensive for large data                   |
 
 ### 3. Deep Learning Models
 | Methodology     | Usage / Purpose                 | Data Constraints                 |
@@ -90,15 +96,17 @@ Scan these tables to select the most appropriate methodology for your data and g
 | **Transformer** | NLP, Complex Pattern Matching   | Long sequences, Large-scale data |
 
 ### 4. Validation & Optimization
-| Methodology               | Type           | Usage / Purpose                   | Notes                                                 |
-| :------------------------ | :------------- | :-------------------------------- | :---------------------------------------------------- |
-| **Stratified K-Fold**     | Validation     | Cross Validation (Generalization) | Essential for Imbalanced Class distribution           |
-| **K-Fold CV**             | Validation     | Cross Validation                  | Sufficient data, Balanced classes                     |
-| **Grid Search**           | Tuning         | Hyperparameter Optimization       | Small search space (Exhaustive)                       |
-| **Bayesian Optimization** | Tuning         | Hyperparameter Optimization       | Large search space, High evaluation cost              |
-| **L1 (Lasso)**            | Regularization | Sparse Model, Feature Selection   | When sparse solution is needed                        |
-| **L2 (Ridge)**            | Regularization | Prevent Overfitting, Weight Decay | When high multicollinearity exists                    |
-| **ElasticNet**            | Regularization | Combination of L1 and L2          | When both feature selection and regularization needed |
+| Methodology               | Type           | Usage / Purpose                      | Notes                                                 |
+| :------------------------ | :------------- | :----------------------------------- | :---------------------------------------------------- |
+| **Stratified K-Fold**     | Validation     | Cross Validation (Generalization)    | Essential for Imbalanced Class distribution           |
+| **K-Fold CV**             | Validation     | Cross Validation                     | Sufficient data, Balanced classes                     |
+| **Time Series Split**     | Validation     | Cross Validation (Temporal)          | No future data leakage (essential for time-series)    |
+| **Grid Search**           | Tuning         | Hyperparameter Optimization          | Small search space (Exhaustive)                       |
+| **Bayesian Optimization** | Tuning         | Hyperparameter Optimization          | Large search space, High evaluation cost              |
+| **Optuna**                | Tuning         | Next-gen Hyperparameter Optimization | Efficient, Define-by-run, Pruning capabilities        |
+| **L1 (Lasso)**            | Regularization | Sparse Model, Feature Selection      | When sparse solution is needed                        |
+| **L2 (Ridge)**            | Regularization | Prevent Overfitting, Weight Decay    | When high multicollinearity exists                    |
+| **ElasticNet**            | Regularization | Combination of L1 and L2             | When both feature selection and regularization needed |
 
 ### 5. Interpretation
 | Methodology | Usage / Purpose           | Notes                             |
@@ -117,14 +125,16 @@ Select metrics based on your problem type and business goal.
 | **Recall**    | False Negative Reduction | When FN is critical (e.g., Cancer Diagnosis, Fraud).    |
 | **F1 Score**  | Balance                  | When you need a balance between Precision and Recall.   |
 | **ROC-AUC**   | Ranking Quality          | When you need robust performance across thresholds.     |
+| **Log Loss**  | Probability Confidence   | When the predicted probability value itself matters.    |
 
 ### Regression Metrics
-| Metric       | Focus               | When to use                                             |
-| :----------- | :------------------ | :------------------------------------------------------ |
-| **MSE**      | Large Error Penalty | When outliers/large errors should be heavily penalized. |
-| **RMSE**     | Interpretability    | When you need error in the same unit as the target.     |
-| **MAE**      | Robustness          | When you want to be robust against outliers.            |
-| **R2 Score** | Explainability      | To see how much variance is explained by the model.     |
+| Metric       | Focus                     | When to use                                             |
+| :----------- | :------------------------ | :------------------------------------------------------ |
+| **MSE**      | Large Error Penalty       | When outliers/large errors should be heavily penalized. |
+| **RMSE**     | Interpretability          | When you need error in the same unit as the target.     |
+| **MAE**      | Robustness                | When you want to be robust against outliers.            |
+| **R2 Score** | Explainability            | To see how much variance is explained by the model.     |
+| **MAPE**     | Business Interpretability | Error in Percentage (%). Easy for stakeholders.         |
 
 ### Clustering Metrics (Unsupervised)
 | Metric               | Focus               | When to use                                                                        |
