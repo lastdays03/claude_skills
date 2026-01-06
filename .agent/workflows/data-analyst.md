@@ -23,6 +23,7 @@ Python 생태계(Jupyter, Pandas, Scikit-learn)를 활용하여 데이터에서 
         - **[Check]**: 각 후보군 선정 이유를 한 줄로 서술하였는가? (예: "결측치가 많으므로 Random Forest 채택")
 2.  **Define Objective**:
     - `.agent/references/data-analyst/plan-template.md`를 사용하여 `docs/plans/ANALYSIS_[주제].md`를 작성합니다.
+    - **Metric Selection**: `SKILL.md`의 **'Evaluation Metrics Guide'**를 참조하여 비즈니스 목표에 부합하는 지표를 선정합니다.
     - 단순 통계/정확도 외에 **비즈니스 임팩트(KPI)**를 성공 지표로 정의합니다.
 3.  **Notebook Setup**:
     - `docs/notebooks/EDA_01_[주제].ipynb`를 생성하거나 엽니다.

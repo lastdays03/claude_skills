@@ -58,25 +58,50 @@ Before finalizing:
 
 Scan this table to select the most appropriate methodology for your data and goal.
 
-| Methodology               | Category         | Usage / Purpose                                     | Data Constraints                                       |
-| :------------------------ | :--------------- | :-------------------------------------------------- | :----------------------------------------------------- |
-| **Simple Imputation**     | Preprocessing    | Missing Value Imputation (Simple Replacement)       | Mean/Median (Numeric), Mode (Categorical)              |
-| **KNN Imputation**        | Preprocessing    | Missing Value Imputation (Similarity-based)         | Mainly Numeric, useful when correlations exist         |
-| **Iterative Imputation**  | Preprocessing    | Missing Value Imputation (Model-based)              | High variable correlation, assumes MAR                 |
-| **One-Hot Encoding**      | Preprocessing    | Categorical to Numeric                              | Nominal data, Low Cardinality                          |
-| **Label Encoding**        | Preprocessing    | Categorical to Numeric                              | Ordinal data                                           |
-| **Standard Scaler**       | Preprocessing    | Scaling (Standardization)                           | Sensitive to outliers, assumes Gaussian distribution   |
-| **MinMax Scaler**         | Preprocessing    | Scaling (Normalization)                             | Bounded data, distribution agnostic                    |
-| **PCA**                   | Preprocessing    | Dimensionality Reduction, Multicollinearity Removal | Continuous variables, assumes linear relationships     |
-| **Random Forest**         | Model (Ensemble) | Classification/Regression, Feature Importance       | Handles Mixed types, Robust to outliers/missing values |
-| **XGBoost / LightGBM**    | Model (Ensemble) | High Performance Classification/Regression          | Large datasets, handles missing values internally      |
-| **Stratified K-Fold**     | Validation       | Cross Validation (Generalization)                   | Essential for Imbalanced Class distribution            |
-| **K-Fold CV**             | Validation       | Cross Validation                                    | Sufficient data, Balanced classes                      |
-| **Grid Search**           | Tuning           | Hyperparameter Optimization                         | Small search space (Exhaustive)                        |
-| **Bayesian Optimization** | Tuning           | Hyperparameter Optimization                         | Large search space, High evaluation cost               |
-| **L1 (Lasso)**            | Regularization   | Sparse Model, Feature Selection                     | When sparse solution (feature selection) is needed     |
-| **L2 (Ridge)**            | Regularization   | Prevent Overfitting, Weight Decay                   | When high multicollinearity exists                     |
-| **CNN**                   | Deep Learning    | Image/Pattern Recognition                           | Grid-like data (Images, etc.)                          |
-| **RNN / LSTM**            | Deep Learning    | Sequence/Time-Series Prediction                     | Sequential data                                        |
-| **Transformer**           | Deep Learning    | NLP, Complex Pattern Matching                       | Long sequences, Large-scale data                       |
-| **SHAP**                  | Interpretation   | Explain Model Predictions                           | Specialized for Tree-based models                      |
+| Methodology               | Category               | Usage / Purpose                                     | Data Constraints                                       |
+| :------------------------ | :--------------------- | :-------------------------------------------------- | :----------------------------------------------------- |
+| **Simple Imputation**     | Preprocessing          | Missing Value Imputation (Simple Replacement)       | Mean/Median (Numeric), Mode (Categorical)              |
+| **KNN Imputation**        | Preprocessing          | Missing Value Imputation (Similarity-based)         | Mainly Numeric, useful when correlations exist         |
+| **Iterative Imputation**  | Preprocessing          | Missing Value Imputation (Model-based)              | High variable correlation, assumes MAR                 |
+| **One-Hot Encoding**      | Preprocessing          | Categorical to Numeric                              | Nominal data, Low Cardinality                          |
+| **Label Encoding**        | Preprocessing          | Categorical to Numeric                              | Ordinal data                                           |
+| **Standard Scaler**       | Preprocessing          | Scaling (Standardization)                           | Sensitive to outliers, assumes Gaussian distribution   |
+| **MinMax Scaler**         | Preprocessing          | Scaling (Normalization)                             | Bounded data, distribution agnostic                    |
+| **PCA**                   | Preprocessing          | Dimensionality Reduction, Multicollinearity Removal | Continuous variables, assumes linear relationships     |
+| **Linear Regression**     | Model (Regression)     | Baseline for regression tasks                       | Linear relationship assumption                         |
+| **Logistic Regression**   | Model (Classification) | Baseline for classification (Binary/Multi-class)    | Linear separation assumption, large sparse data OK     |
+| **K-Nearest Neighbors**   | Model (Class/Reg)      | Instance-based learning, Simple & Intuitive         | Scale-sensitive (Standardization required), Small data |
+| **Random Forest**         | Model (Ensemble)       | Classification/Regression, Feature Importance       | Handles Mixed types, Robust to outliers/missing values |
+| **XGBoost / LightGBM**    | Model (Ensemble)       | High Performance Classification/Regression          | Large datasets, handles missing values internally      |
+| **Stratified K-Fold**     | Validation             | Cross Validation (Generalization)                   | Essential for Imbalanced Class distribution            |
+| **K-Fold CV**             | Validation             | Cross Validation                                    | Sufficient data, Balanced classes                      |
+| **Grid Search**           | Tuning                 | Hyperparameter Optimization                         | Small search space (Exhaustive)                        |
+| **Bayesian Optimization** | Tuning                 | Hyperparameter Optimization                         | Large search space, High evaluation cost               |
+| **L1 (Lasso)**            | Regularization         | Sparse Model, Feature Selection                     | When sparse solution (feature selection) is needed     |
+| **L2 (Ridge)**            | Regularization         | Prevent Overfitting, Weight Decay                   | When high multicollinearity exists                     |
+| **ElasticNet**            | Regularization         | Combination of L1 and L2                            | When both feature selection and regularization needed  |
+| **CNN**                   | Deep Learning          | Image/Pattern Recognition                           | Grid-like data (Images, etc.)                          |
+| **RNN / LSTM**            | Deep Learning          | Sequence/Time-Series Prediction                     | Sequential data                                        |
+| **Transformer**           | Deep Learning          | NLP, Complex Pattern Matching                       | Long sequences, Large-scale data                       |
+| **SHAP**                  | Interpretation         | Explain Model Predictions                           | Specialized for Tree-based models                      |
+
+## Appendix: Evaluation Metrics Guide
+
+Select metrics based on your problem type and business goal.
+
+### Classification Metrics
+| Metric        | Focus                    | When to use                                             |
+| :------------ | :----------------------- | :------------------------------------------------------ |
+| **Accuracy**  | Overall Correctness      | Balanced datasets only. Misleading for imbalanced data. |
+| **Precision** | False Positive Reduction | When FP is costly (e.g., Spam Filter).                  |
+| **Recall**    | False Negative Reduction | When FN is critical (e.g., Cancer Diagnosis, Fraud).    |
+| **F1 Score**  | Balance                  | When you need a balance between Precision and Recall.   |
+| **ROC-AUC**   | Ranking Quality          | When you need robust performance across thresholds.     |
+
+### Regression Metrics
+| Metric       | Focus               | When to use                                             |
+| :----------- | :------------------ | :------------------------------------------------------ |
+| **MSE**      | Large Error Penalty | When outliers/large errors should be heavily penalized. |
+| **RMSE**     | Interpretability    | When you need error in the same unit as the target.     |
+| **MAE**      | Robustness          | When you want to be robust against outliers.            |
+| **R2 Score** | Explainability      | To see how much variance is explained by the model.     |
