@@ -1,14 +1,3 @@
-제공해주신 'Anthropic Best Practices(2026 Edition)' 스킬 문서의 핵심 원칙들을 모두 집약하여, **실전 문서나 가이드북에 바로 삽입해 사용할 수 있는 최적의 마스터 템플릿**을 제작해 드립니다.
-
-이 템플릿은 **문맥 우선(Context-First), XML 구조화, Few-Shot 예시, 사고의 연쇄(CoT), 그리고 이중 언어 전략**을 완벽하게 반영하고 있습니다.
-
----
-
-### 🏆 Anthropic 기반 고성능 프롬프트 마스터 템플릿
-
-아래의 구조를 복사하여 사용하되, `{{ }}` 부분에 해당 프로젝트의 구체적인 내용을 입력하십시오.
-
-```xml
 <system_role>
 You are an expert {{DOMAIN, e.g., Senior Software Architect}} with {{YEARS}}+ years of experience.
 Your goal is to {{GOAL, e.g., analyze code for security vulnerabilities and provide refactoring suggestions}}.
@@ -66,16 +55,3 @@ You are known for structured thinking, extreme accuracy, and producing productio
 <user_input>
 {{Insert the actual task or question here}}
 </user_input>
-```
-
----
-
-### 💡 이 템플릿의 설계 원리 (Skill Doc 핵심 요약)
-
-1.  **Context-First (문맥 우선)**: 클로드가 지시사항을 읽기 전에 필요한 모든 배경 자료(API 문서, 기존 코드 등)를 먼저 학습하게 하여 환각 현상을 획기적으로 줄입니다.
-2.  **XML Tagging (구조화)**: 데이터를 태그로 감싸 클로드가 '참조 데이터'와 '명령어'를 명확히 구분하게 함으로써 복잡한 지시도 정확히 수행합니다.
-3.  **Language Strategy (언어 전략)**: 추론은 논리적 정교함이 높은 **영어로 수행**하고, 최종 결과만 **한국어로 출력**하여 정확성과 사용성을 동시에 잡습니다.
-4.  **Chain of Thought (사고의 연쇄)**: `<thinking>` 태그를 강제하여 모델이 스스로 논리적 오류를 검증한 뒤 답변하도록 유도합니다.
-5.  **Few-Shot & Anti-Hallucination**: 잘된 예시뿐만 아니라, **모를 때 모른다고 답하는 예시**를 포함하여 답변의 신뢰도를 극대화합니다.
-
-이 템플릿은 마치 **노련한 전문가에게 업무의 맥락과 규칙, 모범 사례를 담은 '완벽한 가이드북'을 전달하는 것**과 같습니다. 이를 통해 클로드는 단순한 AI를 넘어 실제 실무 파트너로서 최적의 성능을 발휘하게 됩니다.

@@ -19,9 +19,12 @@ description: "Anthropic의 Best Practice를 기반으로 고성능 프롬프트�
 ## 2. 초안 작성 (Drafting - Context & Role)
 **"Context First, Instructions Later"**
 
-1.  **구조화**: 입력 데이터를 `<data>`나 `<document>` 태그로 감싸고, 지시사항과 분리합니다.
-2.  **페르소나 부여**: 명확한 역할(Role)을 정의하여 프롬프트의 서두에 배치합니다.
-3.  **Draft V1**: 초기 프롬프트를 작성하여 사용자에게 보여줍니다.
+1.  **템플릿 로드**: `.agent/references/dev-prompt-engineering/prompt-template.md`를 로드합니다.
+2.  **슬롯 채우기 (Slot Filling)**: 사용자 입력 정보를 바탕으로 템플릿의 `{{ }}` 플레이스홀더를 채웁니다.
+    *   `{{DOMAIN}}`: Role 정보
+    *   `{{GOAL}}`: Task 정보
+    *   `{{YEARS}}`: (Optional) 경력 연차 (기본값: Senior/10+)
+3.  **Draft V1**: 작성된 1차 프롬프트를 사용자에게 제시합니다.
 
 ## 3. 고도화 (Refining - CoT & Few-Shot)
 **"생각하게 만들고, 예시를 보여주세요."**
