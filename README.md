@@ -46,6 +46,7 @@ cd ~/dev/workspace/my_new_project
 | **/dev-doc-suite**          | **[Dev]** 코드 기반의 README, API 문서, 아키텍처 다이어그램 자동 생성.            |
 | **/dev-prompt-engineering** | **[Dev]** Anthropic Best Practice(CoT, Few-shot)를 적용한 최적 프롬프트 설계.     |
 | **/biz-doc-generator**      | **[Biz]** Word, PPT, Excel 등 기업용 비즈니스 문서를 자동 생성합니다.             |
+| **/git-smart-commit**       | **[Dev]** `git diff`를 분석하여 Conventional Commits 메시지를 자동 작성하고 커밋합니다. |
 | **/dev-export**             | **[Dev]** 개발 문서를 Obsidian Inbox로 단순 백업(Export)합니다.                   |
 | **/obsi-archive-project**   | **[Obsidian]** 완료된 프로젝트를 정리하고 검증하여 연도별 아카이브로 이동합니다.  |
 
@@ -118,18 +119,20 @@ cd ~/dev/workspace/my_new_project
 
 ---
 
-## 🏗️ 아키텍처: 참조 분리 (Reference Separation Pattern)
+## 🏗️ 아키텍처: Trigger & Skill Pattern
+(구 Reference Separation Pattern)
 
-모든 워크플로우는 **"가벼운 실행 로직(Workflow)"**과 **"무거운 상세 표준(Reference)"**으로 분리되어 설계되었습니다.
+모든 워크플로우는 **"가벼운 실행 로직(Trigger)"**과 **"무거운 상세 표준(Skill)"**으로 분리되어 설계되었습니다.
 
 ```text
 .agent/
-├── workflows/             # [How-to] 에이전트의 행동 순서 (Lightweight)
+├── workflows/             # [Trigger] 에이전트의 진입점 (Minimal)
 │   └── data-analyst.md
-└── references/            # [Standard] 품질 기준 및 템플릿 (Heavy)
+└── skills/                # [Skill] 품질 기준 및 로직 (Unified)
     └── data-analyst/
-        ├── SKILL.md       # (O) 품질 표준, 철학, 체크리스트
-        └── template.md    # (O) 사용자가 편집하기 쉬운 마크다운 양식
+        ├── SKILL.md       # (O) 품질 표준, 철학, 실행 절차
+        ├── scripts/       # (O) 자동화 스크립트
+        └── resources/     # (O) 템플릿 및 데이터
 ```
 
 ### 이 패턴의 장점
@@ -140,8 +143,8 @@ cd ~/dev/workspace/my_new_project
 ### 커스텀 워크플로우 만들기
 나만의 스킬을 추가하려면 위 구조를 따르는 것을 권장합니다.
 
-1.  **Reference 생성**: `.agent/references/{skill-name}/SKILL.md`에 규칙 작성.
-2.  **Workflow 생성**: `.agent/workflows/{skill-name}.md`에서 `SKILL.md`를 로드하도록 지시.
+1.  **Reference 생성**: `.agent/skills/{name}/SKILL.md`에 규칙 작성 (Hybrid Strategy 권장).
+2.  **Trigger 생성**: `.agent/workflows/{name}.md`에서 스킬을 호출하는 한 줄 작성.
 
 ### 언어 및 템플릿 표준 (Language & Template Standards)
 
@@ -149,8 +152,11 @@ cd ~/dev/workspace/my_new_project
 
 | 구분           | 대상 (Example)                 | 언어               | 목적 및 전략                                                                |
 | :------------- | :----------------------------- | :----------------- | :-------------------------------------------------------------------------- |
-| **Workflow**   | `workflows/*.md`               | **한국어 (KR)**    | 사용자가 흐름을 쉽게 파악하도록 합니다.                                     |
-| **Reference**  | `references/*/SKILL.md`        | **영어 (EN)**      | 에이전트가 지침을 오해 없이 수행하도록 합니다.                              |
+| 구분           | 대상 (Example)                 | 언어               | 목적 및 전략                                                                |
+| :------------- | :----------------------------- | :----------------- | :-------------------------------------------------------------------------- |
+| **Trigger**    | `workflows/*.md`               | **한국어 (KR)**    | 사용자가 실행 진입점을 쉽게 파악하도록 합니다.                              |
+| **Skill Step** | `skills/*/SKILL.md` (Step)     | **한국어 (KR)**    | **[Hybrid]** 실행 절차(Workflow)는 직관적인 한글로 작성합니다.              |
+| **Standard**   | `skills/*/SKILL.md` (Rule)     | **영어 (EN)**      | **[Hybrid]** 검증 기준과 제약 사항은 영어로 엄격하게 기술합니다.            |
 | **Template A** | `coding/doc/analysis-template` | **영어 (EN)**      | **[Agent-Facing]** 문맥에 맞는 전용 템플릿 사용 (구 `skill-template` 대체). |
 | **Template B** | `plan-template` (Heavy)        | **Hybrid (KR+EN)** | **[User-Heavy]** 구조는 한글, 상세 로직(TDD 등)은 영어.                     |
 | **Template C** | `overview`, `weekly` (Light)   | **한국어 (KR)**    | **[User-Light]** 사용자가 직접 읽고 쓰는 문서.                              |
@@ -174,9 +180,11 @@ claude_skills/
     │   └── init_agent.sh   # 설정 동기화 스크립트
     ├── rules.md            # 기본 규칙
     ├── SECURITY.md         # 보안 설정 가이드
-    ├── references/         # 워크플로우별 리소스 폴더
+    ├── skills/             # [New] 통합 스킬 디렉토리
     │   └── dev-feature-planner/
-    └── workflows/          # 워크플로우 정의 파일들 (*.md)
+    │       ├── SKILL.md
+    │       └── resources/
+    └── workflows/          # 워크플로우 트리거 (*.md)
 ```
 
 ### 글로벌 동기화 (`scripts/sync_to_global.sh`)
