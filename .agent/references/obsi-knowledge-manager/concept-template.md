@@ -16,8 +16,16 @@
 # Code example
 ```
 
-| **Cons** | ...            | ...          |
+---
 
-## 💡 Key Insights
+## ⚖️ 비교 (Comparison)
+| Feature | This Concept | Others |
+| :--- | :--- | :--- |
+| ... | ... | ... |
+
+## 🔑 Key Insights
 - [Insight 1]
 - [Insight 2]
+
+## 📚 References
+- [Title](URL)
