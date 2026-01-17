@@ -13,10 +13,12 @@ AGENT_ROOT="$(dirname "$SCRIPT_DIR")"
 
 # 소스 경로
 WORKFLOWS_SRC="$AGENT_ROOT/workflows"
+SKILLS_SRC="$AGENT_ROOT/skills"
 RULES_SRC="$AGENT_ROOT/rules.md"
 
 # 타겟 경로 (Global)
 GLOBAL_WORKFLOWS_DIR="$HOME/.gemini/antigravity/global_workflows"
+GLOBAL_SKILLS_DIR="$HOME/.gemini/antigravity/skills"
 GLOBAL_RULES_FILE="$HOME/.gemini/GEMINI.md"
 
 echo "=========================================="
@@ -28,10 +30,7 @@ if [ -d "$WORKFLOWS_SRC" ]; then
     echo "[Action] Syncing workflows to '$GLOBAL_WORKFLOWS_DIR'..."
     
     # 기존 워크플로우 삭제 (Clean Sync)
-    if [ -d "$GLOBAL_WORKFLOWS_DIR" ]; then
-        echo "[Action] Cleaning up existing workflows..."
-        rm -rf "$GLOBAL_WORKFLOWS_DIR"
-    fi
+    rm -rf "$GLOBAL_WORKFLOWS_DIR"
     mkdir -p "$GLOBAL_WORKFLOWS_DIR"
 
     cp -v "$WORKFLOWS_SRC"/*.md "$GLOBAL_WORKFLOWS_DIR/"
@@ -39,10 +38,22 @@ else
     echo "[Warning] Workflows directory not found at $WORKFLOWS_SRC"
 fi
 
-# 2. 규칙 동기화 (GEMINI.md)
+# 2. 스킬 동기화
+if [ -d "$SKILLS_SRC" ]; then
+    echo "[Action] Syncing skills to '$GLOBAL_SKILLS_DIR'..."
+    
+    # 기존 스킬 삭제 (Clean Sync)
+    rm -rf "$GLOBAL_SKILLS_DIR"
+    mkdir -p "$GLOBAL_SKILLS_DIR"
+
+    cp -Rv "$SKILLS_SRC"/* "$GLOBAL_SKILLS_DIR/"
+else
+    echo "[Warning] Skills directory not found at $SKILLS_SRC"
+fi
+
+# 3. 규칙 동기화 (GEMINI.md)
 if [ -f "$RULES_SRC" ]; then
     echo "[Action] Syncing rules to '$GLOBAL_RULES_FILE'..."
-    # 타겟 디렉토리 존재 확인
     mkdir -p "$(dirname "$GLOBAL_RULES_FILE")"
     cp -v "$RULES_SRC" "$GLOBAL_RULES_FILE"
 else
