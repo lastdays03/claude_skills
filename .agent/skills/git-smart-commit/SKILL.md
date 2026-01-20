@@ -69,9 +69,10 @@ All commit messages MUST follow this format: `type: subject`
 1.  **Subject**:
     - Use **imperative, present tense**: "change" not "changed" nor "changes".
     - No dot (.) at the end.
-    - **Language**: Use **Korean** for the subject line unless the project is English-only. (For this user: **Korean**).
+    - **Language**: **반드시 한국어(Hangul)**로 작성해야 합니다. (Must be written in Korean).
 2.  **Body (Optional)**:
     - Use if the change needs detailed explanation.
+    - **Language**: Body content must also be in **Korean**.
     - Separated from subject by a blank line.
 
 ## 2. Atomic Commits
