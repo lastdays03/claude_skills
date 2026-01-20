@@ -39,16 +39,16 @@ cd ~/dev/workspace/my_new_project
 ### 2. 개발 및 구현 (Development & Engineering)
 견고한 코드 작성과 제품 구현을 위한 워크플로우입니다.
 
-| 커맨드                      | 설명                                                                              |
-| :-------------------------- | :-------------------------------------------------------------------------------- |
-| **/dev-feature-planner**    | **[Dev]** TDD, 리스크 평가, 롤백 전략을 포함한 엔지니어링 표준 기능을 구현합니다. |
-| **/dev-coding-debug**       | **[Dev]** "The Iron Law"에 기반한 체계적 디버깅 (Root Cause -> Test -> Fix).      |
-| **/dev-doc-suite**          | **[Dev]** 코드 기반의 README, API 문서, 아키텍처 다이어그램 자동 생성.            |
-| **/dev-prompt-engineering** | **[Dev]** Anthropic Best Practice(CoT, Few-shot)를 적용한 최적 프롬프트 설계.     |
-| **/biz-doc-generator**      | **[Biz]** Word, PPT, Excel 등 기업용 비즈니스 문서를 자동 생성합니다.             |
+| 커맨드                      | 설명                                                                                    |
+| :-------------------------- | :-------------------------------------------------------------------------------------- |
+| **/dev-feature-planner**    | **[Dev]** TDD, 리스크 평가, 롤백 전략을 포함한 엔지니어링 표준 기능을 구현합니다.       |
+| **/dev-coding-debug**       | **[Dev]** "The Iron Law"에 기반한 체계적 디버깅 (Root Cause -> Test -> Fix).            |
+| **/dev-doc-suite**          | **[Dev]** 코드 기반의 README, API 문서, 아키텍처 다이어그램 자동 생성.                  |
+| **/dev-prompt-engineering** | **[Dev]** Anthropic Best Practice(CoT, Few-shot)를 적용한 최적 프롬프트 설계.           |
+| **/biz-doc-generator**      | **[Biz]** Word, PPT, Excel 등 기업용 비즈니스 문서를 자동 생성합니다.                   |
 | **/git-smart-commit**       | **[Dev]** `git diff`를 분석하여 Conventional Commits 메시지를 자동 작성하고 커밋합니다. |
-| **/dev-export**             | **[Dev]** 개발 문서를 Obsidian Inbox로 단순 백업(Export)합니다.                   |
-| **/obsi-archive-project**   | **[Obsidian]** 완료된 프로젝트를 정리하고 검증하여 연도별 아카이브로 이동합니다.  |
+| **/dev-export**             | **[Dev]** 개발 문서를 Obsidian Inbox로 단순 백업(Export)합니다.                         |
+| **/obsi-archive-project**   | **[Obsidian]** 완료된 프로젝트를 정리하고 검증하여 연도별 아카이브로 이동합니다.        |
 
 ### 3. 학습 및 연구 (Learning & Research)
 새로운 기술 습득과 심층 이해를 돕습니다.
@@ -62,23 +62,42 @@ cd ~/dev/workspace/my_new_project
 ### 4. 데이터 분석 (Data Analysis)
 데이터로부터 인사이트를 도출합니다.
 
-| 커맨드                     | 설명                                                                                                                       |
-| :------------------------- | :------------------------------------------------------------------------------------------------------------------------- |
-| **/data-analyst**          | **[Data]** 고급 데이터 분석(EDA). OSEMN 방법론과 SKILL.md(방법론 스크리닝, Metric 가이드)를 통해 엄밀한 분석을 수행합니다. |
-| **/data-model-reporter**   | **[Data]** 모델 카드 리포트 생성(📊). 표준화된 Model Card(윤리, 성능, 한계)를 자동 생성합니다.                              |
-| **/data-notebook-refiner** | **[Data]** 노트북 품질 개선(✨) 및 학습 자료화. 코드 품질, 문서화, 실행 안정성을 개선합니다.                                |
+#### 🚀 실행 가능한 워크플로우 (Executable Workflows)
+사용자가 직접 커맨드로 실행할 수 있는 메인 워크플로우입니다.
+
+| 커맨드                   | 설명                                                                                                                                                                                                      |
+| :----------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **/data-science-master** | **[Data]** 통합 데이터 사이언스 워크플로우. 하위 스킬(`Analyst`, `Refiner`, `Reporter`)을 오케스트레이션하여 분석->정제->보고서를 원스톱으로 수행하며 단일 노트북(`[Topic]_Analysis.ipynb`)을 관리합니다. |
+
+#### 🧩 종속형 스킬 (Dependent Skills - Internal)
+위의 `data-science-master` 워크플로우를 통해 **자동으로 호출**되는 내부 컴포넌트입니다. (개별 실행 불가)
+
+| 스킬명               | 역할                                                                                                |
+| :------------------- | :-------------------------------------------------------------------------------------------------- |
+| **Data Analyst**     | **[Deep Dive]** OSEMN 방법론을 기반으로 심층 분석을 수행하고 `[Topic]_Analysis.ipynb`를 생성합니다. |
+| **Model Reporter**   | **[Report]** 분석된 내용을 바탕으로 표준 모델 카드(`[Topic]_Report.md`)를 자동 생성합니다.          |
+| **Notebook Refiner** | **[Clean]** 코드 품질, 문서화, 포맷팅을 표준 수준으로 정제하여 유지보수성을 높입니다.               |
 
 ### 5. 지식 관리 (Knowledge Management)
 파편화된 정보를 체계적인 지식 자산으로 변환합니다.
 
-| 커맨드                        | 설명                                                                         |
-| :---------------------------- | :--------------------------------------------------------------------------- |
-| **/obsi-concept-distiller**   | 텍스트에서 핵심 개념을 추출하여 지식 베이스와 연결합니다.                    |
-| **/obsi-knowledge-harvester** | 프로젝트의 실전 노트(Topic Note)를 영구 지식 노트(20_Learning)로 이관합니다. |
-| **/obsi-knowledge-refiner**   | 기존 노트의 내용을 심화하고 시각화하여 "골드 스탠다드" 지식으로 만듭니다.    |
-| **/obsi-moc-builder**         | 노트들의 연관 관계를 분석하여 구조화된 목차(MOC)를 생성합니다.               |
-| **/obsi-moc-manager**         | **[New]** 하위 폴더를 스캔하여 MOC들을 재귀적으로 일괄 생성/갱신합니다.      |
-| **/obsi-weekly-review**       | 주간 회고를 수행하고 액션 아이템을 도출하여 GTD 시스템을 유지합니다.         |
+#### 🚀 실행 가능한 워크플로우 (Executable Workflows)
+
+| 커맨드                      | 설명                                                                                                                                                   |
+| :-------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **/obsi-knowledge-manager** | **[Main]** 지식 관리의 통합 엔트리. 파일 위치(`Project` vs `Learning`)에 따라 **수확(Harvest)** 또는 **정제(Refine)** 모드를 자동 선택하여 수행합니다. |
+| **/obsi-concept-distiller** | 텍스트에서 핵심 개념을 추출하여 지식 베이스와 연결합니다.                                                                                              |
+| **/obsi-moc-builder**       | 노트들의 연관 관계를 분석하여 구조화된 목차(MOC)를 생성합니다.                                                                                         |
+| **/obsi-moc-manager**       | **[New]** 하위 폴더를 스캔하여 MOC들을 재귀적으로 일괄 생성/갱신합니다.                                                                                |
+| **/obsi-weekly-review**     | 주간 회고를 수행하고 액션 아이템을 도출하여 GTD 시스템을 유지합니다.                                                                                   |
+
+#### 🧩 통합된 기능 (Features)
+`/obsi-knowledge-manager`에 통합되어 동작하는 내부 모드입니다.
+
+| 모드명                  | 설명                                                                                                                            |
+| :---------------------- | :------------------------------------------------------------------------------------------------------------------------------ |
+| **Knowledge Harvester** | 프로젝트의 실전 노트(Topic Note)를 영구 지식 노트(20_Learning)로 이관(Harvest)합니다. (`Inbox`/`Projects` 경로에서 자동 활성화) |
+| **Knowledge Refiner**   | 기존 노트의 내용을 심화하고 시각화하여 "골드 스탠다드" 지식으로 정제(Refine)합니다. (`20_Learning` 경로에서 자동 활성화)        |
 
 ### 6. 메타 관리 (Meta Engineering)
 워크플로우 자체를 생성하거나 개선합니다.
@@ -209,4 +228,14 @@ claude_skills/
 # 실행
 .agent/scripts/watch_and_sync.sh
 ```
+
+---
+
+## 🔄 최근 수정 내역 (Recent Updates)
+
+### 2026-01-20
+*   **Data Science Workflow 표준화**
+    *   **단일 노트북 체제**: 분석 노트북을 `[Topic]_Analysis.ipynb`로 통합 (Draft/Master 구분 제거).
+    *   **리포트 명명 규칙**: `[Topic]_Report.md`로 표준화.
+    *   **스킬 업데이트**: `data-analyst`, `data-notebook-refiner`, `data-model-reporter` 및 `data-science-master` 워크플로우 반영.
 
