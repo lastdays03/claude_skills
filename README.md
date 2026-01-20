@@ -47,7 +47,7 @@ cd ~/dev/workspace/my_new_project
 | **/dev-prompt-engineering** | **[Dev]** Anthropic Best Practice(CoT, Few-shot)를 적용한 최적 프롬프트 설계.           |
 | **/biz-doc-generator**      | **[Biz]** Word, PPT, Excel 등 기업용 비즈니스 문서를 자동 생성합니다.                   |
 | **/git-smart-commit**       | **[Dev]** `git diff`를 분석하여 Conventional Commits 메시지를 자동 작성하고 커밋합니다. |
-| **/dev-export**             | **[Dev]** 개발 문서를 Obsidian Inbox로 단순 백업(Export)합니다.                         |
+
 | **/obsi-archive-project**   | **[Obsidian]** 완료된 프로젝트를 정리하고 검증하여 연도별 아카이브로 이동합니다.        |
 
 ### 3. 학습 및 연구 (Learning & Research)
@@ -87,8 +87,7 @@ cd ~/dev/workspace/my_new_project
 | :-------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **/obsi-knowledge-manager** | **[Main]** 지식 관리의 통합 엔트리. 파일 위치(`Project` vs `Learning`)에 따라 **수확(Harvest)** 또는 **정제(Refine)** 모드를 자동 선택하여 수행합니다. |
 | **/obsi-concept-distiller** | 텍스트에서 핵심 개념을 추출하여 지식 베이스와 연결합니다.                                                                                              |
-| **/obsi-moc-builder**       | 노트들의 연관 관계를 분석하여 구조화된 목차(MOC)를 생성합니다.                                                                                         |
-| **/obsi-moc-manager**       | **[New]** 하위 폴더를 스캔하여 MOC들을 재귀적으로 일괄 생성/갱신합니다.                                                                                |
+| **/obsi-moc-builder**       | **[Updated]** 특정 폴더(Single) 또는 하위 구조 전체(Recursive)를 분석하여 구조화된 MOC를 자동 생성/갱신합니다.                                         |
 | **/obsi-weekly-review**     | 주간 회고를 수행하고 액션 아이템을 도출하여 GTD 시스템을 유지합니다.                                                                                   |
 
 #### 🧩 통합된 기능 (Features)
