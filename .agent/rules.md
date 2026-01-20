@@ -27,3 +27,9 @@
 - **refactor**: 코드 리팩토링 (기능 변경 없음, 예: `refactor: 변수명 정리`)
 - **test**: 테스트 코드 추가/수정 (예: `test: 검증 스크립트 TC 추가`)
 - **chore**: 설정 변경, 패키지 매니저 등 (예: `chore: 의존성 패키지 업그레이드`)
+
+## Tool Usage Rules
+- **File Exploration**:
+  - `@mcp:filesystem:` 서버가 가용한 경우, 특히 접근 권한 제한으로 사용자 허가가 필요한 상황이라면 파일 탐색 작업 시 이를 우선적으로 사용하십시오.
+- **Git Operations**:
+  - `@mcp:github-mcp-server:`가 가용한 경우, Git 관련 작업(커밋, PR, 이슈 관리 등) 시 이를 우선적으로 사용하십시오.
