@@ -28,7 +28,7 @@ description: 데이터를 분석하고, 코드를 정제하며, 최종 보고서
         - "Explanation First": 코드 작성 전 한글 설명 필수.
         - "Interpretation Mandatory": 모든 결과에 대한 비즈니스 해석 필수.
 2.  **산출물 (Output)**:
-    - 초안 분석 노트북 (`docs/notebooks/DRAFT_Running.ipynb` 등)
+    - 초기 분석 노트북 (`docs/notebooks/[Topic]_Analysis.ipynb`)
 
 ---
 
@@ -43,7 +43,7 @@ description: 데이터를 분석하고, 코드를 정제하며, 최종 보고서
         - 변수명 가독성 개선.
         - `Restart & Run All` 검증 수행 (재현성 확보).
 3.  **산출물 (Output)**:
-    - 정제된 마스터 노트북 (`docs/notebooks/MASTER_[주제].ipynb`)
+    - 정제된 마스터 노트북 (`docs/notebooks/[Topic]_Analysis.ipynb` - 기존 파일 업데이트)
 
 ---
 
@@ -55,7 +55,7 @@ description: 데이터를 분석하고, 코드를 정제하며, 최종 보고서
     - [data-model-reporter](file:///.agent/skills/data-model-reporter/SKILL.md)를 사용하여 정제된 노트북에서 `Model Card`를 추출합니다.
     - 성능 메트릭, 시각화 자료(Confusion Matrix, SHAP 등), 윤리적 고려사항 등을 포함합니다.
 3.  **산출물 (Output)**:
-    - `docs/reports/MODEL_CARD_[주제].md`
+    - `docs/reports/[Topic]_Report.md`
 
 ---
 

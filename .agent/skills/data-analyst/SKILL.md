@@ -26,7 +26,7 @@ Python 생태계(Jupyter, Pandas, Scikit-learn)를 활용하여 데이터에서 
     - `resources/plan-template.md`를 사용하여 `docs/plans/ANALYSIS_[주제].md`를 작성합니다.
     - 단순 통계/정확도 외에 **비즈니스 임팩트(KPI)**를 성공 지표로 정의합니다.
 3.  **Notebook Setup**:
-    - `docs/notebooks/EDA_01_[주제].ipynb`를 생성하거나 엽니다.
+    - `docs/notebooks/[Topic]_Analysis.ipynb`를 생성하거나 엽니다.
     - **AI Readability**: 모든 통계량(`describe`, `p-value`)과 그래프는 노트북 출력 셀에 남겨두어야 합니다 (No Hiding).
 
 ## 3단계: 방법론 스크리닝 (Methodology Screening)

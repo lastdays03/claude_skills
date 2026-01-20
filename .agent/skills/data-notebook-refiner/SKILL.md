@@ -11,7 +11,9 @@ description: Jupyter Notebook의 코드 품질, 문서화 수준, 실행 안정�
 1.  **Context Loading**: `this document`를 읽어 'High Quality Notebook'의 기준을 로드합니다.
 2.  **Current State Check**: 리팩토링할 노트북을 열고 `resources/checklist.md`와 대조하여 부족한 점을 파악합니다.
     *   **Structure**: 흐름이 논리적인가?
+    *   **Structure**: 흐름이 논리적인가?
     *   **Dependency**: 환경 설정이 명시되었는가?
+    *   **Filename**: `docs/notebooks/[Topic]_Analysis.ipynb` 이름 규칙을 유지하며, 기존 파일을 덮어쓰거나 수정합니다.
 
 ### 2단계: 리팩토링 및 표준화 (Refactor)
 기능 변경 없이 코드의 가독성과 구조를 개선합니다.
