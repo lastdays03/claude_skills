@@ -51,6 +51,12 @@ model-index:
 *   **{Metric Name}**: {Value}
 *   **{Metric Name}**: {Value}
 
+### Visualizations (시각화)
+모델 성능과 특성을 설명하는 시각화 자료입니다.
+*   ![Confusion Matrix]({Path to Confusion Matrix Image})
+*   ![Feature Importance]({Path to Feature Importance Image})
+*   *{기타 시각화 자료 설명}*
+
 ## 4. 윤리적 고려사항 (Ethical Considerations)
 데이터 및 모델이 내포할 수 있는 편향과 공정성 문제입니다.
 

@@ -17,10 +17,12 @@ description: 데이터 분석/머신러닝 노트북의 결과를 분석하여 �
     *   **Model**: 사용된 모델(알고리즘, 프레임워크 버전)을 식별합니다.
     *   **Metrics**: `accuracy_score`, `f1_score` 등 정량적 지표의 실행 결과를 찾습니다.
     *   **Features**: `X.columns`, `feature_importances_` 등을 통해 주요 변수를 추출합니다.
+    *   **Visuals**: Confusion Matrix, SHAP Summary, ROC Curve 등 핵심 시각화 그래프를 식별하고 이미지 경로를 확보합니다. (없다면 생성을 제안)
 
 ### 3단계: 리포트 작성 (Drafting)
 1.  **Template Load**: `resources/report-template.md`를 로드합니다.
 2.  **Fill**: 추출된 정보를 바탕으로 템플릿의 빈칸(`{...}`)을 채웁니다.
+    *   **Visualizations**: 추출된 이미지 파일 경로를 마크다운 이미지 태그(`![Description](path)`)로 삽입합니다.
     *   **Warning**: '윤리적 고려사항'이나 '사용 목적'처럼 코드에서 알 수 없는 내용은 "사용자 입력 필요"로 표시하거나, 노트북의 마크다운 셀에서 문맥을 추론합니다.
 3.  **Create Artifact**: `model_card.md` (또는 유사한 이름) 아티팩트를 생성합니다.
 
@@ -49,6 +51,9 @@ This skill defines the standard for generating **Model Cards** from data analysi
 3.  **Neutral Tone**:
     - Use objective language. Avoid marketing buzzwords like "Superb", "Perfect".
     - Acknowledge biases and limitations honestly.
+4.  **Visual Evidence**:
+    - A picture is worth a thousand words. Prefer charts (SHAP, ROC, Matrix) over raw numbers where possible.
+    - All visualizations must have captions explaining "what this means".
 
 ---
 
